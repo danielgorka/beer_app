@@ -3,7 +3,7 @@ import 'package:beer_app/domain/beers/models/beer_method.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_abv.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_attenuation_level.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_boil_volume.dart';
-import 'package:beer_app/domain/beers/value_objects/beer_brewer_tips.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_brewers_tips.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_contributed_by.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_description.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_ebc.dart';
@@ -16,7 +16,7 @@ import 'package:beer_app/domain/beers/value_objects/beer_name.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_ph.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_srm.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_tagline.dart';
-import 'package:beer_app/domain/beers/value_objects/beer_target_fb.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_target_fg.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_target_og.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_volume.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -34,7 +34,7 @@ class Beer with _$Beer {
     required BeerImageUrl imageUrl,
     required BeerAbv abv,
     required BeerIbu ibu,
-    required BeerTargetFb targetFb,
+    required BeerTargetFg targetFg,
     required BeerTargetOg targetOg,
     required BeerEbc ebc,
     required BeerSrm srm,
@@ -45,7 +45,7 @@ class Beer with _$Beer {
     required BeerMethod method,
     required BeerIngredients ingredients,
     required List<BeerFood> foodPairing,
-    required BeerBrewerTips brewerTips,
+    required BeerBrewersTips brewersTips,
     required BeerContributedBy contributedBy,
   }) = _Beer;
 }

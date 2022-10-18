@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BeerMethod {
   List<BeerMash> get mashTemp => throw _privateConstructorUsedError;
   BeerFermentation get fermentation => throw _privateConstructorUsedError;
-  BeerTwist get twist => throw _privateConstructorUsedError;
+  BeerTwist? get twist => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BeerMethodCopyWith<BeerMethod> get copyWith =>
@@ -34,7 +34,7 @@ abstract class $BeerMethodCopyWith<$Res> {
   $Res call(
       {List<BeerMash> mashTemp,
       BeerFermentation fermentation,
-      BeerTwist twist});
+      BeerTwist? twist});
 
   $BeerFermentationCopyWith<$Res> get fermentation;
 }
@@ -54,7 +54,7 @@ class _$BeerMethodCopyWithImpl<$Res, $Val extends BeerMethod>
   $Res call({
     Object? mashTemp = null,
     Object? fermentation = null,
-    Object? twist = null,
+    Object? twist = freezed,
   }) {
     return _then(_value.copyWith(
       mashTemp: null == mashTemp
@@ -65,10 +65,10 @@ class _$BeerMethodCopyWithImpl<$Res, $Val extends BeerMethod>
           ? _value.fermentation
           : fermentation // ignore: cast_nullable_to_non_nullable
               as BeerFermentation,
-      twist: null == twist
+      twist: freezed == twist
           ? _value.twist
           : twist // ignore: cast_nullable_to_non_nullable
-              as BeerTwist,
+              as BeerTwist?,
     ) as $Val);
   }
 
@@ -92,7 +92,7 @@ abstract class _$$_BeerMethodCopyWith<$Res>
   $Res call(
       {List<BeerMash> mashTemp,
       BeerFermentation fermentation,
-      BeerTwist twist});
+      BeerTwist? twist});
 
   @override
   $BeerFermentationCopyWith<$Res> get fermentation;
@@ -111,7 +111,7 @@ class __$$_BeerMethodCopyWithImpl<$Res>
   $Res call({
     Object? mashTemp = null,
     Object? fermentation = null,
-    Object? twist = null,
+    Object? twist = freezed,
   }) {
     return _then(_$_BeerMethod(
       mashTemp: null == mashTemp
@@ -122,10 +122,10 @@ class __$$_BeerMethodCopyWithImpl<$Res>
           ? _value.fermentation
           : fermentation // ignore: cast_nullable_to_non_nullable
               as BeerFermentation,
-      twist: null == twist
+      twist: freezed == twist
           ? _value.twist
           : twist // ignore: cast_nullable_to_non_nullable
-              as BeerTwist,
+              as BeerTwist?,
     ));
   }
 }
@@ -149,7 +149,7 @@ class _$_BeerMethod implements _BeerMethod {
   @override
   final BeerFermentation fermentation;
   @override
-  final BeerTwist twist;
+  final BeerTwist? twist;
 
   @override
   String toString() {
@@ -182,14 +182,14 @@ abstract class _BeerMethod implements BeerMethod {
   factory _BeerMethod(
       {required final List<BeerMash> mashTemp,
       required final BeerFermentation fermentation,
-      required final BeerTwist twist}) = _$_BeerMethod;
+      required final BeerTwist? twist}) = _$_BeerMethod;
 
   @override
   List<BeerMash> get mashTemp;
   @override
   BeerFermentation get fermentation;
   @override
-  BeerTwist get twist;
+  BeerTwist? get twist;
   @override
   @JsonKey(ignore: true)
   _$$_BeerMethodCopyWith<_$_BeerMethod> get copyWith =>

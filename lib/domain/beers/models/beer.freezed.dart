@@ -24,7 +24,7 @@ mixin _$Beer {
   BeerImageUrl get imageUrl => throw _privateConstructorUsedError;
   BeerAbv get abv => throw _privateConstructorUsedError;
   BeerIbu get ibu => throw _privateConstructorUsedError;
-  BeerTargetFb get targetFb => throw _privateConstructorUsedError;
+  BeerTargetFg get targetFg => throw _privateConstructorUsedError;
   BeerTargetOg get targetOg => throw _privateConstructorUsedError;
   BeerEbc get ebc => throw _privateConstructorUsedError;
   BeerSrm get srm => throw _privateConstructorUsedError;
@@ -36,7 +36,7 @@ mixin _$Beer {
   BeerMethod get method => throw _privateConstructorUsedError;
   BeerIngredients get ingredients => throw _privateConstructorUsedError;
   List<BeerFood> get foodPairing => throw _privateConstructorUsedError;
-  BeerBrewerTips get brewerTips => throw _privateConstructorUsedError;
+  BeerBrewersTips get brewersTips => throw _privateConstructorUsedError;
   BeerContributedBy get contributedBy => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -57,7 +57,7 @@ abstract class $BeerCopyWith<$Res> {
       BeerImageUrl imageUrl,
       BeerAbv abv,
       BeerIbu ibu,
-      BeerTargetFb targetFb,
+      BeerTargetFg targetFg,
       BeerTargetOg targetOg,
       BeerEbc ebc,
       BeerSrm srm,
@@ -68,7 +68,7 @@ abstract class $BeerCopyWith<$Res> {
       BeerMethod method,
       BeerIngredients ingredients,
       List<BeerFood> foodPairing,
-      BeerBrewerTips brewerTips,
+      BeerBrewersTips brewersTips,
       BeerContributedBy contributedBy});
 
   $BeerMethodCopyWith<$Res> get method;
@@ -96,7 +96,7 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
     Object? imageUrl = null,
     Object? abv = null,
     Object? ibu = null,
-    Object? targetFb = null,
+    Object? targetFg = null,
     Object? targetOg = null,
     Object? ebc = null,
     Object? srm = null,
@@ -107,7 +107,7 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
     Object? method = null,
     Object? ingredients = null,
     Object? foodPairing = null,
-    Object? brewerTips = null,
+    Object? brewersTips = null,
     Object? contributedBy = null,
   }) {
     return _then(_value.copyWith(
@@ -143,10 +143,10 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
           ? _value.ibu
           : ibu // ignore: cast_nullable_to_non_nullable
               as BeerIbu,
-      targetFb: null == targetFb
-          ? _value.targetFb
-          : targetFb // ignore: cast_nullable_to_non_nullable
-              as BeerTargetFb,
+      targetFg: null == targetFg
+          ? _value.targetFg
+          : targetFg // ignore: cast_nullable_to_non_nullable
+              as BeerTargetFg,
       targetOg: null == targetOg
           ? _value.targetOg
           : targetOg // ignore: cast_nullable_to_non_nullable
@@ -187,10 +187,10 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
           ? _value.foodPairing
           : foodPairing // ignore: cast_nullable_to_non_nullable
               as List<BeerFood>,
-      brewerTips: null == brewerTips
-          ? _value.brewerTips
-          : brewerTips // ignore: cast_nullable_to_non_nullable
-              as BeerBrewerTips,
+      brewersTips: null == brewersTips
+          ? _value.brewersTips
+          : brewersTips // ignore: cast_nullable_to_non_nullable
+              as BeerBrewersTips,
       contributedBy: null == contributedBy
           ? _value.contributedBy
           : contributedBy // ignore: cast_nullable_to_non_nullable
@@ -230,7 +230,7 @@ abstract class _$$_BeerCopyWith<$Res> implements $BeerCopyWith<$Res> {
       BeerImageUrl imageUrl,
       BeerAbv abv,
       BeerIbu ibu,
-      BeerTargetFb targetFb,
+      BeerTargetFg targetFg,
       BeerTargetOg targetOg,
       BeerEbc ebc,
       BeerSrm srm,
@@ -241,7 +241,7 @@ abstract class _$$_BeerCopyWith<$Res> implements $BeerCopyWith<$Res> {
       BeerMethod method,
       BeerIngredients ingredients,
       List<BeerFood> foodPairing,
-      BeerBrewerTips brewerTips,
+      BeerBrewersTips brewersTips,
       BeerContributedBy contributedBy});
 
   @override
@@ -267,7 +267,7 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
     Object? imageUrl = null,
     Object? abv = null,
     Object? ibu = null,
-    Object? targetFb = null,
+    Object? targetFg = null,
     Object? targetOg = null,
     Object? ebc = null,
     Object? srm = null,
@@ -278,7 +278,7 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
     Object? method = null,
     Object? ingredients = null,
     Object? foodPairing = null,
-    Object? brewerTips = null,
+    Object? brewersTips = null,
     Object? contributedBy = null,
   }) {
     return _then(_$_Beer(
@@ -314,10 +314,10 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
           ? _value.ibu
           : ibu // ignore: cast_nullable_to_non_nullable
               as BeerIbu,
-      targetFb: null == targetFb
-          ? _value.targetFb
-          : targetFb // ignore: cast_nullable_to_non_nullable
-              as BeerTargetFb,
+      targetFg: null == targetFg
+          ? _value.targetFg
+          : targetFg // ignore: cast_nullable_to_non_nullable
+              as BeerTargetFg,
       targetOg: null == targetOg
           ? _value.targetOg
           : targetOg // ignore: cast_nullable_to_non_nullable
@@ -358,10 +358,10 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
           ? _value._foodPairing
           : foodPairing // ignore: cast_nullable_to_non_nullable
               as List<BeerFood>,
-      brewerTips: null == brewerTips
-          ? _value.brewerTips
-          : brewerTips // ignore: cast_nullable_to_non_nullable
-              as BeerBrewerTips,
+      brewersTips: null == brewersTips
+          ? _value.brewersTips
+          : brewersTips // ignore: cast_nullable_to_non_nullable
+              as BeerBrewersTips,
       contributedBy: null == contributedBy
           ? _value.contributedBy
           : contributedBy // ignore: cast_nullable_to_non_nullable
@@ -382,7 +382,7 @@ class _$_Beer implements _Beer {
       required this.imageUrl,
       required this.abv,
       required this.ibu,
-      required this.targetFb,
+      required this.targetFg,
       required this.targetOg,
       required this.ebc,
       required this.srm,
@@ -393,7 +393,7 @@ class _$_Beer implements _Beer {
       required this.method,
       required this.ingredients,
       required final List<BeerFood> foodPairing,
-      required this.brewerTips,
+      required this.brewersTips,
       required this.contributedBy})
       : _foodPairing = foodPairing;
 
@@ -414,7 +414,7 @@ class _$_Beer implements _Beer {
   @override
   final BeerIbu ibu;
   @override
-  final BeerTargetFb targetFb;
+  final BeerTargetFg targetFg;
   @override
   final BeerTargetOg targetOg;
   @override
@@ -441,13 +441,13 @@ class _$_Beer implements _Beer {
   }
 
   @override
-  final BeerBrewerTips brewerTips;
+  final BeerBrewersTips brewersTips;
   @override
   final BeerContributedBy contributedBy;
 
   @override
   String toString() {
-    return 'Beer(id: $id, name: $name, tagline: $tagline, firstBrewed: $firstBrewed, description: $description, imageUrl: $imageUrl, abv: $abv, ibu: $ibu, targetFb: $targetFb, targetOg: $targetOg, ebc: $ebc, srm: $srm, ph: $ph, attenuationLevel: $attenuationLevel, volume: $volume, boilVolume: $boilVolume, method: $method, ingredients: $ingredients, foodPairing: $foodPairing, brewerTips: $brewerTips, contributedBy: $contributedBy)';
+    return 'Beer(id: $id, name: $name, tagline: $tagline, firstBrewed: $firstBrewed, description: $description, imageUrl: $imageUrl, abv: $abv, ibu: $ibu, targetFg: $targetFg, targetOg: $targetOg, ebc: $ebc, srm: $srm, ph: $ph, attenuationLevel: $attenuationLevel, volume: $volume, boilVolume: $boilVolume, method: $method, ingredients: $ingredients, foodPairing: $foodPairing, brewersTips: $brewersTips, contributedBy: $contributedBy)';
   }
 
   @override
@@ -466,8 +466,8 @@ class _$_Beer implements _Beer {
                 other.imageUrl == imageUrl) &&
             (identical(other.abv, abv) || other.abv == abv) &&
             (identical(other.ibu, ibu) || other.ibu == ibu) &&
-            (identical(other.targetFb, targetFb) ||
-                other.targetFb == targetFb) &&
+            (identical(other.targetFg, targetFg) ||
+                other.targetFg == targetFg) &&
             (identical(other.targetOg, targetOg) ||
                 other.targetOg == targetOg) &&
             (identical(other.ebc, ebc) || other.ebc == ebc) &&
@@ -483,8 +483,8 @@ class _$_Beer implements _Beer {
                 other.ingredients == ingredients) &&
             const DeepCollectionEquality()
                 .equals(other._foodPairing, _foodPairing) &&
-            (identical(other.brewerTips, brewerTips) ||
-                other.brewerTips == brewerTips) &&
+            (identical(other.brewersTips, brewersTips) ||
+                other.brewersTips == brewersTips) &&
             (identical(other.contributedBy, contributedBy) ||
                 other.contributedBy == contributedBy));
   }
@@ -500,7 +500,7 @@ class _$_Beer implements _Beer {
         imageUrl,
         abv,
         ibu,
-        targetFb,
+        targetFg,
         targetOg,
         ebc,
         srm,
@@ -511,7 +511,7 @@ class _$_Beer implements _Beer {
         method,
         ingredients,
         const DeepCollectionEquality().hash(_foodPairing),
-        brewerTips,
+        brewersTips,
         contributedBy
       ]);
 
@@ -532,7 +532,7 @@ abstract class _Beer implements Beer {
       required final BeerImageUrl imageUrl,
       required final BeerAbv abv,
       required final BeerIbu ibu,
-      required final BeerTargetFb targetFb,
+      required final BeerTargetFg targetFg,
       required final BeerTargetOg targetOg,
       required final BeerEbc ebc,
       required final BeerSrm srm,
@@ -543,7 +543,7 @@ abstract class _Beer implements Beer {
       required final BeerMethod method,
       required final BeerIngredients ingredients,
       required final List<BeerFood> foodPairing,
-      required final BeerBrewerTips brewerTips,
+      required final BeerBrewersTips brewersTips,
       required final BeerContributedBy contributedBy}) = _$_Beer;
 
   @override
@@ -563,7 +563,7 @@ abstract class _Beer implements Beer {
   @override
   BeerIbu get ibu;
   @override
-  BeerTargetFb get targetFb;
+  BeerTargetFg get targetFg;
   @override
   BeerTargetOg get targetOg;
   @override
@@ -585,7 +585,7 @@ abstract class _Beer implements Beer {
   @override
   List<BeerFood> get foodPairing;
   @override
-  BeerBrewerTips get brewerTips;
+  BeerBrewersTips get brewersTips;
   @override
   BeerContributedBy get contributedBy;
   @override

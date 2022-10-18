@@ -10,6 +10,6 @@ class BeerMethod with _$BeerMethod {
   factory BeerMethod({
     required List<BeerMash> mashTemp,
     required BeerFermentation fermentation,
-    required BeerTwist twist,
+    required BeerTwist? twist,
   }) = _BeerMethod;
 }
