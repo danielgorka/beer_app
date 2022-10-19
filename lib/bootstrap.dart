@@ -1,7 +1,9 @@
+import 'package:beer_app/injection.dart';
 import 'package:beer_app/presentation/app.dart';
 import 'package:flutter/material.dart';
 
 void bootstrap() {
+  configureDependencies();
   runApp(const App());
 }
 

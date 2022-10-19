@@ -7,7 +7,9 @@ import 'package:beer_app/infrastructure/core/http_status.dart';
 import 'package:beer_app/infrastructure/core/typedef.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 
+@LazySingleton(as: IBeersRepository)
 class BeersRepository extends IBeersRepository {
   BeersRepository({
     required this.beersDataSource,
