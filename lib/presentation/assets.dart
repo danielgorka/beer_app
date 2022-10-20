@@ -5,4 +5,5 @@ abstract class Assets {
   static const favMugFilled = 'assets/fav-mug-filled.svg';
   static const mug = 'assets/mug.svg';
   static const mugFilled = 'assets/mug-filled.svg';
+  static const spilledBeer = 'assets/spilled-beer.svg';
 }
