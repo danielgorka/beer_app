@@ -1,3 +1,5 @@
 {
-  "appName": "Beer app"
+  "appName": "Beer app",
+  "beers": "Beers",
+  "favourites": "Favourites"
 }
