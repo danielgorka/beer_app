@@ -1,5 +1,7 @@
 {
   "appName": "Beer app",
   "beers": "Beers",
-  "favourites": "Favourites"
+  "favourites": "Favourites",
+  "somethingWentWrong": "Something went wrong",
+  "tryAgain": "Try again"
 }
