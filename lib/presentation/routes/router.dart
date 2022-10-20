@@ -13,32 +13,36 @@ part 'router.gr.dart';
   replaceInRouteName: 'Page,Route',
   transitionsBuilder: fadeScale,
   routes: [
-    AutoRoute<void>(path: '/', page: HomePage, children: [
-      AutoRoute<void>(
-        path: 'beers',
-        name: 'BeersRouter',
-        page: EmptyRouterPage,
-        children: [
-          AutoRoute<void>(
-            path: '',
-            page: BeersPage,
-          ),
-          RedirectRoute(path: '*', redirectTo: ''),
-        ],
-      ),
-      AutoRoute<void>(
-        path: 'favourites',
-        name: 'FavouritesRouter',
-        page: EmptyRouterPage,
-        children: [
-          AutoRoute<void>(
-            path: '',
-            page: FavouritesPage,
-          ),
-          RedirectRoute(path: '*', redirectTo: ''),
-        ],
-      ),
-    ]),
+    AutoRoute<void>(
+      path: '/',
+      page: HomePage,
+      children: [
+        AutoRoute<void>(
+          path: 'beers',
+          name: 'BeersRouter',
+          page: EmptyRouterPage,
+          children: [
+            AutoRoute<void>(
+              path: '',
+              page: BeersPage,
+            ),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
+        ),
+        AutoRoute<void>(
+          path: 'favourites',
+          name: 'FavouritesRouter',
+          page: EmptyRouterPage,
+          children: [
+            AutoRoute<void>(
+              path: '',
+              page: FavouritesPage,
+            ),
+            RedirectRoute(path: '*', redirectTo: ''),
+          ],
+        ),
+      ],
+    ),
   ],
 )
 class AppRouter extends _$AppRouter {}
