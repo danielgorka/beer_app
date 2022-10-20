@@ -16,10 +16,15 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  flutter_svg: ^1.1.5
   freezed_annotation: ^2.2.0
   get_it: ^7.2.0
   injectable: ^1.5.3
   json_annotation: ^4.7.0
+  material3_drawer:
+    git:
+      url: https://github.com/danielgorka/material3_drawer.git
+      ref: 1.0.0
   retrofit: ^3.3.1
 
 dev_dependencies:
