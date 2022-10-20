@@ -14,6 +14,7 @@ dependencies:
   dynamic_color: ^1.5.4
   flutter:
     sdk: flutter
+  flutter_bloc: ^8.1.1
   flutter_localizations:
     sdk: flutter
   flutter_svg: ^1.1.5
@@ -29,6 +30,7 @@ dependencies:
 
 dev_dependencies:
   auto_route_generator: ^5.0.2
+  bloc_test: ^9.1.0
   build_runner: ^2.3.0
   flutter_test:
     sdk: flutter
