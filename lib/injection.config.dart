@@ -5,10 +5,11 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:beer_app/application/beers/beers_bloc.dart' as _i7;
 import 'package:beer_app/domain/beers/i_beers_repository.dart' as _i5;
 import 'package:beer_app/infrastructure/beers/beers_data_source.dart' as _i4;
 import 'package:beer_app/infrastructure/beers/beers_repository.dart' as _i6;
-import 'package:beer_app/injection.dart' as _i7;
+import 'package:beer_app/injection.dart' as _i8;
 import 'package:dio/dio.dart' as _i3;
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart'
@@ -32,13 +33,21 @@ _i1.GetIt $initGetIt(
     () => registerModule.baseUrl,
     instanceName: 'ApiUrl',
   );
+  gh.factory<int>(
+    () => registerModule.beersLimit,
+    instanceName: 'BeersLimit',
+  );
   gh.lazySingleton<_i4.IBeersDataSource>(() => _i4.IBeersDataSource(
         get<_i3.Dio>(),
         baseUrl: get<String>(instanceName: 'ApiUrl'),
       ));
   gh.lazySingleton<_i5.IBeersRepository>(
       () => _i6.BeersRepository(beersDataSource: get<_i4.IBeersDataSource>()));
+  gh.factory<_i7.BeersBloc>(() => _i7.BeersBloc(
+        limit: get<int>(instanceName: 'BeersLimit'),
+        beersRepository: get<_i5.IBeersRepository>(),
+      ));
   return get;
 }
 
-class _$RegisterModule extends _i7.RegisterModule {}
+class _$RegisterModule extends _i8.RegisterModule {}
