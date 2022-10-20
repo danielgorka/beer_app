@@ -11,11 +11,15 @@ class Config {
   // ignore: use_setters_to_change_properties
   static void init({
     required String apiUrl,
+    required int beersLimit,
   }) {
     _apiUrl = apiUrl;
+    _beersLimit = beersLimit;
   }
 
   static late String _apiUrl;
+  static late int _beersLimit;
 
   static String get apiUrl => _apiUrl;
+  static int get beersLimit => _beersLimit;
 }

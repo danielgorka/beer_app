@@ -14,5 +14,8 @@ abstract class RegisterModule {
   @Named('ApiUrl')
   String get baseUrl => Config.apiUrl;
 
+  @Named('BeersLimit')
+  int get beersLimit => Config.beersLimit;
+
   Dio get dio => Dio();
 }
