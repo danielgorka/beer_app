@@ -27,6 +27,7 @@ dependencies:
       url: https://github.com/danielgorka/material3_drawer.git
       ref: 1.0.0
   retrofit: ^3.3.1
+  rive: ^0.9.1
 
 dev_dependencies:
   auto_route_generator: ^5.0.2
