@@ -17,3 +17,5 @@ abstract class DisplaySize {
   static bool isLarge(BoxConstraints constraints) =>
       constraints.maxWidth >= largeBreakpoint;
 }
+
+const animDuration = Duration(milliseconds: 300);
