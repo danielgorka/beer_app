@@ -22,6 +22,21 @@ void main() {
               expect(result, dateTime);
             },
           );
+
+          test(
+            'should return correct DateTime when json is year only',
+            () {
+              // arrange
+              const json = '2011';
+              final dateTime = DateTime(2011);
+
+              // act
+              final result = const FirstBrewedConverter().fromJson(json);
+
+              // assert
+              expect(result, dateTime);
+            },
+          );
         },
       );
 

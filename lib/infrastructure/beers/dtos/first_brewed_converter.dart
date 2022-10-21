@@ -6,7 +6,11 @@ class FirstBrewedConverter implements JsonConverter<DateTime, String> {
   @override
   DateTime fromJson(String json) {
     final parts = json.split('/');
-    return DateTime(int.parse(parts[1]), int.parse(parts[0]));
+    if (parts.length == 2) {
+      return DateTime(int.parse(parts[1]), int.parse(parts[0]));
+    } else {
+      return DateTime(int.parse(parts[0]));
+    }
   }
 
   @override
