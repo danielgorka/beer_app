@@ -2,7 +2,7 @@ import 'package:dynamic_color/dynamic_color.dart';
 import 'package:flutter/material.dart';
 
 abstract class AppTheme {
-  static const Color _defaultColor = Color(0xFF0058C9);
+  static const Color beerColor = Color(0xFFC96E12);
 
   static ThemeData light(ColorScheme? colorScheme) => _theme(
         colorScheme: colorScheme,
@@ -21,7 +21,7 @@ abstract class AppTheme {
     final finalScheme = colorScheme?.harmonized() ??
         ColorScheme.fromSeed(
           brightness: isDark ? Brightness.dark : Brightness.light,
-          seedColor: _defaultColor,
+          seedColor: beerColor,
         );
 
     return ThemeData(
