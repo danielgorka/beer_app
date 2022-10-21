@@ -36,10 +36,10 @@ extension WidgetTesterExt on WidgetTester {
     });
   }
 
-  void setLocales(List<Locale> locales) {
-    binding.platformDispatcher.localesTestValue = locales;
+  void setBrightness(Brightness brightness) {
+    binding.platformDispatcher.platformBrightnessTestValue = brightness;
     addTearDown(() {
-      binding.platformDispatcher.clearLocalesTestValue();
+      binding.platformDispatcher.clearPlatformBrightnessTestValue();
     });
   }
 }
