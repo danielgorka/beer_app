@@ -176,7 +176,7 @@ void main() {
             build: () => beersBloc,
             seed: () => const BeersState(
               loading: false,
-              errorType: ErrorType.none,
+              errorType: ErrorType.unknown,
               beers: null,
               canLoadMore: true,
             ),

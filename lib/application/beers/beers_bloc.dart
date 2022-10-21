@@ -46,7 +46,12 @@ class BeersBloc extends Bloc<BeersEvent, BeersState> {
       return;
     }
 
-    emit(state.copyWith(loading: true));
+    emit(
+      state.copyWith(
+        loading: true,
+        errorType: ErrorType.none,
+      ),
+    );
 
     final either = await beersRepository.getBeers(
       page: (state.beers!.length ~/ limit) + 1,
