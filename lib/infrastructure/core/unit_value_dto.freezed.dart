@@ -20,7 +20,7 @@ UnitValueDto _$UnitValueDtoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$UnitValueDto {
-  double get value => throw _privateConstructorUsedError;
+  double? get value => throw _privateConstructorUsedError;
   String get unit => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -35,7 +35,7 @@ abstract class $UnitValueDtoCopyWith<$Res> {
           UnitValueDto value, $Res Function(UnitValueDto) then) =
       _$UnitValueDtoCopyWithImpl<$Res, UnitValueDto>;
   @useResult
-  $Res call({double value, String unit});
+  $Res call({double? value, String unit});
 }
 
 /// @nodoc
@@ -51,14 +51,14 @@ class _$UnitValueDtoCopyWithImpl<$Res, $Val extends UnitValueDto>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? value = freezed,
     Object? unit = null,
   }) {
     return _then(_value.copyWith(
-      value: null == value
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
@@ -75,7 +75,7 @@ abstract class _$$_UnitValueDtoCopyWith<$Res>
       __$$_UnitValueDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({double value, String unit});
+  $Res call({double? value, String unit});
 }
 
 /// @nodoc
@@ -89,14 +89,14 @@ class __$$_UnitValueDtoCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? value = null,
+    Object? value = freezed,
     Object? unit = null,
   }) {
     return _then(_$_UnitValueDto(
-      value: null == value
+      value: freezed == value
           ? _value.value
           : value // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       unit: null == unit
           ? _value.unit
           : unit // ignore: cast_nullable_to_non_nullable
@@ -114,7 +114,7 @@ class _$_UnitValueDto extends _UnitValueDto {
       _$$_UnitValueDtoFromJson(json);
 
   @override
-  final double value;
+  final double? value;
   @override
   final String unit;
 
@@ -152,7 +152,7 @@ class _$_UnitValueDto extends _UnitValueDto {
 
 abstract class _UnitValueDto extends UnitValueDto {
   const factory _UnitValueDto(
-      {required final double value,
+      {required final double? value,
       required final String unit}) = _$_UnitValueDto;
   const _UnitValueDto._() : super._();
 
@@ -160,7 +160,7 @@ abstract class _UnitValueDto extends UnitValueDto {
       _$_UnitValueDto.fromJson;
 
   @override
-  double get value;
+  double? get value;
   @override
   String get unit;
   @override

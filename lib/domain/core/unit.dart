@@ -1,8 +1,10 @@
 enum Unit {
   litres('l'),
+  millilitres('ml'),
   kilograms('kg'),
   grams('g'),
-  celsius('°C');
+  celsius('°C'),
+  total('');
 
   const Unit(this.name);
 

@@ -16,7 +16,7 @@ _$_BeerIngredientsDto _$$_BeerIngredientsDtoFromJson(
       hops: (json['hops'] as List<dynamic>)
           .map((e) => BeerIngredientsHopDto.fromJson(e as Map<String, dynamic>))
           .toList(),
-      yeast: json['yeast'] as String,
+      yeast: json['yeast'] as String?,
     );
 
 Map<String, dynamic> _$$_BeerIngredientsDtoToJson(

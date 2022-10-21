@@ -9,7 +9,7 @@ part of 'beer_mash_dto.dart';
 _$_BeerMashDto _$$_BeerMashDtoFromJson(Map<String, dynamic> json) =>
     _$_BeerMashDto(
       temp: UnitValueDto.fromJson(json['temp'] as Map<String, dynamic>),
-      duration: json['duration'] as int,
+      duration: json['duration'] as int?,
     );
 
 Map<String, dynamic> _$$_BeerMashDtoToJson(_$_BeerMashDto instance) =>

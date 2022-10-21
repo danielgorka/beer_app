@@ -8,7 +8,7 @@ part 'unit_value_dto.g.dart';
 @freezed
 class UnitValueDto with _$UnitValueDto {
   const factory UnitValueDto({
-    required double value,
+    required double? value,
     required String unit,
   }) = _UnitValueDto;
 

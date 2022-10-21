@@ -21,7 +21,7 @@ BeerMashDto _$BeerMashDtoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$BeerMashDto {
   UnitValueDto get temp => throw _privateConstructorUsedError;
-  int get duration => throw _privateConstructorUsedError;
+  int? get duration => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $BeerMashDtoCopyWith<$Res> {
           BeerMashDto value, $Res Function(BeerMashDto) then) =
       _$BeerMashDtoCopyWithImpl<$Res, BeerMashDto>;
   @useResult
-  $Res call({UnitValueDto temp, int duration});
+  $Res call({UnitValueDto temp, int? duration});
 
   $UnitValueDtoCopyWith<$Res> get temp;
 }
@@ -54,17 +54,17 @@ class _$BeerMashDtoCopyWithImpl<$Res, $Val extends BeerMashDto>
   @override
   $Res call({
     Object? temp = null,
-    Object? duration = null,
+    Object? duration = freezed,
   }) {
     return _then(_value.copyWith(
       temp: null == temp
           ? _value.temp
           : temp // ignore: cast_nullable_to_non_nullable
               as UnitValueDto,
-      duration: null == duration
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ) as $Val);
   }
 
@@ -85,7 +85,7 @@ abstract class _$$_BeerMashDtoCopyWith<$Res>
       __$$_BeerMashDtoCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({UnitValueDto temp, int duration});
+  $Res call({UnitValueDto temp, int? duration});
 
   @override
   $UnitValueDtoCopyWith<$Res> get temp;
@@ -103,17 +103,17 @@ class __$$_BeerMashDtoCopyWithImpl<$Res>
   @override
   $Res call({
     Object? temp = null,
-    Object? duration = null,
+    Object? duration = freezed,
   }) {
     return _then(_$_BeerMashDto(
       temp: null == temp
           ? _value.temp
           : temp // ignore: cast_nullable_to_non_nullable
               as UnitValueDto,
-      duration: null == duration
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as int,
+              as int?,
     ));
   }
 }
@@ -131,7 +131,7 @@ class _$_BeerMashDto extends _BeerMashDto {
   @override
   final UnitValueDto temp;
   @override
-  final int duration;
+  final int? duration;
 
   @override
   String toString() {
@@ -169,7 +169,7 @@ class _$_BeerMashDto extends _BeerMashDto {
 abstract class _BeerMashDto extends BeerMashDto {
   const factory _BeerMashDto(
       {required final UnitValueDto temp,
-      required final int duration}) = _$_BeerMashDto;
+      required final int? duration}) = _$_BeerMashDto;
   const _BeerMashDto._() : super._();
 
   factory _BeerMashDto.fromJson(Map<String, dynamic> json) =
@@ -178,7 +178,7 @@ abstract class _BeerMashDto extends BeerMashDto {
   @override
   UnitValueDto get temp;
   @override
-  int get duration;
+  int? get duration;
   @override
   @JsonKey(ignore: true)
   _$$_BeerMashDtoCopyWith<_$_BeerMashDto> get copyWith =>

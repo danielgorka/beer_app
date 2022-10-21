@@ -10,6 +10,6 @@ class BeerIngredients with _$BeerIngredients {
   factory BeerIngredients({
     required List<BeerIngredientsMalt> malt,
     required List<BeerIngredientsHop> hops,
-    required BeerIngredientsYeast yeast,
+    required BeerIngredientsYeast? yeast,
   }) = _BeerIngredients;
 }

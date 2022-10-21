@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 abstract class UnitValueObject {
   const UnitValueObject(this.value, this.unit);
 
-  final double value;
+  final double? value;
   final Unit unit;
 
   @override

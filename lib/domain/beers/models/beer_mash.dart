@@ -8,6 +8,6 @@ part 'beer_mash.freezed.dart';
 class BeerMash with _$BeerMash {
   factory BeerMash({
     required BeerMashTemp temp,
-    required BeerMashDuration duration,
+    required BeerMashDuration? duration,
   }) = _BeerMash;
 }

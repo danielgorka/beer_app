@@ -22,7 +22,7 @@ BeerIngredientsDto _$BeerIngredientsDtoFromJson(Map<String, dynamic> json) {
 mixin _$BeerIngredientsDto {
   List<BeerIngredientsMaltDto> get malt => throw _privateConstructorUsedError;
   List<BeerIngredientsHopDto> get hops => throw _privateConstructorUsedError;
-  String get yeast => throw _privateConstructorUsedError;
+  String? get yeast => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -39,7 +39,7 @@ abstract class $BeerIngredientsDtoCopyWith<$Res> {
   $Res call(
       {List<BeerIngredientsMaltDto> malt,
       List<BeerIngredientsHopDto> hops,
-      String yeast});
+      String? yeast});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$BeerIngredientsDtoCopyWithImpl<$Res, $Val extends BeerIngredientsDto>
   $Res call({
     Object? malt = null,
     Object? hops = null,
-    Object? yeast = null,
+    Object? yeast = freezed,
   }) {
     return _then(_value.copyWith(
       malt: null == malt
@@ -68,10 +68,10 @@ class _$BeerIngredientsDtoCopyWithImpl<$Res, $Val extends BeerIngredientsDto>
           ? _value.hops
           : hops // ignore: cast_nullable_to_non_nullable
               as List<BeerIngredientsHopDto>,
-      yeast: null == yeast
+      yeast: freezed == yeast
           ? _value.yeast
           : yeast // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ) as $Val);
   }
 }
@@ -87,7 +87,7 @@ abstract class _$$_BeerIngredientsDtoCopyWith<$Res>
   $Res call(
       {List<BeerIngredientsMaltDto> malt,
       List<BeerIngredientsHopDto> hops,
-      String yeast});
+      String? yeast});
 }
 
 /// @nodoc
@@ -103,7 +103,7 @@ class __$$_BeerIngredientsDtoCopyWithImpl<$Res>
   $Res call({
     Object? malt = null,
     Object? hops = null,
-    Object? yeast = null,
+    Object? yeast = freezed,
   }) {
     return _then(_$_BeerIngredientsDto(
       malt: null == malt
@@ -114,10 +114,10 @@ class __$$_BeerIngredientsDtoCopyWithImpl<$Res>
           ? _value._hops
           : hops // ignore: cast_nullable_to_non_nullable
               as List<BeerIngredientsHopDto>,
-      yeast: null == yeast
+      yeast: freezed == yeast
           ? _value.yeast
           : yeast // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
     ));
   }
 }
@@ -152,7 +152,7 @@ class _$_BeerIngredientsDto extends _BeerIngredientsDto {
   }
 
   @override
-  final String yeast;
+  final String? yeast;
 
   @override
   String toString() {
@@ -196,7 +196,7 @@ abstract class _BeerIngredientsDto extends BeerIngredientsDto {
   const factory _BeerIngredientsDto(
       {required final List<BeerIngredientsMaltDto> malt,
       required final List<BeerIngredientsHopDto> hops,
-      required final String yeast}) = _$_BeerIngredientsDto;
+      required final String? yeast}) = _$_BeerIngredientsDto;
   const _BeerIngredientsDto._() : super._();
 
   factory _BeerIngredientsDto.fromJson(Map<String, dynamic> json) =
@@ -207,7 +207,7 @@ abstract class _BeerIngredientsDto extends BeerIngredientsDto {
   @override
   List<BeerIngredientsHopDto> get hops;
   @override
-  String get yeast;
+  String? get yeast;
   @override
   @JsonKey(ignore: true)
   _$$_BeerIngredientsDtoCopyWith<_$_BeerIngredientsDto> get copyWith =>

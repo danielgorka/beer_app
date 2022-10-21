@@ -8,7 +8,7 @@ part of 'unit_value_dto.dart';
 
 _$_UnitValueDto _$$_UnitValueDtoFromJson(Map<String, dynamic> json) =>
     _$_UnitValueDto(
-      value: (json['value'] as num).toDouble(),
+      value: (json['value'] as num?)?.toDouble(),
       unit: json['unit'] as String,
     );
 

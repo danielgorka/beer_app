@@ -14,7 +14,7 @@ class BeerMashDto with _$BeerMashDto {
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
   const factory BeerMashDto({
     required UnitValueDto temp,
-    required int duration,
+    required int? duration,
   }) = _BeerMashDto;
 
   const BeerMashDto._();
@@ -22,7 +22,7 @@ class BeerMashDto with _$BeerMashDto {
   factory BeerMashDto.fromDomain(BeerMash beerMash) {
     return BeerMashDto(
       temp: UnitValueDto.fromDomain(beerMash.temp),
-      duration: beerMash.duration.value,
+      duration: beerMash.duration?.value,
     );
   }
 
@@ -32,7 +32,7 @@ class BeerMashDto with _$BeerMashDto {
   BeerMash toDomain() {
     return BeerMash(
       temp: BeerMashTemp(temp.value, UnitExt.fromValue(temp.unit)),
-      duration: BeerMashDuration(duration),
+      duration: duration != null ? BeerMashDuration(duration!) : null,
     );
   }
 }

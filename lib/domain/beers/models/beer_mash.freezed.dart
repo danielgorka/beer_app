@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$BeerMash {
   BeerMashTemp get temp => throw _privateConstructorUsedError;
-  BeerMashDuration get duration => throw _privateConstructorUsedError;
+  BeerMashDuration? get duration => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BeerMashCopyWith<BeerMash> get copyWith =>
@@ -29,7 +29,7 @@ abstract class $BeerMashCopyWith<$Res> {
   factory $BeerMashCopyWith(BeerMash value, $Res Function(BeerMash) then) =
       _$BeerMashCopyWithImpl<$Res, BeerMash>;
   @useResult
-  $Res call({BeerMashTemp temp, BeerMashDuration duration});
+  $Res call({BeerMashTemp temp, BeerMashDuration? duration});
 }
 
 /// @nodoc
@@ -46,17 +46,17 @@ class _$BeerMashCopyWithImpl<$Res, $Val extends BeerMash>
   @override
   $Res call({
     Object? temp = null,
-    Object? duration = null,
+    Object? duration = freezed,
   }) {
     return _then(_value.copyWith(
       temp: null == temp
           ? _value.temp
           : temp // ignore: cast_nullable_to_non_nullable
               as BeerMashTemp,
-      duration: null == duration
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as BeerMashDuration,
+              as BeerMashDuration?,
     ) as $Val);
   }
 }
@@ -68,7 +68,7 @@ abstract class _$$_BeerMashCopyWith<$Res> implements $BeerMashCopyWith<$Res> {
       __$$_BeerMashCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({BeerMashTemp temp, BeerMashDuration duration});
+  $Res call({BeerMashTemp temp, BeerMashDuration? duration});
 }
 
 /// @nodoc
@@ -83,17 +83,17 @@ class __$$_BeerMashCopyWithImpl<$Res>
   @override
   $Res call({
     Object? temp = null,
-    Object? duration = null,
+    Object? duration = freezed,
   }) {
     return _then(_$_BeerMash(
       temp: null == temp
           ? _value.temp
           : temp // ignore: cast_nullable_to_non_nullable
               as BeerMashTemp,
-      duration: null == duration
+      duration: freezed == duration
           ? _value.duration
           : duration // ignore: cast_nullable_to_non_nullable
-              as BeerMashDuration,
+              as BeerMashDuration?,
     ));
   }
 }
@@ -106,7 +106,7 @@ class _$_BeerMash implements _BeerMash {
   @override
   final BeerMashTemp temp;
   @override
-  final BeerMashDuration duration;
+  final BeerMashDuration? duration;
 
   @override
   String toString() {
@@ -136,12 +136,12 @@ class _$_BeerMash implements _BeerMash {
 abstract class _BeerMash implements BeerMash {
   factory _BeerMash(
       {required final BeerMashTemp temp,
-      required final BeerMashDuration duration}) = _$_BeerMash;
+      required final BeerMashDuration? duration}) = _$_BeerMash;
 
   @override
   BeerMashTemp get temp;
   @override
-  BeerMashDuration get duration;
+  BeerMashDuration? get duration;
   @override
   @JsonKey(ignore: true)
   _$$_BeerMashCopyWith<_$_BeerMash> get copyWith =>

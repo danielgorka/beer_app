@@ -25,15 +25,15 @@ mixin _$BeerDto {
   String get tagline => throw _privateConstructorUsedError;
   DateTime get firstBrewed => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
-  String get imageUrl => throw _privateConstructorUsedError;
+  String? get imageUrl => throw _privateConstructorUsedError;
   double get abv => throw _privateConstructorUsedError;
-  double get ibu => throw _privateConstructorUsedError;
-  int get targetFg => throw _privateConstructorUsedError;
-  int get targetOg => throw _privateConstructorUsedError;
-  int get ebc => throw _privateConstructorUsedError;
-  int get srm => throw _privateConstructorUsedError;
-  double get ph => throw _privateConstructorUsedError;
-  double get attenuationLevel => throw _privateConstructorUsedError;
+  double? get ibu => throw _privateConstructorUsedError;
+  double? get targetFg => throw _privateConstructorUsedError;
+  double? get targetOg => throw _privateConstructorUsedError;
+  double? get ebc => throw _privateConstructorUsedError;
+  double? get srm => throw _privateConstructorUsedError;
+  double? get ph => throw _privateConstructorUsedError;
+  double? get attenuationLevel => throw _privateConstructorUsedError;
   UnitValueDto get volume => throw _privateConstructorUsedError;
   UnitValueDto get boilVolume => throw _privateConstructorUsedError;
   BeerMethodDto get method => throw _privateConstructorUsedError;
@@ -58,15 +58,15 @@ abstract class $BeerDtoCopyWith<$Res> {
       String tagline,
       DateTime firstBrewed,
       String description,
-      String imageUrl,
+      String? imageUrl,
       double abv,
-      double ibu,
-      int targetFg,
-      int targetOg,
-      int ebc,
-      int srm,
-      double ph,
-      double attenuationLevel,
+      double? ibu,
+      double? targetFg,
+      double? targetOg,
+      double? ebc,
+      double? srm,
+      double? ph,
+      double? attenuationLevel,
       UnitValueDto volume,
       UnitValueDto boilVolume,
       BeerMethodDto method,
@@ -99,15 +99,15 @@ class _$BeerDtoCopyWithImpl<$Res, $Val extends BeerDto>
     Object? tagline = null,
     Object? firstBrewed = null,
     Object? description = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
     Object? abv = null,
-    Object? ibu = null,
-    Object? targetFg = null,
-    Object? targetOg = null,
-    Object? ebc = null,
-    Object? srm = null,
-    Object? ph = null,
-    Object? attenuationLevel = null,
+    Object? ibu = freezed,
+    Object? targetFg = freezed,
+    Object? targetOg = freezed,
+    Object? ebc = freezed,
+    Object? srm = freezed,
+    Object? ph = freezed,
+    Object? attenuationLevel = freezed,
     Object? volume = null,
     Object? boilVolume = null,
     Object? method = null,
@@ -137,42 +137,42 @@ class _$BeerDtoCopyWithImpl<$Res, $Val extends BeerDto>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       abv: null == abv
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as double,
-      ibu: null == ibu
+      ibu: freezed == ibu
           ? _value.ibu
           : ibu // ignore: cast_nullable_to_non_nullable
-              as double,
-      targetFg: null == targetFg
+              as double?,
+      targetFg: freezed == targetFg
           ? _value.targetFg
           : targetFg // ignore: cast_nullable_to_non_nullable
-              as int,
-      targetOg: null == targetOg
+              as double?,
+      targetOg: freezed == targetOg
           ? _value.targetOg
           : targetOg // ignore: cast_nullable_to_non_nullable
-              as int,
-      ebc: null == ebc
+              as double?,
+      ebc: freezed == ebc
           ? _value.ebc
           : ebc // ignore: cast_nullable_to_non_nullable
-              as int,
-      srm: null == srm
+              as double?,
+      srm: freezed == srm
           ? _value.srm
           : srm // ignore: cast_nullable_to_non_nullable
-              as int,
-      ph: null == ph
+              as double?,
+      ph: freezed == ph
           ? _value.ph
           : ph // ignore: cast_nullable_to_non_nullable
-              as double,
-      attenuationLevel: null == attenuationLevel
+              as double?,
+      attenuationLevel: freezed == attenuationLevel
           ? _value.attenuationLevel
           : attenuationLevel // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       volume: null == volume
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
@@ -250,15 +250,15 @@ abstract class _$$_BeerDtoCopyWith<$Res> implements $BeerDtoCopyWith<$Res> {
       String tagline,
       DateTime firstBrewed,
       String description,
-      String imageUrl,
+      String? imageUrl,
       double abv,
-      double ibu,
-      int targetFg,
-      int targetOg,
-      int ebc,
-      int srm,
-      double ph,
-      double attenuationLevel,
+      double? ibu,
+      double? targetFg,
+      double? targetOg,
+      double? ebc,
+      double? srm,
+      double? ph,
+      double? attenuationLevel,
       UnitValueDto volume,
       UnitValueDto boilVolume,
       BeerMethodDto method,
@@ -292,15 +292,15 @@ class __$$_BeerDtoCopyWithImpl<$Res>
     Object? tagline = null,
     Object? firstBrewed = null,
     Object? description = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
     Object? abv = null,
-    Object? ibu = null,
-    Object? targetFg = null,
-    Object? targetOg = null,
-    Object? ebc = null,
-    Object? srm = null,
-    Object? ph = null,
-    Object? attenuationLevel = null,
+    Object? ibu = freezed,
+    Object? targetFg = freezed,
+    Object? targetOg = freezed,
+    Object? ebc = freezed,
+    Object? srm = freezed,
+    Object? ph = freezed,
+    Object? attenuationLevel = freezed,
     Object? volume = null,
     Object? boilVolume = null,
     Object? method = null,
@@ -330,42 +330,42 @@ class __$$_BeerDtoCopyWithImpl<$Res>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as String,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as String,
+              as String?,
       abv: null == abv
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as double,
-      ibu: null == ibu
+      ibu: freezed == ibu
           ? _value.ibu
           : ibu // ignore: cast_nullable_to_non_nullable
-              as double,
-      targetFg: null == targetFg
+              as double?,
+      targetFg: freezed == targetFg
           ? _value.targetFg
           : targetFg // ignore: cast_nullable_to_non_nullable
-              as int,
-      targetOg: null == targetOg
+              as double?,
+      targetOg: freezed == targetOg
           ? _value.targetOg
           : targetOg // ignore: cast_nullable_to_non_nullable
-              as int,
-      ebc: null == ebc
+              as double?,
+      ebc: freezed == ebc
           ? _value.ebc
           : ebc // ignore: cast_nullable_to_non_nullable
-              as int,
-      srm: null == srm
+              as double?,
+      srm: freezed == srm
           ? _value.srm
           : srm // ignore: cast_nullable_to_non_nullable
-              as int,
-      ph: null == ph
+              as double?,
+      ph: freezed == ph
           ? _value.ph
           : ph // ignore: cast_nullable_to_non_nullable
-              as double,
-      attenuationLevel: null == attenuationLevel
+              as double?,
+      attenuationLevel: freezed == attenuationLevel
           ? _value.attenuationLevel
           : attenuationLevel // ignore: cast_nullable_to_non_nullable
-              as double,
+              as double?,
       volume: null == volume
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
@@ -442,23 +442,23 @@ class _$_BeerDto extends _BeerDto {
   @override
   final String description;
   @override
-  final String imageUrl;
+  final String? imageUrl;
   @override
   final double abv;
   @override
-  final double ibu;
+  final double? ibu;
   @override
-  final int targetFg;
+  final double? targetFg;
   @override
-  final int targetOg;
+  final double? targetOg;
   @override
-  final int ebc;
+  final double? ebc;
   @override
-  final int srm;
+  final double? srm;
   @override
-  final double ph;
+  final double? ph;
   @override
-  final double attenuationLevel;
+  final double? attenuationLevel;
   @override
   final UnitValueDto volume;
   @override
@@ -571,15 +571,15 @@ abstract class _BeerDto extends BeerDto {
       required final String tagline,
       required final DateTime firstBrewed,
       required final String description,
-      required final String imageUrl,
+      required final String? imageUrl,
       required final double abv,
-      required final double ibu,
-      required final int targetFg,
-      required final int targetOg,
-      required final int ebc,
-      required final int srm,
-      required final double ph,
-      required final double attenuationLevel,
+      required final double? ibu,
+      required final double? targetFg,
+      required final double? targetOg,
+      required final double? ebc,
+      required final double? srm,
+      required final double? ph,
+      required final double? attenuationLevel,
       required final UnitValueDto volume,
       required final UnitValueDto boilVolume,
       required final BeerMethodDto method,
@@ -602,23 +602,23 @@ abstract class _BeerDto extends BeerDto {
   @override
   String get description;
   @override
-  String get imageUrl;
+  String? get imageUrl;
   @override
   double get abv;
   @override
-  double get ibu;
+  double? get ibu;
   @override
-  int get targetFg;
+  double? get targetFg;
   @override
-  int get targetOg;
+  double? get targetOg;
   @override
-  int get ebc;
+  double? get ebc;
   @override
-  int get srm;
+  double? get srm;
   @override
-  double get ph;
+  double? get ph;
   @override
-  double get attenuationLevel;
+  double? get attenuationLevel;
   @override
   UnitValueDto get volume;
   @override

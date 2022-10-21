@@ -21,15 +21,15 @@ mixin _$Beer {
   BeerTagline get tagline => throw _privateConstructorUsedError;
   BeerFirstBrewed get firstBrewed => throw _privateConstructorUsedError;
   BeerDescription get description => throw _privateConstructorUsedError;
-  BeerImageUrl get imageUrl => throw _privateConstructorUsedError;
+  BeerImageUrl? get imageUrl => throw _privateConstructorUsedError;
   BeerAbv get abv => throw _privateConstructorUsedError;
-  BeerIbu get ibu => throw _privateConstructorUsedError;
-  BeerTargetFg get targetFg => throw _privateConstructorUsedError;
-  BeerTargetOg get targetOg => throw _privateConstructorUsedError;
-  BeerEbc get ebc => throw _privateConstructorUsedError;
-  BeerSrm get srm => throw _privateConstructorUsedError;
-  BeerPh get ph => throw _privateConstructorUsedError;
-  BeerAttenuationLevel get attenuationLevel =>
+  BeerIbu? get ibu => throw _privateConstructorUsedError;
+  BeerTargetFg? get targetFg => throw _privateConstructorUsedError;
+  BeerTargetOg? get targetOg => throw _privateConstructorUsedError;
+  BeerEbc? get ebc => throw _privateConstructorUsedError;
+  BeerSrm? get srm => throw _privateConstructorUsedError;
+  BeerPh? get ph => throw _privateConstructorUsedError;
+  BeerAttenuationLevel? get attenuationLevel =>
       throw _privateConstructorUsedError;
   BeerVolume get volume => throw _privateConstructorUsedError;
   BeerBoilVolume get boilVolume => throw _privateConstructorUsedError;
@@ -54,15 +54,15 @@ abstract class $BeerCopyWith<$Res> {
       BeerTagline tagline,
       BeerFirstBrewed firstBrewed,
       BeerDescription description,
-      BeerImageUrl imageUrl,
+      BeerImageUrl? imageUrl,
       BeerAbv abv,
-      BeerIbu ibu,
-      BeerTargetFg targetFg,
-      BeerTargetOg targetOg,
-      BeerEbc ebc,
-      BeerSrm srm,
-      BeerPh ph,
-      BeerAttenuationLevel attenuationLevel,
+      BeerIbu? ibu,
+      BeerTargetFg? targetFg,
+      BeerTargetOg? targetOg,
+      BeerEbc? ebc,
+      BeerSrm? srm,
+      BeerPh? ph,
+      BeerAttenuationLevel? attenuationLevel,
       BeerVolume volume,
       BeerBoilVolume boilVolume,
       BeerMethod method,
@@ -93,15 +93,15 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
     Object? tagline = null,
     Object? firstBrewed = null,
     Object? description = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
     Object? abv = null,
-    Object? ibu = null,
-    Object? targetFg = null,
-    Object? targetOg = null,
-    Object? ebc = null,
-    Object? srm = null,
-    Object? ph = null,
-    Object? attenuationLevel = null,
+    Object? ibu = freezed,
+    Object? targetFg = freezed,
+    Object? targetOg = freezed,
+    Object? ebc = freezed,
+    Object? srm = freezed,
+    Object? ph = freezed,
+    Object? attenuationLevel = freezed,
     Object? volume = null,
     Object? boilVolume = null,
     Object? method = null,
@@ -131,42 +131,42 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as BeerDescription,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as BeerImageUrl,
+              as BeerImageUrl?,
       abv: null == abv
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as BeerAbv,
-      ibu: null == ibu
+      ibu: freezed == ibu
           ? _value.ibu
           : ibu // ignore: cast_nullable_to_non_nullable
-              as BeerIbu,
-      targetFg: null == targetFg
+              as BeerIbu?,
+      targetFg: freezed == targetFg
           ? _value.targetFg
           : targetFg // ignore: cast_nullable_to_non_nullable
-              as BeerTargetFg,
-      targetOg: null == targetOg
+              as BeerTargetFg?,
+      targetOg: freezed == targetOg
           ? _value.targetOg
           : targetOg // ignore: cast_nullable_to_non_nullable
-              as BeerTargetOg,
-      ebc: null == ebc
+              as BeerTargetOg?,
+      ebc: freezed == ebc
           ? _value.ebc
           : ebc // ignore: cast_nullable_to_non_nullable
-              as BeerEbc,
-      srm: null == srm
+              as BeerEbc?,
+      srm: freezed == srm
           ? _value.srm
           : srm // ignore: cast_nullable_to_non_nullable
-              as BeerSrm,
-      ph: null == ph
+              as BeerSrm?,
+      ph: freezed == ph
           ? _value.ph
           : ph // ignore: cast_nullable_to_non_nullable
-              as BeerPh,
-      attenuationLevel: null == attenuationLevel
+              as BeerPh?,
+      attenuationLevel: freezed == attenuationLevel
           ? _value.attenuationLevel
           : attenuationLevel // ignore: cast_nullable_to_non_nullable
-              as BeerAttenuationLevel,
+              as BeerAttenuationLevel?,
       volume: null == volume
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
@@ -227,15 +227,15 @@ abstract class _$$_BeerCopyWith<$Res> implements $BeerCopyWith<$Res> {
       BeerTagline tagline,
       BeerFirstBrewed firstBrewed,
       BeerDescription description,
-      BeerImageUrl imageUrl,
+      BeerImageUrl? imageUrl,
       BeerAbv abv,
-      BeerIbu ibu,
-      BeerTargetFg targetFg,
-      BeerTargetOg targetOg,
-      BeerEbc ebc,
-      BeerSrm srm,
-      BeerPh ph,
-      BeerAttenuationLevel attenuationLevel,
+      BeerIbu? ibu,
+      BeerTargetFg? targetFg,
+      BeerTargetOg? targetOg,
+      BeerEbc? ebc,
+      BeerSrm? srm,
+      BeerPh? ph,
+      BeerAttenuationLevel? attenuationLevel,
       BeerVolume volume,
       BeerBoilVolume boilVolume,
       BeerMethod method,
@@ -264,15 +264,15 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
     Object? tagline = null,
     Object? firstBrewed = null,
     Object? description = null,
-    Object? imageUrl = null,
+    Object? imageUrl = freezed,
     Object? abv = null,
-    Object? ibu = null,
-    Object? targetFg = null,
-    Object? targetOg = null,
-    Object? ebc = null,
-    Object? srm = null,
-    Object? ph = null,
-    Object? attenuationLevel = null,
+    Object? ibu = freezed,
+    Object? targetFg = freezed,
+    Object? targetOg = freezed,
+    Object? ebc = freezed,
+    Object? srm = freezed,
+    Object? ph = freezed,
+    Object? attenuationLevel = freezed,
     Object? volume = null,
     Object? boilVolume = null,
     Object? method = null,
@@ -302,42 +302,42 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
               as BeerDescription,
-      imageUrl: null == imageUrl
+      imageUrl: freezed == imageUrl
           ? _value.imageUrl
           : imageUrl // ignore: cast_nullable_to_non_nullable
-              as BeerImageUrl,
+              as BeerImageUrl?,
       abv: null == abv
           ? _value.abv
           : abv // ignore: cast_nullable_to_non_nullable
               as BeerAbv,
-      ibu: null == ibu
+      ibu: freezed == ibu
           ? _value.ibu
           : ibu // ignore: cast_nullable_to_non_nullable
-              as BeerIbu,
-      targetFg: null == targetFg
+              as BeerIbu?,
+      targetFg: freezed == targetFg
           ? _value.targetFg
           : targetFg // ignore: cast_nullable_to_non_nullable
-              as BeerTargetFg,
-      targetOg: null == targetOg
+              as BeerTargetFg?,
+      targetOg: freezed == targetOg
           ? _value.targetOg
           : targetOg // ignore: cast_nullable_to_non_nullable
-              as BeerTargetOg,
-      ebc: null == ebc
+              as BeerTargetOg?,
+      ebc: freezed == ebc
           ? _value.ebc
           : ebc // ignore: cast_nullable_to_non_nullable
-              as BeerEbc,
-      srm: null == srm
+              as BeerEbc?,
+      srm: freezed == srm
           ? _value.srm
           : srm // ignore: cast_nullable_to_non_nullable
-              as BeerSrm,
-      ph: null == ph
+              as BeerSrm?,
+      ph: freezed == ph
           ? _value.ph
           : ph // ignore: cast_nullable_to_non_nullable
-              as BeerPh,
-      attenuationLevel: null == attenuationLevel
+              as BeerPh?,
+      attenuationLevel: freezed == attenuationLevel
           ? _value.attenuationLevel
           : attenuationLevel // ignore: cast_nullable_to_non_nullable
-              as BeerAttenuationLevel,
+              as BeerAttenuationLevel?,
       volume: null == volume
           ? _value.volume
           : volume // ignore: cast_nullable_to_non_nullable
@@ -408,23 +408,23 @@ class _$_Beer implements _Beer {
   @override
   final BeerDescription description;
   @override
-  final BeerImageUrl imageUrl;
+  final BeerImageUrl? imageUrl;
   @override
   final BeerAbv abv;
   @override
-  final BeerIbu ibu;
+  final BeerIbu? ibu;
   @override
-  final BeerTargetFg targetFg;
+  final BeerTargetFg? targetFg;
   @override
-  final BeerTargetOg targetOg;
+  final BeerTargetOg? targetOg;
   @override
-  final BeerEbc ebc;
+  final BeerEbc? ebc;
   @override
-  final BeerSrm srm;
+  final BeerSrm? srm;
   @override
-  final BeerPh ph;
+  final BeerPh? ph;
   @override
-  final BeerAttenuationLevel attenuationLevel;
+  final BeerAttenuationLevel? attenuationLevel;
   @override
   final BeerVolume volume;
   @override
@@ -529,15 +529,15 @@ abstract class _Beer implements Beer {
       required final BeerTagline tagline,
       required final BeerFirstBrewed firstBrewed,
       required final BeerDescription description,
-      required final BeerImageUrl imageUrl,
+      required final BeerImageUrl? imageUrl,
       required final BeerAbv abv,
-      required final BeerIbu ibu,
-      required final BeerTargetFg targetFg,
-      required final BeerTargetOg targetOg,
-      required final BeerEbc ebc,
-      required final BeerSrm srm,
-      required final BeerPh ph,
-      required final BeerAttenuationLevel attenuationLevel,
+      required final BeerIbu? ibu,
+      required final BeerTargetFg? targetFg,
+      required final BeerTargetOg? targetOg,
+      required final BeerEbc? ebc,
+      required final BeerSrm? srm,
+      required final BeerPh? ph,
+      required final BeerAttenuationLevel? attenuationLevel,
       required final BeerVolume volume,
       required final BeerBoilVolume boilVolume,
       required final BeerMethod method,
@@ -557,23 +557,23 @@ abstract class _Beer implements Beer {
   @override
   BeerDescription get description;
   @override
-  BeerImageUrl get imageUrl;
+  BeerImageUrl? get imageUrl;
   @override
   BeerAbv get abv;
   @override
-  BeerIbu get ibu;
+  BeerIbu? get ibu;
   @override
-  BeerTargetFg get targetFg;
+  BeerTargetFg? get targetFg;
   @override
-  BeerTargetOg get targetOg;
+  BeerTargetOg? get targetOg;
   @override
-  BeerEbc get ebc;
+  BeerEbc? get ebc;
   @override
-  BeerSrm get srm;
+  BeerSrm? get srm;
   @override
-  BeerPh get ph;
+  BeerPh? get ph;
   @override
-  BeerAttenuationLevel get attenuationLevel;
+  BeerAttenuationLevel? get attenuationLevel;
   @override
   BeerVolume get volume;
   @override

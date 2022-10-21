@@ -14,7 +14,7 @@ class BeerIngredientsDto with _$BeerIngredientsDto {
   const factory BeerIngredientsDto({
     required List<BeerIngredientsMaltDto> malt,
     required List<BeerIngredientsHopDto> hops,
-    required String yeast,
+    required String? yeast,
   }) = _BeerIngredientsDto;
 
   const BeerIngredientsDto._();
@@ -24,7 +24,7 @@ class BeerIngredientsDto with _$BeerIngredientsDto {
       malt:
           beerIngredients.malt.map(BeerIngredientsMaltDto.fromDomain).toList(),
       hops: beerIngredients.hops.map(BeerIngredientsHopDto.fromDomain).toList(),
-      yeast: beerIngredients.yeast.value,
+      yeast: beerIngredients.yeast?.value,
     );
   }
 
@@ -35,7 +35,7 @@ class BeerIngredientsDto with _$BeerIngredientsDto {
     return BeerIngredients(
       malt: malt.map((e) => e.toDomain()).toList(),
       hops: hops.map((e) => e.toDomain()).toList(),
-      yeast: BeerIngredientsYeast(yeast),
+      yeast: yeast != null ? BeerIngredientsYeast(yeast!) : null,
     );
   }
 }

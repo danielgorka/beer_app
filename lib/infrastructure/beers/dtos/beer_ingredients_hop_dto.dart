@@ -1,7 +1,7 @@
 import 'package:beer_app/domain/beers/models/beer_ingredients_hop.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_hop_add.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_hop_amount.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_hop_name.dart';
-import 'package:beer_app/infrastructure/beers/dtos/beer_hop_add_ext.dart';
 import 'package:beer_app/infrastructure/beers/dtos/beer_hop_attribute_ext.dart';
 import 'package:beer_app/infrastructure/core/unit_ext.dart';
 import 'package:beer_app/infrastructure/core/unit_value_dto.dart';
@@ -29,7 +29,7 @@ class BeerIngredientsHopDto with _$BeerIngredientsHopDto {
     return BeerIngredientsHopDto(
       name: beerIngredientsHop.name.value,
       amount: UnitValueDto.fromDomain(beerIngredientsHop.amount),
-      add: beerIngredientsHop.add.getValue(),
+      add: beerIngredientsHop.add.value,
       attribute: beerIngredientsHop.attribute.getValue(),
     );
   }
@@ -41,7 +41,7 @@ class BeerIngredientsHopDto with _$BeerIngredientsHopDto {
     return BeerIngredientsHop(
       name: BeerHopName(name),
       amount: BeerHopAmount(amount.value, UnitExt.fromValue(amount.unit)),
-      add: BeerHopAddExt.fromValue(add),
+      add: BeerHopAdd(add),
       attribute: BeerHopAttributeExt.fromValue(attribute),
     );
   }

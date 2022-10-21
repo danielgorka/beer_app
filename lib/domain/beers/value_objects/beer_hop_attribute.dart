@@ -3,4 +3,6 @@ enum BeerHopAttribute {
   aroma,
   flavour,
   twist,
+  aromaBitter,
+  woodAgeing,
 }

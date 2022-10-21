@@ -18,7 +18,7 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$BeerIngredients {
   List<BeerIngredientsMalt> get malt => throw _privateConstructorUsedError;
   List<BeerIngredientsHop> get hops => throw _privateConstructorUsedError;
-  BeerIngredientsYeast get yeast => throw _privateConstructorUsedError;
+  BeerIngredientsYeast? get yeast => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $BeerIngredientsCopyWith<BeerIngredients> get copyWith =>
@@ -34,7 +34,7 @@ abstract class $BeerIngredientsCopyWith<$Res> {
   $Res call(
       {List<BeerIngredientsMalt> malt,
       List<BeerIngredientsHop> hops,
-      BeerIngredientsYeast yeast});
+      BeerIngredientsYeast? yeast});
 }
 
 /// @nodoc
@@ -52,7 +52,7 @@ class _$BeerIngredientsCopyWithImpl<$Res, $Val extends BeerIngredients>
   $Res call({
     Object? malt = null,
     Object? hops = null,
-    Object? yeast = null,
+    Object? yeast = freezed,
   }) {
     return _then(_value.copyWith(
       malt: null == malt
@@ -63,10 +63,10 @@ class _$BeerIngredientsCopyWithImpl<$Res, $Val extends BeerIngredients>
           ? _value.hops
           : hops // ignore: cast_nullable_to_non_nullable
               as List<BeerIngredientsHop>,
-      yeast: null == yeast
+      yeast: freezed == yeast
           ? _value.yeast
           : yeast // ignore: cast_nullable_to_non_nullable
-              as BeerIngredientsYeast,
+              as BeerIngredientsYeast?,
     ) as $Val);
   }
 }
@@ -82,7 +82,7 @@ abstract class _$$_BeerIngredientsCopyWith<$Res>
   $Res call(
       {List<BeerIngredientsMalt> malt,
       List<BeerIngredientsHop> hops,
-      BeerIngredientsYeast yeast});
+      BeerIngredientsYeast? yeast});
 }
 
 /// @nodoc
@@ -98,7 +98,7 @@ class __$$_BeerIngredientsCopyWithImpl<$Res>
   $Res call({
     Object? malt = null,
     Object? hops = null,
-    Object? yeast = null,
+    Object? yeast = freezed,
   }) {
     return _then(_$_BeerIngredients(
       malt: null == malt
@@ -109,10 +109,10 @@ class __$$_BeerIngredientsCopyWithImpl<$Res>
           ? _value._hops
           : hops // ignore: cast_nullable_to_non_nullable
               as List<BeerIngredientsHop>,
-      yeast: null == yeast
+      yeast: freezed == yeast
           ? _value.yeast
           : yeast // ignore: cast_nullable_to_non_nullable
-              as BeerIngredientsYeast,
+              as BeerIngredientsYeast?,
     ));
   }
 }
@@ -142,7 +142,7 @@ class _$_BeerIngredients implements _BeerIngredients {
   }
 
   @override
-  final BeerIngredientsYeast yeast;
+  final BeerIngredientsYeast? yeast;
 
   @override
   String toString() {
@@ -177,14 +177,14 @@ abstract class _BeerIngredients implements BeerIngredients {
   factory _BeerIngredients(
       {required final List<BeerIngredientsMalt> malt,
       required final List<BeerIngredientsHop> hops,
-      required final BeerIngredientsYeast yeast}) = _$_BeerIngredients;
+      required final BeerIngredientsYeast? yeast}) = _$_BeerIngredients;
 
   @override
   List<BeerIngredientsMalt> get malt;
   @override
   List<BeerIngredientsHop> get hops;
   @override
-  BeerIngredientsYeast get yeast;
+  BeerIngredientsYeast? get yeast;
   @override
   @JsonKey(ignore: true)
   _$$_BeerIngredientsCopyWith<_$_BeerIngredients> get copyWith =>
