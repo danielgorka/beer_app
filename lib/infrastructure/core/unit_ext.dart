@@ -2,10 +2,13 @@ import 'package:beer_app/domain/core/unit.dart';
 import 'package:beer_app/infrastructure/core/enum_converter.dart';
 
 const _enumMap = {
-  Unit.litres: 'litres',
-  Unit.kilograms: 'kilograms',
-  Unit.grams: 'grams',
-  Unit.celsius: 'celsius',
+  'litres': Unit.litres,
+  'ml': Unit.millilitres,
+  'kilograms': Unit.kilograms,
+  'kilogram': Unit.kilograms,
+  'grams': Unit.grams,
+  'celsius': Unit.celsius,
+  'total': Unit.total,
 };
 
 extension UnitExt on Unit {

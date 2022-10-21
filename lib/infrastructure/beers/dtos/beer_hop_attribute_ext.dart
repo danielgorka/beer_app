@@ -2,10 +2,16 @@ import 'package:beer_app/domain/beers/value_objects/beer_hop_attribute.dart';
 import 'package:beer_app/infrastructure/core/enum_converter.dart';
 
 const _enumMap = {
-  BeerHopAttribute.bitter: 'bitter',
-  BeerHopAttribute.aroma: 'aroma',
-  BeerHopAttribute.flavour: 'flavour',
-  BeerHopAttribute.twist: 'twist',
+  'bitter': BeerHopAttribute.bitter,
+  'bittering': BeerHopAttribute.bitter,
+  'bitering': BeerHopAttribute.bitter,
+  'aroma': BeerHopAttribute.aroma,
+  'flavour': BeerHopAttribute.flavour,
+  'flavoour': BeerHopAttribute.flavour,
+  'flavouor': BeerHopAttribute.flavour,
+  'twist': BeerHopAttribute.twist,
+  'aroma / bitter': BeerHopAttribute.aromaBitter,
+  'wood ageing': BeerHopAttribute.woodAgeing,
 };
 
 extension BeerHopAttributeExt on BeerHopAttribute {

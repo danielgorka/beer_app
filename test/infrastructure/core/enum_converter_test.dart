@@ -12,8 +12,8 @@ void main() {
     'EnumConverter',
     () {
       const map = {
-        TestEnum.value1: 'value1',
-        TestEnum.value2: 'value2',
+        'value1': TestEnum.value1,
+        'value2': TestEnum.value2,
       };
 
       late EnumConverter enumConverter;
@@ -29,7 +29,7 @@ void main() {
             'should return enum when string value exists in map',
             () {
               // arrange
-              const value = 'value2';
+              const value = ' Value2';
 
               // act
               final result = enumConverter.stringToEnum(value);
