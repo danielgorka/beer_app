@@ -1,7 +1,9 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:beer_app/application/beers/beers_bloc.dart';
 import 'package:beer_app/domain/beers/i_beers_repository.dart';
 import 'package:beer_app/infrastructure/beers/beers_data_source.dart';
 import 'package:beer_app/presentation/routes/router.dart';
+import 'package:bloc_test/bloc_test.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -10,6 +12,9 @@ import 'package:mocktail/mocktail.dart';
 class MockBeersDataSource extends Mock implements IBeersDataSource {}
 
 class MockBeersRepository extends Mock implements IBeersRepository {}
+
+class MockBeersBloc extends MockBloc<BeersEvent, BeersState>
+    implements BeersBloc {}
 
 class MockAppRouter extends Mock implements AppRouter {}
 
