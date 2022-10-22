@@ -18,4 +18,6 @@ abstract class DisplaySize {
       constraints.maxWidth >= largeBreakpoint;
 }
 
+const borderRadius = BorderRadius.all(Radius.circular(32));
+
 const animDuration = Duration(milliseconds: 300);
