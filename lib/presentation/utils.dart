@@ -18,6 +18,41 @@ abstract class DisplaySize {
       constraints.maxWidth >= largeBreakpoint;
 }
 
+/// All available elevation levels in Material 3.
+///
+/// See [ElevationOverlay.applySurfaceTint]
+enum ElevationLevel {
+  /// elevation: 0, opacity: 0.00
+  level0(0),
+
+  /// elevation: 1, opacity: 0.05
+  level1(1),
+
+  /// elevation: 3, opacity: 0.08
+  level2(3),
+
+  /// elevation: 6, opacity: 0.11
+  level3(6),
+
+  /// elevation: 8, opacity: 0.12
+  level4(8),
+
+  /// elevation: 12, opacity: 0.14
+  level5(12);
+
+  const ElevationLevel(this.elevation);
+
+  final double elevation;
+
+  Color getColor(BuildContext context, [Color? color]) {
+    return ElevationOverlay.applySurfaceTint(
+      color ?? Colors.transparent,
+      Theme.of(context).colorScheme.primary,
+      elevation,
+    );
+  }
+}
+
 const borderRadius = BorderRadius.all(Radius.circular(32));
 
 const animDuration = Duration(milliseconds: 300);

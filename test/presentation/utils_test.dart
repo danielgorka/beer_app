@@ -184,4 +184,16 @@ void main() {
       );
     },
   );
+
+  group(
+    'ElevationLevel',
+    () {
+      test(
+        'toString',
+        () {
+          expect(ElevationLevel.level0.toString(), 'ElevationLevel.level0');
+        },
+      );
+    },
+  );
 }
