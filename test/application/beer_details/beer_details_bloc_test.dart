@@ -13,7 +13,7 @@ import '../../utils/mockables.dart';
 
 void main() {
   group(
-    'BeerBloc',
+    'BeerDetailsBloc',
     () {
       late IBeersRepository beersRepository;
       late BeerDetailsBloc beerDetailsBloc;
@@ -84,6 +84,22 @@ void main() {
             ],
             verify: (_) {
               verify(repositoryCall).called(1);
+            },
+          );
+
+          blocTest<BeerDetailsBloc, BeerDetailsState>(
+            'should emit state with beer from event when it is not null',
+            build: () => beerDetailsBloc,
+            act: (_) => beerDetailsBloc.add(BeerDetailsEvent.init(beer: beer)),
+            expect: () => [
+              BeerDetailsState(
+                loading: false,
+                errorType: ErrorType.none,
+                beer: beer,
+              ),
+            ],
+            verify: (_) {
+              verifyNever(repositoryCall);
             },
           );
 

@@ -42,6 +42,7 @@ class BeerDetailsBloc extends Bloc<BeerDetailsEvent, BeerDetailsState> {
     emit(
       state.copyWith(
         loading: false,
+        errorType: ErrorType.none,
         beer: beer,
       ),
     );
