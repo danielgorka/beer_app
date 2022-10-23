@@ -20,7 +20,6 @@ import 'package:beer_app/domain/beers/value_objects/beer_target_og.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_volume.dart';
 import 'package:beer_app/infrastructure/beers/dtos/beer_ingredients_dto.dart';
 import 'package:beer_app/infrastructure/beers/dtos/beer_method_dto.dart';
-import 'package:beer_app/infrastructure/beers/dtos/first_brewed_converter.dart';
 import 'package:beer_app/infrastructure/core/unit_ext.dart';
 import 'package:beer_app/infrastructure/core/unit_value_dto.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -32,12 +31,11 @@ part 'beer_dto.g.dart';
 class BeerDto with _$BeerDto {
   // ignore: invalid_annotation_target
   @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-  @FirstBrewedConverter()
   const factory BeerDto({
     required int id,
     required String name,
     required String tagline,
-    required DateTime firstBrewed,
+    required String firstBrewed,
     required String description,
     required String? imageUrl,
     required double abv,
@@ -64,7 +62,7 @@ class BeerDto with _$BeerDto {
       id: beer.id.value,
       name: beer.name.value,
       tagline: beer.tagline.value,
-      firstBrewed: beer.firstBrewed.value,
+      firstBrewed: beer.firstBrewed.stringValue,
       description: beer.description.value,
       imageUrl: beer.imageUrl?.value,
       abv: beer.abv.value,
@@ -93,7 +91,7 @@ class BeerDto with _$BeerDto {
       id: BeerId(id),
       name: BeerName(name),
       tagline: BeerTagline(tagline),
-      firstBrewed: BeerFirstBrewed(firstBrewed),
+      firstBrewed: BeerFirstBrewed.fromString(firstBrewed),
       description: BeerDescription(description),
       imageUrl: imageUrl != null ? BeerImageUrl(imageUrl!) : null,
       abv: BeerAbv(abv),

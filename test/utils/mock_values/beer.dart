@@ -28,7 +28,10 @@ import 'beer_method.dart';
 const beerId = BeerId(21);
 const beerName = BeerName('Skull Candy');
 const beerTagline = BeerTagline('Pacific Hopped Amber Bitter.');
-final beerFirstBrewed = BeerFirstBrewed(DateTime(2010, 2));
+final beerFirstBrewed = BeerFirstBrewed(
+  DateTime(2010, 2),
+  monthPrecision: true,
+);
 const beerDescription = BeerDescription('The first beer that we brewed on our '
     'newly commissioned 5000 litre brewhouse in Fraserburgh 2009. '
     'A beer with the malt and body of an English bitter, '
@@ -88,7 +91,7 @@ final beerDto = BeerDto(
   id: beerId.value,
   name: beerName.value,
   tagline: beerTagline.value,
-  firstBrewed: beerFirstBrewed.value,
+  firstBrewed: beerFirstBrewed.stringValue,
   description: beerDescription.value,
   imageUrl: beerImageUrl.value,
   abv: beerAbv.value,
@@ -113,7 +116,7 @@ final beerJson = {
   'id': beerId.value,
   'name': beerName.value,
   'tagline': beerTagline.value,
-  'first_brewed': '02/2010',
+  'first_brewed': beerFirstBrewed.stringValue,
   'description': beerDescription.value,
   'image_url': beerImageUrl.value,
   'abv': beerAbv.value,

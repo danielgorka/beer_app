@@ -10,8 +10,7 @@ _$_BeerDto _$$_BeerDtoFromJson(Map<String, dynamic> json) => _$_BeerDto(
       id: json['id'] as int,
       name: json['name'] as String,
       tagline: json['tagline'] as String,
-      firstBrewed:
-          const FirstBrewedConverter().fromJson(json['first_brewed'] as String),
+      firstBrewed: json['first_brewed'] as String,
       description: json['description'] as String,
       imageUrl: json['image_url'] as String?,
       abv: (json['abv'] as num).toDouble(),
@@ -40,7 +39,7 @@ Map<String, dynamic> _$$_BeerDtoToJson(_$_BeerDto instance) =>
       'id': instance.id,
       'name': instance.name,
       'tagline': instance.tagline,
-      'first_brewed': const FirstBrewedConverter().toJson(instance.firstBrewed),
+      'first_brewed': instance.firstBrewed,
       'description': instance.description,
       'image_url': instance.imageUrl,
       'abv': instance.abv,

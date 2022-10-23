@@ -23,7 +23,7 @@ mixin _$BeerDto {
   int get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get tagline => throw _privateConstructorUsedError;
-  DateTime get firstBrewed => throw _privateConstructorUsedError;
+  String get firstBrewed => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
   String? get imageUrl => throw _privateConstructorUsedError;
   double get abv => throw _privateConstructorUsedError;
@@ -56,7 +56,7 @@ abstract class $BeerDtoCopyWith<$Res> {
       {int id,
       String name,
       String tagline,
-      DateTime firstBrewed,
+      String firstBrewed,
       String description,
       String? imageUrl,
       double abv,
@@ -132,7 +132,7 @@ class _$BeerDtoCopyWithImpl<$Res, $Val extends BeerDto>
       firstBrewed: null == firstBrewed
           ? _value.firstBrewed
           : firstBrewed // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -248,7 +248,7 @@ abstract class _$$_BeerDtoCopyWith<$Res> implements $BeerDtoCopyWith<$Res> {
       {int id,
       String name,
       String tagline,
-      DateTime firstBrewed,
+      String firstBrewed,
       String description,
       String? imageUrl,
       double abv,
@@ -325,7 +325,7 @@ class __$$_BeerDtoCopyWithImpl<$Res>
       firstBrewed: null == firstBrewed
           ? _value.firstBrewed
           : firstBrewed // ignore: cast_nullable_to_non_nullable
-              as DateTime,
+              as String,
       description: null == description
           ? _value.description
           : description // ignore: cast_nullable_to_non_nullable
@@ -401,7 +401,6 @@ class __$$_BeerDtoCopyWithImpl<$Res>
 /// @nodoc
 
 @JsonSerializable(fieldRename: FieldRename.snake, explicitToJson: true)
-@FirstBrewedConverter()
 class _$_BeerDto extends _BeerDto {
   const _$_BeerDto(
       {required this.id,
@@ -438,7 +437,7 @@ class _$_BeerDto extends _BeerDto {
   @override
   final String tagline;
   @override
-  final DateTime firstBrewed;
+  final String firstBrewed;
   @override
   final String description;
   @override
@@ -569,7 +568,7 @@ abstract class _BeerDto extends BeerDto {
       {required final int id,
       required final String name,
       required final String tagline,
-      required final DateTime firstBrewed,
+      required final String firstBrewed,
       required final String description,
       required final String? imageUrl,
       required final double abv,
@@ -598,7 +597,7 @@ abstract class _BeerDto extends BeerDto {
   @override
   String get tagline;
   @override
-  DateTime get firstBrewed;
+  String get firstBrewed;
   @override
   String get description;
   @override
