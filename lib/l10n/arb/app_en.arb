@@ -1,7 +1,31 @@
 {
+  "abv": "ABV",
+  "abvText": "Alcohol By Volume",
+  "abvUrl": "https://wiki.piwo.org/ABV",
   "appName": "Beer app",
+  "attenuationLevel": "Attenuation level",
   "beers": "Beers",
+  "ebc": "EBC",
+  "ebcText": "European Brewery Convention",
+  "ebcUrl": "https://pl.wikipedia.org/wiki/EBC_(barwa_piwa)",
   "favourites": "Favourites",
+  "firstBrewed": "First brewed: {date}",
+  "@firstBrewed": {
+    "placeholders": {
+      "date": {}
+    }
+  },
+  "foodPairing": "Food pairing",
+  "ibu": "IBU",
+  "ibuText": "International Bittering Units",
+  "ibuUrl": "https://wiki.piwo.org/IBU",
+  "ph": "pH",
+  "phText": "Potential of Hydrogen",
+  "phUrl": "https://pl.wikipedia.org/wiki/Skala_pH",
   "somethingWentWrong": "Something went wrong",
+  "specification": "Specification",
+  "srm": "SRM",
+  "srmText": "Standard Reference Method",
+  "srmUrl": "https://pl.wikipedia.org/wiki/Standard_Reference_Method",
   "tryAgain": "Try again"
 }
