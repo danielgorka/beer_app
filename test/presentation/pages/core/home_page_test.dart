@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:beer_app/l10n/l10n.dart';
 import 'package:beer_app/presentation/pages/core/home_page.dart';
 import 'package:beer_app/presentation/routes/router.dart';
 import 'package:beer_app/presentation/widgets/navigation_scaffold.dart';
@@ -79,18 +78,6 @@ void main() {
 
           // assert
           expect(result, isFalse);
-        },
-      );
-
-      testWidgets(
-        'should show app name',
-        (tester) async {
-          // act
-          await pumpWidget(tester);
-
-          // assert
-          final context = tester.element(find.byType(HomePage));
-          expect(find.text(context.l10n.appName), findsOneWidget);
         },
       );
 

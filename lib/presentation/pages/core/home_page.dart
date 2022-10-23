@@ -25,9 +25,6 @@ class HomePage extends StatelessWidget {
         builder: (context, constraints) {
           return NavigationScaffold(
             navigationType: _getNavigationType(constraints),
-            appBar: AppBar(
-              title: Text(context.l10n.appName),
-            ),
             headerBuilder: (context, animation) {
               return FadeTransition(
                 opacity: animation,

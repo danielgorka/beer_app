@@ -57,57 +57,6 @@ void main() {
       }
 
       testWidgets(
-        'should show AppBar when NavigationType is bottomNav',
-        (tester) async {
-          // act
-          await pumpWidget(
-            tester,
-            NavigationScaffold(
-              navigationType: NavigationType.bottomNav,
-              items: items,
-            ),
-          );
-
-          // assert
-          expect(find.byType(AppBar), findsOneWidget);
-        },
-      );
-
-      testWidgets(
-        'should not show AppBar when NavigationType is navRail',
-        (tester) async {
-          // act
-          await pumpWidget(
-            tester,
-            NavigationScaffold(
-              navigationType: NavigationType.navRail,
-              items: items,
-            ),
-          );
-
-          // assert
-          expect(find.byType(AppBar), findsNothing);
-        },
-      );
-
-      testWidgets(
-        'should not show AppBar when NavigationType is drawer',
-        (tester) async {
-          // act
-          await pumpWidget(
-            tester,
-            NavigationScaffold(
-              navigationType: NavigationType.drawer,
-              items: items,
-            ),
-          );
-
-          // assert
-          expect(find.byType(AppBar), findsNothing);
-        },
-      );
-
-      testWidgets(
         'should show NavigationBar and not show NavigationDrawer '
         'when NavigationType is bottomNav',
         (tester) async {

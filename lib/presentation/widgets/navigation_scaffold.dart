@@ -29,13 +29,11 @@ class NavigationScaffold extends StatelessWidget {
     required this.navigationType,
     required this.items,
     this.headerBuilder,
-    this.appBar,
   });
 
   final NavigationType navigationType;
   final List<NavigationItem> items;
   final HeaderBuilder? headerBuilder;
-  final PreferredSizeWidget? appBar;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +67,6 @@ class NavigationScaffold extends StatelessWidget {
         }
 
         return Scaffold(
-          appBar: isBottomNav ? (appBar ?? AppBar()) : null,
           body: body,
           bottomNavigationBar: isBottomNav
               ? _BottomNav(
