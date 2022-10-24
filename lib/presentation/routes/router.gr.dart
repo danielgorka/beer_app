@@ -59,6 +59,22 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    BeerDetailsRoute.name: (routeData) {
+      final pathParams = routeData.inheritedPathParams;
+      final args = routeData.argsAs<BeerDetailsRouteArgs>(
+          orElse: () => BeerDetailsRouteArgs(beerId: pathParams.getInt('id')));
+      return CustomPage<void>(
+        routeData: routeData,
+        child: BeerDetailsPage(
+          key: args.key,
+          beerId: args.beerId,
+          beer: args.beer,
+        ),
+        transitionsBuilder: fadeScale,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     FavouritesRoute.name: (routeData) {
       return CustomPage<void>(
         routeData: routeData,
@@ -84,6 +100,11 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   BeersRoute.name,
                   path: '',
+                  parent: BeersRouter.name,
+                ),
+                RouteConfig(
+                  BeerDetailsRoute.name,
+                  path: ':id',
                   parent: BeersRouter.name,
                 ),
                 RouteConfig(
@@ -196,6 +217,46 @@ class BeersRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'BeersRoute';
+}
+
+/// generated route for
+/// [BeerDetailsPage]
+class BeerDetailsRoute extends PageRouteInfo<BeerDetailsRouteArgs> {
+  BeerDetailsRoute({
+    Key? key,
+    required int beerId,
+    Beer? beer,
+  }) : super(
+          BeerDetailsRoute.name,
+          path: ':id',
+          args: BeerDetailsRouteArgs(
+            key: key,
+            beerId: beerId,
+            beer: beer,
+          ),
+          rawPathParams: {'id': beerId},
+        );
+
+  static const String name = 'BeerDetailsRoute';
+}
+
+class BeerDetailsRouteArgs {
+  const BeerDetailsRouteArgs({
+    this.key,
+    required this.beerId,
+    this.beer,
+  });
+
+  final Key? key;
+
+  final int beerId;
+
+  final Beer? beer;
+
+  @override
+  String toString() {
+    return 'BeerDetailsRouteArgs{key: $key, beerId: $beerId, beer: $beer}';
+  }
 }
 
 /// generated route for

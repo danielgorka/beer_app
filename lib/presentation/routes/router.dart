@@ -1,6 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:auto_route/empty_router_widgets.dart';
+import 'package:beer_app/domain/beers/models/beer.dart';
+import 'package:beer_app/presentation/pages/beer_details/beer_details_page.dart';
 import 'package:beer_app/presentation/pages/beers/beers_page.dart';
 import 'package:beer_app/presentation/pages/core/home_page.dart';
 import 'package:beer_app/presentation/pages/favourites/favourites_page.dart';
@@ -25,6 +27,10 @@ part 'router.gr.dart';
             AutoRoute<void>(
               path: '',
               page: BeersPage,
+            ),
+            AutoRoute<void>(
+              path: ':id',
+              page: BeerDetailsPage,
             ),
             RedirectRoute(path: '*', redirectTo: ''),
           ],

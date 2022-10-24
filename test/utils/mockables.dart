@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:beer_app/application/beer_details/beer_details_bloc.dart';
 import 'package:beer_app/application/beers/beers_bloc.dart';
 import 'package:beer_app/domain/beers/i_beers_repository.dart';
 import 'package:beer_app/infrastructure/beers/beers_data_source.dart';
@@ -15,6 +16,9 @@ class MockBeersRepository extends Mock implements IBeersRepository {}
 
 class MockBeersBloc extends MockBloc<BeersEvent, BeersState>
     implements BeersBloc {}
+
+class MockBeerDetailsBloc extends MockBloc<BeerDetailsEvent, BeerDetailsState>
+    implements BeerDetailsBloc {}
 
 class MockAppRouter extends Mock implements AppRouter {}
 
