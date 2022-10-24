@@ -43,14 +43,6 @@ enum ElevationLevel {
   const ElevationLevel(this.elevation);
 
   final double elevation;
-
-  Color getColor(BuildContext context, [Color? color]) {
-    return ElevationOverlay.applySurfaceTint(
-      color ?? Colors.transparent,
-      Theme.of(context).colorScheme.primary,
-      elevation,
-    );
-  }
 }
 
 const borderRadius = BorderRadius.all(Radius.circular(32));
