@@ -1,6 +1,8 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:beer_app/domain/beers/models/beer.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beer_image_view.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/favourite_beer_button.dart';
+import 'package:beer_app/presentation/routes/router.dart';
 import 'package:beer_app/presentation/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +19,12 @@ class BeerItem extends StatelessWidget {
     return InkWell(
       borderRadius: borderRadius,
       onTap: () {
-        //TODO: Open beer details page
+        context.router.push(
+          BeerDetailsRoute(
+            beerId: beer.id.value,
+            beer: beer,
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.all(8),
