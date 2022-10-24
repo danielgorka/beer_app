@@ -20,6 +20,13 @@ abstract class IBeersDataSource {
     @Query('per_page') required int perPage,
   });
 
+  @GET('/beers')
+  Future<List<BeerDto>> getBeersByName({
+    @Query('beer_name') required String query,
+    @Query('page') required int page,
+    @Query('per_page') required int perPage,
+  });
+
   @GET('/beers/{id}')
   Future<BeerDto> getBeer(@Path('id') int id);
 }

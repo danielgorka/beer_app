@@ -50,6 +50,39 @@ class _IBeersDataSource implements IBeersDataSource {
   }
 
   @override
+  Future<List<BeerDto>> getBeersByName({
+    required query,
+    required page,
+    required perPage,
+  }) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{
+      r'beer_name': query,
+      r'page': page,
+      r'per_page': perPage,
+    };
+    final _headers = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    final _result =
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<BeerDto>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/beers',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+    var value = _result.data!
+        .map((dynamic i) => BeerDto.fromJson(i as Map<String, dynamic>))
+        .toList();
+    return value;
+  }
+
+  @override
   Future<BeerDto> getBeer(id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};

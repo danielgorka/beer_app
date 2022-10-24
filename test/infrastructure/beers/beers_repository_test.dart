@@ -113,6 +113,73 @@ void main() {
       );
 
       group(
+        'getBeersByName',
+        () {
+          const query = 'query';
+          const page = 3;
+          const perPage = 10;
+
+          Future<List<BeerDto>> dataSourceCall() =>
+              beersDataSource.getBeersByName(
+                query: query,
+                page: page,
+                perPage: perPage,
+              );
+
+          Future<Either<BeersFailure, List<Beer>>> call() =>
+              beersRepository.getBeersByName(
+                query: query,
+                page: page,
+                perPage: perPage,
+              );
+
+          test(
+            'should return a list of beers '
+            'when the call to data source is successful',
+            () async {
+              // arrange
+              when(dataSourceCall).thenAnswer((_) => Future.value(beersDto));
+
+              // act
+              final result = await call();
+
+              // assert
+              expect(result, isA<Right<BeersFailure, List<Beer>>>());
+              expect(result.right, beers);
+              verify(dataSourceCall).called(1);
+              verifyNoMoreInteractions(beersDataSource);
+            },
+          );
+
+          test(
+            'should return BeersFailure.networkError when '
+            'the call to remote data source throws a DioError',
+            () async {
+              await shouldReturnFailure(
+                exception: FakeDioError(),
+                failure: const BeersFailure.networkError(),
+                dataSourceCall: dataSourceCall,
+                call: call,
+              );
+            },
+          );
+
+          test(
+            'should return BeersFailure.unknownError when '
+            'the call to remote data source throws other exception',
+            () async {
+              await shouldReturnFailure(
+                exception: Exception(),
+                failure: const BeersFailure.unknownError(),
+                dataSourceCall: dataSourceCall,
+                call: call,
+              );
+            },
+          );
+        },
+      );
+
+      group(
         'getBeer',
         () {
           Future<BeerDto> dataSourceCall() =>

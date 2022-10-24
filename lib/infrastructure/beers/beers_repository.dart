@@ -33,6 +33,23 @@ class BeersRepository extends IBeersRepository {
   }
 
   @override
+  Future<Either<BeersFailure, List<Beer>>> getBeersByName({
+    required String query,
+    required int page,
+    required int perPage,
+  }) async {
+    return _run(() async {
+      final beers = await beersDataSource.getBeersByName(
+        query: query,
+        page: page,
+        perPage: perPage,
+      );
+
+      return beers.map((e) => e.toDomain()).toList();
+    });
+  }
+
+  @override
   Future<Either<BeersFailure, Beer>> getBeer(BeerId id) {
     return _run(() async {
       final beer = await beersDataSource.getBeer(id.value);

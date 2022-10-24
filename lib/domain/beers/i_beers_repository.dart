@@ -9,5 +9,11 @@ abstract class IBeersRepository {
     required int perPage,
   });
 
+  Future<Either<BeersFailure, List<Beer>>> getBeersByName({
+    required String query,
+    required int page,
+    required int perPage,
+  });
+
   Future<Either<BeersFailure, Beer>> getBeer(BeerId id);
 }
