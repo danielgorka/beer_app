@@ -1,14 +1,19 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:beer_app/domain/beers/models/beer.dart';
+import 'package:beer_app/l10n/l10n.dart';
 import 'package:beer_app/presentation/pages/beers/utils.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beer_item.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beer_item_placeholder.dart';
+import 'package:beer_app/presentation/routes/router.dart';
 import 'package:beer_app/presentation/widgets/app_shimmer.dart';
 import 'package:beer_app/presentation/widgets/error_view.dart';
+import 'package:beer_app/presentation/widgets/sliver_search_bar.dart';
 import 'package:flutter/material.dart';
 
 class BeersView extends StatefulWidget {
   const BeersView({
     super.key,
+    required this.showSearchBar,
     required this.beers,
     required this.hasError,
     required this.canLoadMore,
@@ -17,7 +22,8 @@ class BeersView extends StatefulWidget {
     required this.loadMore,
   });
 
-  final List<Beer> beers;
+  final bool showSearchBar;
+  final List<Beer>? beers;
   final bool hasError;
   final bool canLoadMore;
   final int beersLimit;
@@ -46,7 +52,7 @@ class _BeersViewState extends State<BeersView> {
   @override
   void didUpdateWidget(covariant BeersView oldWidget) {
     super.didUpdateWidget(oldWidget);
-    if (oldWidget.beers.length != widget.beers.length) {
+    if (oldWidget.beers?.length != widget.beers?.length) {
       _loadMore();
     }
   }
@@ -58,7 +64,7 @@ class _BeersViewState extends State<BeersView> {
     if (!_controller.hasClients) return;
     if (_controller.position.outOfRange) return;
 
-    final itemsRatio = widget.beers.length / _itemsCount;
+    final itemsRatio = (widget.beers?.length ?? 0) / _itemsCount;
     final itemsBound = itemsRatio * _controller.position.maxScrollExtent;
 
     final extentThreshold = _controller.position.viewportDimension;
@@ -72,7 +78,7 @@ class _BeersViewState extends State<BeersView> {
   /// Returns number of already loaded items
   /// plus items that is currently loading.
   int get _itemsCount {
-    var count = widget.beers.length;
+    var count = widget.beers?.length ?? 0;
     if (widget.canLoadMore && !widget.hasError) {
       count += widget.beersLimit;
     }
@@ -87,6 +93,13 @@ class _BeersViewState extends State<BeersView> {
       child: CustomScrollView(
         controller: _controller,
         slivers: [
+          if (widget.showSearchBar)
+            SliverSearchBar(
+              title: context.l10n.searchForBeers,
+              onTap: () {
+                context.router.push(const SearchRoute());
+              },
+            ),
           SliverPadding(
             padding: beersViewPadding,
             sliver: SliverGrid(
@@ -94,14 +107,14 @@ class _BeersViewState extends State<BeersView> {
               delegate: SliverChildBuilderDelegate(
                 childCount: _itemsCount,
                 (context, index) {
-                  if (index >= widget.beers.length) {
+                  if (index >= (widget.beers?.length ?? 0)) {
                     return const AppShimmer(
                       child: BeerItemPlaceholder(),
                     );
                   }
 
                   return BeerItem(
-                    beer: widget.beers[index],
+                    beer: widget.beers![index],
                   );
                 },
               ),

@@ -1,14 +1,20 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:beer_app/l10n/l10n.dart';
+import 'package:beer_app/presentation/app_icons.dart';
 import 'package:beer_app/presentation/pages/beers/utils.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beer_item.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beer_item_placeholder.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beers_view.dart';
+import 'package:beer_app/presentation/routes/router.dart';
 import 'package:beer_app/presentation/widgets/app_shimmer.dart';
 import 'package:beer_app/presentation/widgets/error_view.dart';
+import 'package:beer_app/presentation/widgets/sliver_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 
 import '../../../../utils/mock_values/beer.dart';
+import '../../../../utils/mockables.dart';
 import '../../../../utils/widget_switcher.dart';
 import '../../../../utils/widget_tester_ext.dart';
 
@@ -35,11 +41,89 @@ void main() {
       });
 
       testWidgets(
+        'should show SliverSearchBar when showSearchBar is true',
+        (tester) async {
+          // act
+          await tester.pumpAppWidget(
+            BeersView(
+              showSearchBar: true,
+              beers: beers,
+              hasError: false,
+              canLoadMore: true,
+              beersLimit: limit,
+              reload: reload,
+              loadMore: loadMore,
+            ),
+          );
+
+          // assert
+          expect(find.byType(SliverSearchBar), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'should not show SliverSearchBar when showSearchBar is false',
+        (tester) async {
+          // act
+          await tester.pumpAppWidget(
+            BeersView(
+              showSearchBar: false,
+              beers: beers,
+              hasError: false,
+              canLoadMore: true,
+              beersLimit: limit,
+              reload: reload,
+              loadMore: loadMore,
+            ),
+          );
+
+          // assert
+          expect(find.byType(SliverSearchBar), findsNothing);
+        },
+      );
+
+      testWidgets(
+        'should push SearchPage on SliverSearchBar tap',
+        (tester) async {
+          // arrange
+          final mockAppRouter = MockAppRouter();
+          const route = SearchRoute();
+
+          when(() => mockAppRouter.push(route))
+              .thenAnswer((_) => Future.value());
+
+          // act
+          await tester.pumpAppWidget(
+            StackRouterScope(
+              controller: mockAppRouter,
+              stateHash: 0,
+              child: BeersView(
+                showSearchBar: true,
+                beers: beers,
+                hasError: false,
+                canLoadMore: true,
+                beersLimit: limit,
+                reload: reload,
+                loadMore: loadMore,
+              ),
+            ),
+          );
+
+          await tester.tap(find.byIcon(AppIcons.search));
+          await tester.pumpAndSettle();
+
+          // assert
+          verify(() => mockAppRouter.push(route)).called(1);
+        },
+      );
+
+      testWidgets(
         'should show SliverGrid wrapped with SliverPadding',
         (tester) async {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: false,
               canLoadMore: true,
@@ -71,6 +155,7 @@ void main() {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: false,
               canLoadMore: true,
@@ -108,6 +193,7 @@ void main() {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: false,
               canLoadMore: false,
@@ -136,11 +222,35 @@ void main() {
       );
 
       testWidgets(
+        'should not show BeerItems and show BeerItemPlaceholder '
+        'when beers is null',
+        (tester) async {
+          // act
+          await tester.pumpAppWidget(
+            BeersView(
+              showSearchBar: false,
+              beers: null,
+              hasError: false,
+              canLoadMore: true,
+              beersLimit: limit,
+              reload: reload,
+              loadMore: loadMore,
+            ),
+          );
+
+          // assert
+          expect(find.byType(BeerItem), findsNothing);
+          expect(find.byType(BeerItemPlaceholder), findsWidgets);
+        },
+      );
+
+      testWidgets(
         'should not show BeerItemPlaceholder when hasError is true',
         (tester) async {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: true,
               canLoadMore: true,
@@ -174,6 +284,7 @@ void main() {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: true,
               canLoadMore: true,
@@ -196,6 +307,7 @@ void main() {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: true,
               canLoadMore: true,
@@ -227,6 +339,7 @@ void main() {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: false,
               canLoadMore: true,
@@ -257,6 +370,7 @@ void main() {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: false,
               canLoadMore: true,
@@ -288,6 +402,7 @@ void main() {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: false,
               canLoadMore: false,
@@ -319,6 +434,7 @@ void main() {
           // act
           await tester.pumpAppWidget(
             BeersView(
+              showSearchBar: false,
               beers: beers,
               hasError: true,
               canLoadMore: true,
@@ -352,6 +468,7 @@ void main() {
             WidgetSwitcher(
               builder: (context, toggle) {
                 return BeersView(
+                  showSearchBar: false,
                   beers: beers + (toggle ? beers : []),
                   hasError: false,
                   canLoadMore: true,
