@@ -1,7 +1,6 @@
 import 'package:beer_app/application/beers/beers_bloc.dart';
 import 'package:beer_app/injection.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beers_view.dart';
-import 'package:beer_app/presentation/pages/beers/widgets/loading_beers_view.dart';
 import 'package:beer_app/presentation/widgets/error_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,13 +23,10 @@ class BeersPage extends StatelessWidget {
               );
             }
 
-            if (state.beers == null) {
-              return const LoadingBeersView();
-            }
-
             final beersLimit = context.read<BeersBloc>().limit;
             return BeersView(
-              beers: state.beers!,
+              showSearchBar: true,
+              beers: state.beers,
               hasError: state.errorType != ErrorType.none,
               canLoadMore: state.canLoadMore,
               beersLimit: beersLimit,

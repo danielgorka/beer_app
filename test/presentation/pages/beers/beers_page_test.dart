@@ -2,7 +2,6 @@ import 'package:beer_app/application/beers/beers_bloc.dart';
 import 'package:beer_app/l10n/l10n.dart';
 import 'package:beer_app/presentation/pages/beers/beers_page.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beers_view.dart';
-import 'package:beer_app/presentation/pages/beers/widgets/loading_beers_view.dart';
 import 'package:beer_app/presentation/widgets/error_view.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -37,6 +36,7 @@ void main() {
         'should show BeersBlocProvider and add BeersEvent.init on create',
         (tester) async {
           // arrange
+          when(() => beersBloc.limit).thenReturn(limit);
           when(() => beersBloc.state).thenReturn(BeersState.initial());
 
           // act
@@ -100,9 +100,10 @@ void main() {
       );
 
       testWidgets(
-        'should show LoadingBeersView when beers is null',
+        'should show BeersView when beers is null',
         (tester) async {
           // arrange
+          when(() => beersBloc.limit).thenReturn(limit);
           when(() => beersBloc.state).thenReturn(
             const BeersState(
               loading: true,
@@ -118,7 +119,12 @@ void main() {
           );
 
           // assert
-          expect(find.byType(LoadingBeersView), findsOneWidget);
+          final finder = find.byType(BeersView);
+          final beersView = tester.widget<BeersView>(finder);
+          expect(beersView.beers, null);
+          expect(beersView.hasError, false);
+          expect(beersView.canLoadMore, true);
+          expect(beersView.beersLimit, limit);
         },
       );
 
