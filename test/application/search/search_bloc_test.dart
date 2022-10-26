@@ -133,7 +133,8 @@ void main() {
 
           blocTest<SearchBloc, SearchState>(
             'should emit state with loading and later '
-            'state with added beers from repository',
+            'state with beers from repository and canLoadMore = true '
+            'when beers length is equal to limit',
             build: () => searchBloc,
             setUp: () {
               when(repositoryCall).thenAnswer(
@@ -157,6 +158,37 @@ void main() {
                 query: query,
                 beers: beers,
                 canLoadMore: true,
+              ),
+            ],
+          );
+
+          blocTest<SearchBloc, SearchState>(
+            'should emit state with loading and later '
+            'state with beers from repository and canLoadMore = false '
+            'when beers length is less than limit',
+            build: () => searchBloc,
+            setUp: () {
+              when(repositoryCall).thenAnswer(
+                (_) => Future.value(Right([beer])),
+              );
+            },
+            act: (_) => searchBloc.add(const SearchEvent.submitted(query)),
+            expect: () => [
+              const SearchState(
+                loading: true,
+                isSubmitted: true,
+                errorType: ErrorType.none,
+                query: query,
+                beers: null,
+                canLoadMore: true,
+              ),
+              SearchState(
+                loading: false,
+                isSubmitted: true,
+                errorType: ErrorType.none,
+                query: query,
+                beers: [beer],
+                canLoadMore: false,
               ),
             ],
           );

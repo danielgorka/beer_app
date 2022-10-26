@@ -76,7 +76,8 @@ void main() {
 
           blocTest<BeersBloc, BeersState>(
             'should emit state with loading and later '
-            'state with added beers from repository',
+            'state with beers from repository and canLoadMore = true '
+            'when beers length is equal to limit',
             build: () => beersBloc,
             setUp: () {
               when(repositoryCall).thenAnswer(
@@ -91,6 +92,28 @@ void main() {
                 errorType: ErrorType.none,
                 beers: beers,
                 canLoadMore: true,
+              ),
+            ],
+          );
+
+          blocTest<BeersBloc, BeersState>(
+            'should emit state with loading and later '
+            'state with beers from repository and canLoadMore = false '
+            'when beers length is less than limit',
+            build: () => beersBloc,
+            setUp: () {
+              when(repositoryCall).thenAnswer(
+                (_) => Future.value(Right([beer])),
+              );
+            },
+            act: (_) => beersBloc.add(const BeersEvent.init()),
+            expect: () => [
+              BeersState.initial(),
+              BeersState(
+                loading: false,
+                errorType: ErrorType.none,
+                beers: [beer],
+                canLoadMore: false,
               ),
             ],
           );

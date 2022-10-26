@@ -36,6 +36,7 @@ class BeersBloc extends Bloc<BeersEvent, BeersState> {
         (beers) => state.copyWith(
           loading: false,
           beers: beers,
+          canLoadMore: beers.length == limit,
         ),
       ),
     );

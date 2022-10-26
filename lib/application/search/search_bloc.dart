@@ -70,6 +70,7 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         (beers) => state.copyWith(
           loading: false,
           beers: beers,
+          canLoadMore: beers.length == limit,
         ),
       ),
     );
