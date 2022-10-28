@@ -1,9 +1,11 @@
+import 'package:beer_app/application/beer_details/beer_details_bloc.dart';
 import 'package:beer_app/domain/beers/models/beer.dart';
 import 'package:beer_app/l10n/l10n.dart';
 import 'package:beer_app/presentation/pages/beer_details/utils.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beer_image_view.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/favourite_beer_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BeerAppBar extends StatelessWidget {
   const BeerAppBar({
@@ -45,12 +47,16 @@ class BeerAppBar extends StatelessWidget {
       elevation: 0,
       expandedHeight: expandedAppBarHeight,
       collapsedHeight: collapsedHeight,
-      actions: const [
+      actions: [
         Padding(
-          padding: EdgeInsets.all(8),
+          padding: const EdgeInsets.all(8),
           child: FavouriteBeerButton(
-            //TODO
-            favourite: false,
+            favourite: beer.favourite,
+            onFavouriteChanged: (favourite) {
+              context
+                  .read<BeerDetailsBloc>()
+                  .add(BeerDetailsEvent.favouriteChanged(favourite: favourite));
+            },
           ),
         ),
       ],
