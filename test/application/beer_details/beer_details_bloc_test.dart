@@ -173,6 +173,9 @@ void main() {
               const BeerDetailsEvent.favouriteChanged(favourite: true),
             ),
             expect: () => <BeerDetailsState>[],
+            verify: (_) {
+              verify(() => beersRepository.saveFavouriteBeer(beer)).called(1);
+            },
           );
 
           blocTest<BeerDetailsBloc, BeerDetailsState>(
@@ -191,6 +194,10 @@ void main() {
               const BeerDetailsEvent.favouriteChanged(favourite: false),
             ),
             expect: () => <BeerDetailsState>[],
+            verify: (_) {
+              verify(() => beersRepository.removeFavouriteBeer(beer.id))
+                  .called(1);
+            },
           );
 
           blocTest<BeerDetailsBloc, BeerDetailsState>(

@@ -38,7 +38,7 @@ void main() {
       });
 
       blocTest<BeersBloc, BeersState>(
-        'should add BeerDetailsEvent.refreshFavourite '
+        'should add BeersEvent.refreshFavourite '
         'on favourites listener called',
         build: () => beersBloc,
         setUp: () {
