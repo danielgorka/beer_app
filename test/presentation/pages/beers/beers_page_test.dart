@@ -179,7 +179,7 @@ void main() {
 
           final finder = find.byType(BeersView);
           final beersView = tester.widget<BeersView>(finder);
-          beersView.loadMore();
+          beersView.loadMore!.call();
 
           // assert
           verify(() => beersBloc.add(const BeersEvent.loadMore())).called(1);
@@ -212,6 +212,39 @@ void main() {
 
           // assert
           verify(() => beersBloc.add(const BeersEvent.init())).called(2);
+        },
+      );
+
+      testWidgets(
+        'should add BeersEvent.favouriteChanged '
+        'when BeersView.onFavouriteChanged is called',
+        (tester) async {
+          // arrange
+          when(() => beersBloc.limit).thenReturn(limit);
+          when(() => beersBloc.state).thenReturn(
+            BeersState(
+              loading: true,
+              errorType: ErrorType.network,
+              beers: beers,
+              canLoadMore: true,
+            ),
+          );
+
+          // act
+          await tester.pumpAppWidget(
+            const BeersPage(),
+          );
+
+          final finder = find.byType(BeersView);
+          final beersView = tester.widget<BeersView>(finder);
+          beersView.onFavouriteChanged(beer, true);
+
+          // assert
+          verify(
+            () => beersBloc.add(
+              BeersEvent.favouriteChanged(beer: beer, favourite: true),
+            ),
+          ).called(1);
         },
       );
     },

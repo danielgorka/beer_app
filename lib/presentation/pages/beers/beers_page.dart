@@ -34,6 +34,14 @@ class BeersPage extends StatelessWidget {
                   context.read<BeersBloc>().add(const BeersEvent.init()),
               loadMore: () =>
                   context.read<BeersBloc>().add(const BeersEvent.loadMore()),
+              onFavouriteChanged: (beer, favourite) {
+                context.read<BeersBloc>().add(
+                      BeersEvent.favouriteChanged(
+                        beer: beer,
+                        favourite: favourite,
+                      ),
+                    );
+              },
             );
           },
         ),
