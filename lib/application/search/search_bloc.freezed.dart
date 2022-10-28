@@ -23,6 +23,8 @@ mixin _$SearchEvent {
     required TResult Function(String query) queryChanged,
     required TResult Function(String query) submitted,
     required TResult Function() loadMore,
+    required TResult Function(Beer beer, bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -32,6 +34,8 @@ mixin _$SearchEvent {
     TResult? Function(String query)? queryChanged,
     TResult? Function(String query)? submitted,
     TResult? Function()? loadMore,
+    TResult? Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -41,6 +45,8 @@ mixin _$SearchEvent {
     TResult Function(String query)? queryChanged,
     TResult Function(String query)? submitted,
     TResult Function()? loadMore,
+    TResult Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -51,6 +57,8 @@ mixin _$SearchEvent {
     required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -60,6 +68,8 @@ mixin _$SearchEvent {
     TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +79,8 @@ mixin _$SearchEvent {
     TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -133,6 +145,8 @@ class _$_Init implements _Init {
     required TResult Function(String query) queryChanged,
     required TResult Function(String query) submitted,
     required TResult Function() loadMore,
+    required TResult Function(Beer beer, bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
   }) {
     return init();
   }
@@ -145,6 +159,8 @@ class _$_Init implements _Init {
     TResult? Function(String query)? queryChanged,
     TResult? Function(String query)? submitted,
     TResult? Function()? loadMore,
+    TResult? Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
   }) {
     return init?.call();
   }
@@ -157,6 +173,8 @@ class _$_Init implements _Init {
     TResult Function(String query)? queryChanged,
     TResult Function(String query)? submitted,
     TResult Function()? loadMore,
+    TResult Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -173,6 +191,8 @@ class _$_Init implements _Init {
     required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
   }) {
     return init(this);
   }
@@ -185,6 +205,8 @@ class _$_Init implements _Init {
     TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
   }) {
     return init?.call(this);
   }
@@ -197,6 +219,8 @@ class _$_Init implements _Init {
     TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -253,6 +277,8 @@ class _$_EditQuery implements _EditQuery {
     required TResult Function(String query) queryChanged,
     required TResult Function(String query) submitted,
     required TResult Function() loadMore,
+    required TResult Function(Beer beer, bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
   }) {
     return editQuery();
   }
@@ -265,6 +291,8 @@ class _$_EditQuery implements _EditQuery {
     TResult? Function(String query)? queryChanged,
     TResult? Function(String query)? submitted,
     TResult? Function()? loadMore,
+    TResult? Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
   }) {
     return editQuery?.call();
   }
@@ -277,6 +305,8 @@ class _$_EditQuery implements _EditQuery {
     TResult Function(String query)? queryChanged,
     TResult Function(String query)? submitted,
     TResult Function()? loadMore,
+    TResult Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
     required TResult orElse(),
   }) {
     if (editQuery != null) {
@@ -293,6 +323,8 @@ class _$_EditQuery implements _EditQuery {
     required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
   }) {
     return editQuery(this);
   }
@@ -305,6 +337,8 @@ class _$_EditQuery implements _EditQuery {
     TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
   }) {
     return editQuery?.call(this);
   }
@@ -317,6 +351,8 @@ class _$_EditQuery implements _EditQuery {
     TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
     required TResult orElse(),
   }) {
     if (editQuery != null) {
@@ -399,6 +435,8 @@ class _$_QueryChanged implements _QueryChanged {
     required TResult Function(String query) queryChanged,
     required TResult Function(String query) submitted,
     required TResult Function() loadMore,
+    required TResult Function(Beer beer, bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
   }) {
     return queryChanged(query);
   }
@@ -411,6 +449,8 @@ class _$_QueryChanged implements _QueryChanged {
     TResult? Function(String query)? queryChanged,
     TResult? Function(String query)? submitted,
     TResult? Function()? loadMore,
+    TResult? Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
   }) {
     return queryChanged?.call(query);
   }
@@ -423,6 +463,8 @@ class _$_QueryChanged implements _QueryChanged {
     TResult Function(String query)? queryChanged,
     TResult Function(String query)? submitted,
     TResult Function()? loadMore,
+    TResult Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
     required TResult orElse(),
   }) {
     if (queryChanged != null) {
@@ -439,6 +481,8 @@ class _$_QueryChanged implements _QueryChanged {
     required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
   }) {
     return queryChanged(this);
   }
@@ -451,6 +495,8 @@ class _$_QueryChanged implements _QueryChanged {
     TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
   }) {
     return queryChanged?.call(this);
   }
@@ -463,6 +509,8 @@ class _$_QueryChanged implements _QueryChanged {
     TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
     required TResult orElse(),
   }) {
     if (queryChanged != null) {
@@ -550,6 +598,8 @@ class _$_Submitted implements _Submitted {
     required TResult Function(String query) queryChanged,
     required TResult Function(String query) submitted,
     required TResult Function() loadMore,
+    required TResult Function(Beer beer, bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
   }) {
     return submitted(query);
   }
@@ -562,6 +612,8 @@ class _$_Submitted implements _Submitted {
     TResult? Function(String query)? queryChanged,
     TResult? Function(String query)? submitted,
     TResult? Function()? loadMore,
+    TResult? Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
   }) {
     return submitted?.call(query);
   }
@@ -574,6 +626,8 @@ class _$_Submitted implements _Submitted {
     TResult Function(String query)? queryChanged,
     TResult Function(String query)? submitted,
     TResult Function()? loadMore,
+    TResult Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -590,6 +644,8 @@ class _$_Submitted implements _Submitted {
     required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
   }) {
     return submitted(this);
   }
@@ -602,6 +658,8 @@ class _$_Submitted implements _Submitted {
     TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
   }) {
     return submitted?.call(this);
   }
@@ -614,6 +672,8 @@ class _$_Submitted implements _Submitted {
     TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
     required TResult orElse(),
   }) {
     if (submitted != null) {
@@ -675,6 +735,8 @@ class _$_LoadMore implements _LoadMore {
     required TResult Function(String query) queryChanged,
     required TResult Function(String query) submitted,
     required TResult Function() loadMore,
+    required TResult Function(Beer beer, bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
   }) {
     return loadMore();
   }
@@ -687,6 +749,8 @@ class _$_LoadMore implements _LoadMore {
     TResult? Function(String query)? queryChanged,
     TResult? Function(String query)? submitted,
     TResult? Function()? loadMore,
+    TResult? Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
   }) {
     return loadMore?.call();
   }
@@ -699,6 +763,8 @@ class _$_LoadMore implements _LoadMore {
     TResult Function(String query)? queryChanged,
     TResult Function(String query)? submitted,
     TResult Function()? loadMore,
+    TResult Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -715,6 +781,8 @@ class _$_LoadMore implements _LoadMore {
     required TResult Function(_QueryChanged value) queryChanged,
     required TResult Function(_Submitted value) submitted,
     required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
   }) {
     return loadMore(this);
   }
@@ -727,6 +795,8 @@ class _$_LoadMore implements _LoadMore {
     TResult? Function(_QueryChanged value)? queryChanged,
     TResult? Function(_Submitted value)? submitted,
     TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
   }) {
     return loadMore?.call(this);
   }
@@ -739,6 +809,8 @@ class _$_LoadMore implements _LoadMore {
     TResult Function(_QueryChanged value)? queryChanged,
     TResult Function(_Submitted value)? submitted,
     TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
     required TResult orElse(),
   }) {
     if (loadMore != null) {
@@ -750,6 +822,323 @@ class _$_LoadMore implements _LoadMore {
 
 abstract class _LoadMore implements SearchEvent {
   const factory _LoadMore() = _$_LoadMore;
+}
+
+/// @nodoc
+abstract class _$$_FavouriteChangedCopyWith<$Res> {
+  factory _$$_FavouriteChangedCopyWith(
+          _$_FavouriteChanged value, $Res Function(_$_FavouriteChanged) then) =
+      __$$_FavouriteChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Beer beer, bool favourite});
+
+  $BeerCopyWith<$Res> get beer;
+}
+
+/// @nodoc
+class __$$_FavouriteChangedCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$_FavouriteChanged>
+    implements _$$_FavouriteChangedCopyWith<$Res> {
+  __$$_FavouriteChangedCopyWithImpl(
+      _$_FavouriteChanged _value, $Res Function(_$_FavouriteChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? beer = null,
+    Object? favourite = null,
+  }) {
+    return _then(_$_FavouriteChanged(
+      beer: null == beer
+          ? _value.beer
+          : beer // ignore: cast_nullable_to_non_nullable
+              as Beer,
+      favourite: null == favourite
+          ? _value.favourite
+          : favourite // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BeerCopyWith<$Res> get beer {
+    return $BeerCopyWith<$Res>(_value.beer, (value) {
+      return _then(_value.copyWith(beer: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$_FavouriteChanged implements _FavouriteChanged {
+  const _$_FavouriteChanged({required this.beer, required this.favourite});
+
+  @override
+  final Beer beer;
+  @override
+  final bool favourite;
+
+  @override
+  String toString() {
+    return 'SearchEvent.favouriteChanged(beer: $beer, favourite: $favourite)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FavouriteChanged &&
+            (identical(other.beer, beer) || other.beer == beer) &&
+            (identical(other.favourite, favourite) ||
+                other.favourite == favourite));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, beer, favourite);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FavouriteChangedCopyWith<_$_FavouriteChanged> get copyWith =>
+      __$$_FavouriteChangedCopyWithImpl<_$_FavouriteChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() editQuery,
+    required TResult Function(String query) queryChanged,
+    required TResult Function(String query) submitted,
+    required TResult Function() loadMore,
+    required TResult Function(Beer beer, bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
+  }) {
+    return favouriteChanged(beer, favourite);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? editQuery,
+    TResult? Function(String query)? queryChanged,
+    TResult? Function(String query)? submitted,
+    TResult? Function()? loadMore,
+    TResult? Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
+  }) {
+    return favouriteChanged?.call(beer, favourite);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? editQuery,
+    TResult Function(String query)? queryChanged,
+    TResult Function(String query)? submitted,
+    TResult Function()? loadMore,
+    TResult Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
+    required TResult orElse(),
+  }) {
+    if (favouriteChanged != null) {
+      return favouriteChanged(beer, favourite);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_EditQuery value) editQuery,
+    required TResult Function(_QueryChanged value) queryChanged,
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
+  }) {
+    return favouriteChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_EditQuery value)? editQuery,
+    TResult? Function(_QueryChanged value)? queryChanged,
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
+  }) {
+    return favouriteChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_EditQuery value)? editQuery,
+    TResult Function(_QueryChanged value)? queryChanged,
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
+    required TResult orElse(),
+  }) {
+    if (favouriteChanged != null) {
+      return favouriteChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FavouriteChanged implements SearchEvent {
+  const factory _FavouriteChanged(
+      {required final Beer beer,
+      required final bool favourite}) = _$_FavouriteChanged;
+
+  Beer get beer;
+  bool get favourite;
+  @JsonKey(ignore: true)
+  _$$_FavouriteChangedCopyWith<_$_FavouriteChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RefreshFavouriteCopyWith<$Res> {
+  factory _$$_RefreshFavouriteCopyWith(
+          _$_RefreshFavourite value, $Res Function(_$_RefreshFavourite) then) =
+      __$$_RefreshFavouriteCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_RefreshFavouriteCopyWithImpl<$Res>
+    extends _$SearchEventCopyWithImpl<$Res, _$_RefreshFavourite>
+    implements _$$_RefreshFavouriteCopyWith<$Res> {
+  __$$_RefreshFavouriteCopyWithImpl(
+      _$_RefreshFavourite _value, $Res Function(_$_RefreshFavourite) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_RefreshFavourite implements _RefreshFavourite {
+  const _$_RefreshFavourite();
+
+  @override
+  String toString() {
+    return 'SearchEvent.refreshFavourite()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_RefreshFavourite);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() editQuery,
+    required TResult Function(String query) queryChanged,
+    required TResult Function(String query) submitted,
+    required TResult Function() loadMore,
+    required TResult Function(Beer beer, bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
+  }) {
+    return refreshFavourite();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? editQuery,
+    TResult? Function(String query)? queryChanged,
+    TResult? Function(String query)? submitted,
+    TResult? Function()? loadMore,
+    TResult? Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
+  }) {
+    return refreshFavourite?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? editQuery,
+    TResult Function(String query)? queryChanged,
+    TResult Function(String query)? submitted,
+    TResult Function()? loadMore,
+    TResult Function(Beer beer, bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
+    required TResult orElse(),
+  }) {
+    if (refreshFavourite != null) {
+      return refreshFavourite();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_EditQuery value) editQuery,
+    required TResult Function(_QueryChanged value) queryChanged,
+    required TResult Function(_Submitted value) submitted,
+    required TResult Function(_LoadMore value) loadMore,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
+  }) {
+    return refreshFavourite(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_EditQuery value)? editQuery,
+    TResult? Function(_QueryChanged value)? queryChanged,
+    TResult? Function(_Submitted value)? submitted,
+    TResult? Function(_LoadMore value)? loadMore,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
+  }) {
+    return refreshFavourite?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_EditQuery value)? editQuery,
+    TResult Function(_QueryChanged value)? queryChanged,
+    TResult Function(_Submitted value)? submitted,
+    TResult Function(_LoadMore value)? loadMore,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
+    required TResult orElse(),
+  }) {
+    if (refreshFavourite != null) {
+      return refreshFavourite(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshFavourite implements SearchEvent {
+  const factory _RefreshFavourite() = _$_RefreshFavourite;
 }
 
 /// @nodoc

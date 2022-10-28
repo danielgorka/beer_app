@@ -1,6 +1,7 @@
 import 'package:beer_app/domain/beers/beers_failure.dart';
 import 'package:beer_app/domain/beers/i_beers_repository.dart';
 import 'package:beer_app/domain/beers/models/beer.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
@@ -20,6 +21,10 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     on<_QueryChanged>(_queryChanged);
     on<_Submitted>(_submitted);
     on<_LoadMore>(_loadMore);
+    on<_FavouriteChanged>(_favouriteChanged);
+    on<_RefreshFavourite>(_refreshFavourite);
+
+    beersRepository.addFavouriteBeersListener(favouriteBeersListener);
   }
 
   final int limit;
@@ -109,6 +114,50 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     );
   }
 
+  Future<void> _favouriteChanged(
+    _FavouriteChanged event,
+    Emitter<SearchState> emit,
+  ) async {
+    final BeersFailure? failure;
+
+    if (event.favourite) {
+      failure = await beersRepository.saveFavouriteBeer(event.beer);
+    } else {
+      failure = await beersRepository.removeFavouriteBeer(event.beer.id);
+    }
+
+    if (failure != null) {
+      emit(_failureToState(failure));
+    }
+  }
+
+  Future<void> _refreshFavourite(
+    _RefreshFavourite event,
+    Emitter<SearchState> emit,
+  ) async {
+    final either = await beersRepository.getFavouriteBeers();
+
+    emit(
+      either.fold(
+        _failureToState,
+        (favouriteBeers) => state.copyWith(
+          beers: state.beers
+              ?.map(
+                (beer) => beer.copyWith(
+                  favourite: BeerFavourite(
+                    favouriteBeers.any((favBeer) => favBeer.id == beer.id),
+                  ),
+                ),
+              )
+              .toList(),
+        ),
+      ),
+    );
+  }
+
+  @visibleForTesting
+  void favouriteBeersListener() => add(const SearchEvent.refreshFavourite());
+
   SearchState _failureToState(BeersFailure failure) {
     return failure.map(
       notFound: (_) => state.copyWith(
@@ -124,5 +173,11 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
         errorType: ErrorType.unknown,
       ),
     );
+  }
+
+  @override
+  Future<void> close() {
+    beersRepository.removeFavouriteBeersListener(favouriteBeersListener);
+    return super.close();
   }
 }

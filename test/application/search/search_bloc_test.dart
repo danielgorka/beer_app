@@ -2,6 +2,7 @@ import 'package:beer_app/application/search/search_bloc.dart';
 import 'package:beer_app/domain/beers/beers_failure.dart';
 import 'package:beer_app/domain/beers/i_beers_repository.dart';
 import 'package:beer_app/domain/beers/models/beer.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -25,19 +26,53 @@ void main() {
       late IBeersRepository beersRepository;
       late SearchBloc searchBloc;
 
-      setUp(
-        () {
-          beersRepository = MockBeersRepository();
-          searchBloc = SearchBloc(
-            limit: beersLimit,
-            beersRepository: beersRepository,
-          );
-        },
-      );
+      setUp(() {
+        beersRepository = MockBeersRepository();
+        searchBloc = SearchBloc(
+          limit: beersLimit,
+          beersRepository: beersRepository,
+        );
+      });
 
       test('initialState should be initial', () {
         expect(searchBloc.state, equals(SearchState.initial()));
       });
+
+      blocTest<SearchBloc, SearchState>(
+        'should add SearchEvent.refreshFavourite '
+        'on favourites listener called',
+        build: () => searchBloc,
+        setUp: () {
+          when(() => beersRepository.getFavouriteBeers()).thenAnswer(
+            (_) => Future.value(Right([beer])),
+          );
+        },
+        seed: () => SearchState(
+          loading: false,
+          isSubmitted: false,
+          errorType: ErrorType.none,
+          query: '',
+          beers: [
+            beer.copyWith(favourite: const BeerFavourite(false)),
+            beer.copyWith(favourite: const BeerFavourite(false)),
+          ],
+          canLoadMore: true,
+        ),
+        act: (_) => searchBloc.favouriteBeersListener(),
+        expect: () => [
+          SearchState(
+            loading: false,
+            isSubmitted: false,
+            errorType: ErrorType.none,
+            query: '',
+            beers: [
+              beer.copyWith(favourite: const BeerFavourite(true)),
+              beer.copyWith(favourite: const BeerFavourite(true)),
+            ],
+            canLoadMore: true,
+          ),
+        ],
+      );
 
       group(
         'on<_Init>',
@@ -420,6 +455,179 @@ void main() {
             'returns BeersFailure.unknownError',
             failure: const BeersFailure.unknownError(),
             errorType: ErrorType.unknown,
+          );
+        },
+      );
+
+      group(
+        'on<_FavoriteChanged>',
+        () {
+          blocTest<SearchBloc, SearchState>(
+            'should save beer in repository when favourite is true',
+            build: () => searchBloc,
+            setUp: () {
+              when(() => beersRepository.saveFavouriteBeer(beer))
+                  .thenAnswer((_) => Future.value());
+            },
+            seed: () => SearchState(
+              loading: false,
+              isSubmitted: true,
+              errorType: ErrorType.none,
+              query: query,
+              beers: beers,
+              canLoadMore: true,
+            ),
+            act: (_) => searchBloc.add(
+              SearchEvent.favouriteChanged(
+                beer: beer,
+                favourite: true,
+              ),
+            ),
+            expect: () => <SearchState>[],
+            verify: (_) {
+              verify(() => beersRepository.saveFavouriteBeer(beer)).called(1);
+            },
+          );
+
+          blocTest<SearchBloc, SearchState>(
+            'should remove beer from repository when favourite is false',
+            build: () => searchBloc,
+            setUp: () {
+              when(() => beersRepository.removeFavouriteBeer(beer.id))
+                  .thenAnswer((_) => Future.value());
+            },
+            seed: () => SearchState(
+              loading: false,
+              isSubmitted: true,
+              errorType: ErrorType.none,
+              query: query,
+              beers: beers,
+              canLoadMore: true,
+            ),
+            act: (_) => searchBloc.add(
+              SearchEvent.favouriteChanged(
+                beer: beer,
+                favourite: false,
+              ),
+            ),
+            expect: () => <SearchState>[],
+            verify: (_) {
+              verify(() => beersRepository.removeFavouriteBeer(beer.id))
+                  .called(1);
+            },
+          );
+
+          blocTest<SearchBloc, SearchState>(
+            'should emit state with ErrorType.unknown '
+            'when repository returns failure',
+            build: () => searchBloc,
+            setUp: () {
+              when(
+                () => beersRepository.removeFavouriteBeer(beer.id),
+              ).thenAnswer(
+                (_) => Future.value(const BeersFailure.unknownError()),
+              );
+            },
+            seed: () => SearchState(
+              loading: false,
+              isSubmitted: true,
+              errorType: ErrorType.none,
+              query: query,
+              beers: beers,
+              canLoadMore: true,
+            ),
+            act: (_) => searchBloc.add(
+              SearchEvent.favouriteChanged(
+                beer: beer,
+                favourite: false,
+              ),
+            ),
+            expect: () => [
+              SearchState(
+                loading: false,
+                isSubmitted: true,
+                errorType: ErrorType.unknown,
+                query: query,
+                beers: beers,
+                canLoadMore: true,
+              ),
+            ],
+          );
+        },
+      );
+
+      group(
+        'on<_RefreshFavourite>',
+        () {
+          blocTest<SearchBloc, SearchState>(
+            'should update beer favourite value from repository',
+            build: () => searchBloc,
+            setUp: () {
+              when(() => beersRepository.getFavouriteBeers()).thenAnswer(
+                (_) => Future.value(Right([beer])),
+              );
+            },
+            seed: () => SearchState(
+              loading: false,
+              isSubmitted: true,
+              errorType: ErrorType.none,
+              query: query,
+              beers: beers
+                  .map(
+                    (e) => e.copyWith(favourite: const BeerFavourite(false)),
+                  )
+                  .toList(),
+              canLoadMore: true,
+            ),
+            act: (_) => searchBloc.add(
+              const SearchEvent.refreshFavourite(),
+            ),
+            expect: () => [
+              SearchState(
+                loading: false,
+                isSubmitted: true,
+                errorType: ErrorType.none,
+                query: query,
+                beers: beers
+                    .map(
+                      (e) => e.copyWith(favourite: const BeerFavourite(true)),
+                    )
+                    .toList(),
+                canLoadMore: true,
+              ),
+            ],
+          );
+
+          blocTest<SearchBloc, SearchState>(
+            'should emit state with ErrorType.unknown '
+            'when repository returns failure',
+            build: () => searchBloc,
+            setUp: () {
+              when(() => beersRepository.getFavouriteBeers()).thenAnswer(
+                (_) => Future.value(const Left(BeersFailure.unknownError())),
+              );
+            },
+            seed: () => SearchState(
+              loading: false,
+              isSubmitted: true,
+              errorType: ErrorType.none,
+              query: query,
+              beers: beers,
+              canLoadMore: true,
+            ),
+            act: (_) => searchBloc.add(
+              const SearchEvent.refreshFavourite(),
+            ),
+            expect: () => [
+              SearchState(
+                loading: false,
+                isSubmitted: true,
+                errorType: ErrorType.unknown,
+                query: query,
+                beers: beers,
+                canLoadMore: true,
+              ),
+            ],
           );
         },
       );
