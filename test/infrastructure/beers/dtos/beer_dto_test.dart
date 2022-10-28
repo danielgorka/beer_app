@@ -46,7 +46,7 @@ void main() {
             'should return correct Beer',
             () {
               // act
-              final result = beerDto.toDomain();
+              final result = beerDto.toDomain(favourite: true);
 
               // assert
               expect(result, beer);

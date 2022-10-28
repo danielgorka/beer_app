@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:beer_app/domain/beers/models/beer.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_abv.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_attenuation_level.dart';
@@ -6,6 +8,7 @@ import 'package:beer_app/domain/beers/value_objects/beer_brewers_tips.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_contributed_by.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_description.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_ebc.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_first_brewed.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_food.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_ibu.dart';
@@ -26,6 +29,7 @@ import 'beer_ingredients.dart';
 import 'beer_method.dart';
 
 const beerId = BeerId(21);
+const beerFavourite = BeerFavourite(true);
 const beerName = BeerName('Skull Candy');
 const beerTagline = BeerTagline('Pacific Hopped Amber Bitter.');
 final beerFirstBrewed = BeerFirstBrewed(
@@ -64,6 +68,7 @@ const beerContributedBy = BeerContributedBy('Sam Mason <samjbmason>');
 // Model
 final beer = Beer(
   id: beerId,
+  favourite: beerFavourite,
   name: beerName,
   tagline: beerTagline,
   firstBrewed: beerFirstBrewed,
@@ -128,11 +133,11 @@ final beerJson = {
   'ph': beerPh.value,
   'attenuation_level': beerAttenuationLevel.value,
   'volume': {
-    'value': 20,
+    'value': 20.0,
     'unit': 'litres',
   },
   'boil_volume': {
-    'value': 25,
+    'value': 25.0,
     'unit': 'litres',
   },
   'method': beerMethodJson,
@@ -141,3 +146,5 @@ final beerJson = {
   'brewers_tips': beerBrewersTips.value,
   'contributed_by': beerContributedBy.value,
 };
+
+final beerJsonString = jsonEncode(beerJson);

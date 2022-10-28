@@ -17,6 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$Beer {
   BeerId get id => throw _privateConstructorUsedError;
+  BeerFavourite get favourite => throw _privateConstructorUsedError;
   BeerName get name => throw _privateConstructorUsedError;
   BeerTagline get tagline => throw _privateConstructorUsedError;
   BeerFirstBrewed get firstBrewed => throw _privateConstructorUsedError;
@@ -50,6 +51,7 @@ abstract class $BeerCopyWith<$Res> {
   @useResult
   $Res call(
       {BeerId id,
+      BeerFavourite favourite,
       BeerName name,
       BeerTagline tagline,
       BeerFirstBrewed firstBrewed,
@@ -89,6 +91,7 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
   @override
   $Res call({
     Object? id = null,
+    Object? favourite = null,
     Object? name = null,
     Object? tagline = null,
     Object? firstBrewed = null,
@@ -115,6 +118,10 @@ class _$BeerCopyWithImpl<$Res, $Val extends Beer>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as BeerId,
+      favourite: null == favourite
+          ? _value.favourite
+          : favourite // ignore: cast_nullable_to_non_nullable
+              as BeerFavourite,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -223,6 +230,7 @@ abstract class _$$_BeerCopyWith<$Res> implements $BeerCopyWith<$Res> {
   @useResult
   $Res call(
       {BeerId id,
+      BeerFavourite favourite,
       BeerName name,
       BeerTagline tagline,
       BeerFirstBrewed firstBrewed,
@@ -260,6 +268,7 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
   @override
   $Res call({
     Object? id = null,
+    Object? favourite = null,
     Object? name = null,
     Object? tagline = null,
     Object? firstBrewed = null,
@@ -286,6 +295,10 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
               as BeerId,
+      favourite: null == favourite
+          ? _value.favourite
+          : favourite // ignore: cast_nullable_to_non_nullable
+              as BeerFavourite,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -375,6 +388,7 @@ class __$$_BeerCopyWithImpl<$Res> extends _$BeerCopyWithImpl<$Res, _$_Beer>
 class _$_Beer implements _Beer {
   _$_Beer(
       {required this.id,
+      required this.favourite,
       required this.name,
       required this.tagline,
       required this.firstBrewed,
@@ -399,6 +413,8 @@ class _$_Beer implements _Beer {
 
   @override
   final BeerId id;
+  @override
+  final BeerFavourite favourite;
   @override
   final BeerName name;
   @override
@@ -447,7 +463,7 @@ class _$_Beer implements _Beer {
 
   @override
   String toString() {
-    return 'Beer(id: $id, name: $name, tagline: $tagline, firstBrewed: $firstBrewed, description: $description, imageUrl: $imageUrl, abv: $abv, ibu: $ibu, targetFg: $targetFg, targetOg: $targetOg, ebc: $ebc, srm: $srm, ph: $ph, attenuationLevel: $attenuationLevel, volume: $volume, boilVolume: $boilVolume, method: $method, ingredients: $ingredients, foodPairing: $foodPairing, brewersTips: $brewersTips, contributedBy: $contributedBy)';
+    return 'Beer(id: $id, favourite: $favourite, name: $name, tagline: $tagline, firstBrewed: $firstBrewed, description: $description, imageUrl: $imageUrl, abv: $abv, ibu: $ibu, targetFg: $targetFg, targetOg: $targetOg, ebc: $ebc, srm: $srm, ph: $ph, attenuationLevel: $attenuationLevel, volume: $volume, boilVolume: $boilVolume, method: $method, ingredients: $ingredients, foodPairing: $foodPairing, brewersTips: $brewersTips, contributedBy: $contributedBy)';
   }
 
   @override
@@ -456,6 +472,8 @@ class _$_Beer implements _Beer {
         (other.runtimeType == runtimeType &&
             other is _$_Beer &&
             (identical(other.id, id) || other.id == id) &&
+            (identical(other.favourite, favourite) ||
+                other.favourite == favourite) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.tagline, tagline) || other.tagline == tagline) &&
             (identical(other.firstBrewed, firstBrewed) ||
@@ -493,6 +511,7 @@ class _$_Beer implements _Beer {
   int get hashCode => Object.hashAll([
         runtimeType,
         id,
+        favourite,
         name,
         tagline,
         firstBrewed,
@@ -525,6 +544,7 @@ class _$_Beer implements _Beer {
 abstract class _Beer implements Beer {
   factory _Beer(
       {required final BeerId id,
+      required final BeerFavourite favourite,
       required final BeerName name,
       required final BeerTagline tagline,
       required final BeerFirstBrewed firstBrewed,
@@ -548,6 +568,8 @@ abstract class _Beer implements Beer {
 
   @override
   BeerId get id;
+  @override
+  BeerFavourite get favourite;
   @override
   BeerName get name;
   @override

@@ -6,6 +6,7 @@ import 'package:beer_app/domain/beers/value_objects/beer_brewers_tips.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_contributed_by.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_description.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_ebc.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_first_brewed.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_food.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_ibu.dart';
@@ -86,9 +87,12 @@ class BeerDto with _$BeerDto {
   factory BeerDto.fromJson(Map<String, dynamic> json) =>
       _$BeerDtoFromJson(json);
 
-  Beer toDomain() {
+  Beer toDomain({
+    required bool favourite,
+  }) {
     return Beer(
       id: BeerId(id),
+      favourite: BeerFavourite(favourite),
       name: BeerName(name),
       tagline: BeerTagline(tagline),
       firstBrewed: BeerFirstBrewed.fromString(firstBrewed),

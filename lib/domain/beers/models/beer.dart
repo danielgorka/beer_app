@@ -7,6 +7,7 @@ import 'package:beer_app/domain/beers/value_objects/beer_brewers_tips.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_contributed_by.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_description.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_ebc.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_first_brewed.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_food.dart';
 import 'package:beer_app/domain/beers/value_objects/beer_ibu.dart';
@@ -27,6 +28,7 @@ part 'beer.freezed.dart';
 class Beer with _$Beer {
   factory Beer({
     required BeerId id,
+    required BeerFavourite favourite,
     required BeerName name,
     required BeerTagline tagline,
     required BeerFirstBrewed firstBrewed,
