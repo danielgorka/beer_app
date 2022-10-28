@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:beer_app/domain/beers/models/beer.dart';
 import 'package:beer_app/l10n/l10n.dart';
 import 'package:beer_app/presentation/app_icons.dart';
 import 'package:beer_app/presentation/pages/beers/utils.dart';
@@ -53,6 +54,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -74,6 +76,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -105,6 +108,7 @@ void main() {
                 beersLimit: limit,
                 reload: reload,
                 loadMore: loadMore,
+                onFavouriteChanged: (_, __) {},
               ),
             ),
           );
@@ -130,6 +134,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -162,6 +167,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -200,6 +206,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -235,6 +242,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -257,6 +265,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -291,6 +300,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -314,6 +324,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -346,6 +357,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -358,6 +370,41 @@ void main() {
           // assert
           expect(reloadCalls, 1);
           expect(loadMoreCalls, 0);
+        },
+      );
+
+      testWidgets(
+        'should call onFavouriteChanged '
+        'when BeerItem.onFavouriteChanged is called',
+        (tester) async {
+          // arrange
+          Beer? calledBeer;
+          bool? calledValue;
+
+          // act
+          await tester.pumpAppWidget(
+            BeersView(
+              showSearchBar: false,
+              beers: beers,
+              hasError: false,
+              canLoadMore: true,
+              beersLimit: limit,
+              reload: reload,
+              loadMore: loadMore,
+              onFavouriteChanged: (beer, favourite) {
+                calledBeer = beer;
+                calledValue = favourite;
+              },
+            ),
+          );
+
+          final finder = find.byType(BeerItem).first;
+          final beerItem = tester.widget<BeerItem>(finder);
+          beerItem.onFavouriteChanged(true);
+
+          // assert
+          expect(calledBeer, beer);
+          expect(calledValue, true);
         },
       );
 
@@ -377,6 +424,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -409,6 +457,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -441,6 +490,7 @@ void main() {
               beersLimit: limit,
               reload: reload,
               loadMore: loadMore,
+              onFavouriteChanged: (_, __) {},
             ),
           );
 
@@ -475,6 +525,7 @@ void main() {
                   beersLimit: limit,
                   reload: reload,
                   loadMore: loadMore,
+                  onFavouriteChanged: (_, __) {},
                 );
               },
             ),

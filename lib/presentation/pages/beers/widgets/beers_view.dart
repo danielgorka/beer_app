@@ -10,6 +10,8 @@ import 'package:beer_app/presentation/widgets/error_view.dart';
 import 'package:beer_app/presentation/widgets/sliver_search_bar.dart';
 import 'package:flutter/material.dart';
 
+typedef OnFavouriteChanged = void Function(Beer beer, bool favourite);
+
 class BeersView extends StatefulWidget {
   const BeersView({
     super.key,
@@ -20,15 +22,17 @@ class BeersView extends StatefulWidget {
     required this.beersLimit,
     required this.reload,
     required this.loadMore,
+    required this.onFavouriteChanged,
   });
 
   final bool showSearchBar;
   final List<Beer>? beers;
   final bool hasError;
   final bool canLoadMore;
-  final int beersLimit;
+  final int? beersLimit;
   final VoidCallback reload;
-  final VoidCallback loadMore;
+  final VoidCallback? loadMore;
+  final OnFavouriteChanged onFavouriteChanged;
 
   @override
   State<BeersView> createState() => _BeersViewState();
@@ -71,7 +75,7 @@ class _BeersViewState extends State<BeersView> {
     final bound = itemsBound - extentThreshold;
 
     if (_controller.offset >= bound) {
-      widget.loadMore();
+      widget.loadMore?.call();
     }
   }
 
@@ -79,8 +83,9 @@ class _BeersViewState extends State<BeersView> {
   /// plus items that is currently loading.
   int get _itemsCount {
     var count = widget.beers?.length ?? 0;
-    if (widget.canLoadMore && !widget.hasError) {
-      count += widget.beersLimit;
+
+    if (widget.canLoadMore && !widget.hasError && widget.beersLimit != null) {
+      count += widget.beersLimit!;
     }
 
     return count;
@@ -113,8 +118,11 @@ class _BeersViewState extends State<BeersView> {
                     );
                   }
 
+                  final beer = widget.beers![index];
                   return BeerItem(
-                    beer: widget.beers![index],
+                    beer: beer,
+                    onFavouriteChanged: (fav) =>
+                        widget.onFavouriteChanged(beer, fav),
                   );
                 },
               ),
@@ -124,7 +132,7 @@ class _BeersViewState extends State<BeersView> {
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.all(16),
-                child: ErrorView(onRefresh: widget.loadMore),
+                child: ErrorView(onRefresh: widget.loadMore ?? widget.reload),
               ),
             ),
         ],
