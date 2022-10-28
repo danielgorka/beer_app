@@ -46,6 +46,14 @@ class SearchView extends StatelessWidget {
           context.read<SearchBloc>().add(SearchEvent.submitted(state.query)),
       loadMore: () =>
           context.read<SearchBloc>().add(const SearchEvent.loadMore()),
+      onFavouriteChanged: (beer, favourite) {
+        context.read<SearchBloc>().add(
+              SearchEvent.favouriteChanged(
+                beer: beer,
+                favourite: favourite,
+              ),
+            );
+      },
     );
   }
 }
