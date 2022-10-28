@@ -6,6 +6,7 @@ import 'package:beer_app/presentation/pages/beer_details/beer_details_page.dart'
 import 'package:beer_app/presentation/pages/beers/beers_page.dart';
 import 'package:beer_app/presentation/pages/core/home_page.dart';
 import 'package:beer_app/presentation/pages/favourites/favourites_page.dart';
+import 'package:beer_app/presentation/pages/search/search_page.dart';
 import 'package:flutter/material.dart';
 
 part 'router.gr.dart';
@@ -31,6 +32,10 @@ part 'router.gr.dart';
             AutoRoute<void>(
               path: ':id',
               page: BeerDetailsPage,
+            ),
+            AutoRoute<void>(
+              path: 'search',
+              page: SearchPage,
             ),
             RedirectRoute(path: '*', redirectTo: ''),
           ],

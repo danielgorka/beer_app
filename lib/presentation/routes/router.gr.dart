@@ -75,6 +75,15 @@ class _$AppRouter extends RootStackRouter {
         barrierDismissible: false,
       );
     },
+    SearchRoute.name: (routeData) {
+      return CustomPage<void>(
+        routeData: routeData,
+        child: const SearchPage(),
+        transitionsBuilder: fadeScale,
+        opaque: true,
+        barrierDismissible: false,
+      );
+    },
     FavouritesRoute.name: (routeData) {
       return CustomPage<void>(
         routeData: routeData,
@@ -105,6 +114,11 @@ class _$AppRouter extends RootStackRouter {
                 RouteConfig(
                   BeerDetailsRoute.name,
                   path: ':id',
+                  parent: BeersRouter.name,
+                ),
+                RouteConfig(
+                  SearchRoute.name,
+                  path: 'search',
                   parent: BeersRouter.name,
                 ),
                 RouteConfig(
@@ -257,6 +271,18 @@ class BeerDetailsRouteArgs {
   String toString() {
     return 'BeerDetailsRouteArgs{key: $key, beerId: $beerId, beer: $beer}';
   }
+}
+
+/// generated route for
+/// [SearchPage]
+class SearchRoute extends PageRouteInfo<void> {
+  const SearchRoute()
+      : super(
+          SearchRoute.name,
+          path: 'search',
+        );
+
+  static const String name = 'SearchRoute';
 }
 
 /// generated route for
