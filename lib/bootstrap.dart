@@ -1,9 +1,12 @@
 import 'package:beer_app/injection.dart';
 import 'package:beer_app/presentation/app.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void bootstrap() {
+Future<void> bootstrap() async {
+  await Hive.initFlutter();
   configureDependencies();
+
   runApp(const App());
 }
 
