@@ -19,7 +19,7 @@ final beerFermentationDto = BeerFermentationDto(
 // JSON
 final beerFermentationJson = {
   'temp': {
-    'value': 19,
+    'value': 19.0,
     'unit': 'celsius',
   },
 };

@@ -33,7 +33,7 @@ final beerIngredientsHopDto = BeerIngredientsHopDto(
 final beerIngredientsHopJson = {
   'name': beerHopName.value,
   'amount': {
-    'value': 25,
+    'value': 25.0,
     'unit': 'grams',
   },
   'add': beerHopAdd.value,

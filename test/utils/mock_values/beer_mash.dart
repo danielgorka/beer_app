@@ -23,7 +23,7 @@ final beerMashDto = BeerMashDto(
 // JSON
 final beerMashJson = {
   'temp': {
-    'value': 65,
+    'value': 65.0,
     'unit': 'celsius',
   },
   'duration': beerMashDuration.value,
