@@ -21,6 +21,7 @@ void main() {
           await tester.pumpAppWidget(
             BeerItem(
               beer: beer,
+              onFavouriteChanged: (_) {},
             ),
           );
 
@@ -36,6 +37,7 @@ void main() {
           await tester.pumpAppWidget(
             BeerItem(
               beer: beer,
+              onFavouriteChanged: (_) {},
             ),
           );
 
@@ -45,17 +47,24 @@ void main() {
       );
 
       testWidgets(
-        'should show FavouriteBeerButton',
+        'should show FavouriteBeerButton with onFavouriteChanged callback',
         (tester) async {
+          // arrange
+          void onFavouriteChanged(_) {}
+
           // act
           await tester.pumpAppWidget(
             BeerItem(
               beer: beer,
+              onFavouriteChanged: onFavouriteChanged,
             ),
           );
 
           // assert
-          expect(find.byType(FavouriteBeerButton), findsOneWidget);
+          final finder = find.byType(FavouriteBeerButton);
+          final favouriteBeerButton =
+              tester.widget<FavouriteBeerButton>(finder);
+          expect(favouriteBeerButton.onFavouriteChanged, onFavouriteChanged);
         },
       );
 
@@ -78,6 +87,7 @@ void main() {
               stateHash: 0,
               child: BeerItem(
                 beer: beer,
+                onFavouriteChanged: (_) {},
               ),
             ),
           );

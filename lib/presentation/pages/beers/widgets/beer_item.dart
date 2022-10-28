@@ -10,9 +10,11 @@ class BeerItem extends StatelessWidget {
   const BeerItem({
     super.key,
     required this.beer,
+    required this.onFavouriteChanged,
   });
 
   final Beer beer;
+  final ValueChanged<bool> onFavouriteChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -53,12 +55,12 @@ class BeerItem extends StatelessWidget {
                 ),
               ),
             ),
-            const Positioned(
+            Positioned(
               top: 0,
               right: 0,
               child: FavouriteBeerButton(
-                //TODO
-                favourite: false,
+                favourite: beer.favourite,
+                onFavouriteChanged: onFavouriteChanged,
               ),
             ),
           ],
