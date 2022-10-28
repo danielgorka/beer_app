@@ -1,3 +1,4 @@
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:beer_app/presentation/assets.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/favourite_beer_button.dart';
 import 'package:beer_app/presentation/widgets/asset_icon.dart';
@@ -16,8 +17,9 @@ void main() {
         (tester) async {
           // act
           await tester.pumpAppWidget(
-            const FavouriteBeerButton(
-              favourite: false,
+            FavouriteBeerButton(
+              favourite: const BeerFavourite(false),
+              onFavouriteChanged: (_) {},
             ),
           );
 
@@ -32,8 +34,9 @@ void main() {
         (tester) async {
           // act
           await tester.pumpAppWidget(
-            const FavouriteBeerButton(
-              favourite: false,
+            FavouriteBeerButton(
+              favourite: const BeerFavourite(false),
+              onFavouriteChanged: (_) {},
             ),
           );
 
@@ -49,8 +52,9 @@ void main() {
         (tester) async {
           // act
           await tester.pumpAppWidget(
-            const FavouriteBeerButton(
-              favourite: true,
+            FavouriteBeerButton(
+              favourite: const BeerFavourite(true),
+              onFavouriteChanged: (_) {},
             ),
           );
 
@@ -58,6 +62,30 @@ void main() {
           final finder = find.byType(AssetIcon);
           final assetIcon = tester.widget<AssetIcon>(finder);
           expect(assetIcon.asset, Assets.favMugColored);
+        },
+      );
+
+      testWidgets(
+        'should call onFavouriteChanged on tap',
+        (tester) async {
+          // arrange
+          bool? calledValue;
+
+          // act
+          await tester.pumpAppWidget(
+            FavouriteBeerButton(
+              favourite: const BeerFavourite(true),
+              onFavouriteChanged: (newVal) {
+                calledValue = newVal;
+              },
+            ),
+          );
+
+          await tester.tap(find.byType(FavouriteBeerButton));
+          await tester.pumpAndSettle();
+
+          // assert
+          expect(calledValue, false);
         },
       );
     },

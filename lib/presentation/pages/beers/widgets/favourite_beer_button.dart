@@ -1,3 +1,4 @@
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:beer_app/presentation/assets.dart';
 import 'package:beer_app/presentation/theme.dart';
 import 'package:beer_app/presentation/widgets/asset_icon.dart';
@@ -8,9 +9,11 @@ class FavouriteBeerButton extends StatelessWidget {
   const FavouriteBeerButton({
     super.key,
     required this.favourite,
+    required this.onFavouriteChanged,
   });
 
-  final bool favourite;
+  final BeerFavourite favourite;
+  final ValueChanged<bool> onFavouriteChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +37,9 @@ class FavouriteBeerButton extends StatelessWidget {
           start: AppTheme.beerColor,
           end: AppTheme.beerColor,
         ),
-        isLiked: favourite,
+        isLiked: favourite.value,
         onTap: (isLiked) async {
-          //TODO: Call favourite beer event
+          onFavouriteChanged(!isLiked);
           return !isLiked;
         },
         likeBuilder: (isLiked) {
