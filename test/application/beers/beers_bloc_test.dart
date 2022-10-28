@@ -2,6 +2,7 @@ import 'package:beer_app/application/beers/beers_bloc.dart';
 import 'package:beer_app/domain/beers/beers_failure.dart';
 import 'package:beer_app/domain/beers/i_beers_repository.dart';
 import 'package:beer_app/domain/beers/models/beer.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -24,19 +25,49 @@ void main() {
       late IBeersRepository beersRepository;
       late BeersBloc beersBloc;
 
-      setUp(
-        () {
-          beersRepository = MockBeersRepository();
-          beersBloc = BeersBloc(
-            limit: beersLimit,
-            beersRepository: beersRepository,
-          );
-        },
-      );
+      setUp(() {
+        beersRepository = MockBeersRepository();
+        beersBloc = BeersBloc(
+          limit: beersLimit,
+          beersRepository: beersRepository,
+        );
+      });
 
       test('initialState should be initial', () {
         expect(beersBloc.state, equals(BeersState.initial()));
       });
+
+      blocTest<BeersBloc, BeersState>(
+        'should add BeerDetailsEvent.refreshFavourite '
+        'on favourites listener called',
+        build: () => beersBloc,
+        setUp: () {
+          when(() => beersRepository.getFavouriteBeers()).thenAnswer(
+            (_) => Future.value(Right([beer])),
+          );
+        },
+        seed: () => BeersState(
+          loading: false,
+          errorType: ErrorType.none,
+          beers: [
+            beer.copyWith(favourite: const BeerFavourite(false)),
+            beer.copyWith(favourite: const BeerFavourite(false)),
+          ],
+          canLoadMore: true,
+        ),
+        act: (_) => beersBloc.favouriteBeersListener(),
+        expect: () => [
+          BeersState(
+            loading: false,
+            errorType: ErrorType.none,
+            beers: [
+              beer.copyWith(favourite: const BeerFavourite(true)),
+              beer.copyWith(favourite: const BeerFavourite(true)),
+            ],
+            canLoadMore: true,
+          ),
+        ],
+      );
 
       group(
         'on<_Init>',
@@ -320,6 +351,163 @@ void main() {
             'returns BeersFailure.unknownError',
             failure: const BeersFailure.unknownError(),
             errorType: ErrorType.unknown,
+          );
+        },
+      );
+
+      group(
+        'on<_FavoriteChanged>',
+        () {
+          blocTest<BeersBloc, BeersState>(
+            'should save beer in repository when favourite is true',
+            build: () => beersBloc,
+            setUp: () {
+              when(() => beersRepository.saveFavouriteBeer(beer))
+                  .thenAnswer((_) => Future.value());
+            },
+            seed: () => BeersState(
+              loading: false,
+              errorType: ErrorType.none,
+              beers: beers,
+              canLoadMore: true,
+            ),
+            act: (_) => beersBloc.add(
+              BeersEvent.favouriteChanged(
+                beer: beer,
+                favourite: true,
+              ),
+            ),
+            expect: () => <BeersState>[],
+            verify: (_) {
+              verify(() => beersRepository.saveFavouriteBeer(beer)).called(1);
+            },
+          );
+
+          blocTest<BeersBloc, BeersState>(
+            'should remove beer from repository when favourite is false',
+            build: () => beersBloc,
+            setUp: () {
+              when(() => beersRepository.removeFavouriteBeer(beer.id))
+                  .thenAnswer((_) => Future.value());
+            },
+            seed: () => BeersState(
+              loading: false,
+              errorType: ErrorType.none,
+              beers: beers,
+              canLoadMore: true,
+            ),
+            act: (_) => beersBloc.add(
+              BeersEvent.favouriteChanged(
+                beer: beer,
+                favourite: false,
+              ),
+            ),
+            expect: () => <BeersState>[],
+            verify: (_) {
+              verify(() => beersRepository.removeFavouriteBeer(beer.id))
+                  .called(1);
+            },
+          );
+
+          blocTest<BeersBloc, BeersState>(
+            'should emit state with ErrorType.unknown '
+            'when repository returns failure',
+            build: () => beersBloc,
+            setUp: () {
+              when(
+                () => beersRepository.removeFavouriteBeer(beer.id),
+              ).thenAnswer(
+                (_) => Future.value(const BeersFailure.unknownError()),
+              );
+            },
+            seed: () => BeersState(
+              loading: false,
+              errorType: ErrorType.none,
+              beers: beers,
+              canLoadMore: true,
+            ),
+            act: (_) => beersBloc.add(
+              BeersEvent.favouriteChanged(
+                beer: beer,
+                favourite: false,
+              ),
+            ),
+            expect: () => [
+              BeersState(
+                loading: false,
+                errorType: ErrorType.unknown,
+                beers: beers,
+                canLoadMore: true,
+              ),
+            ],
+          );
+        },
+      );
+
+      group(
+        'on<_RefreshFavourite>',
+        () {
+          blocTest<BeersBloc, BeersState>(
+            'should update beer favourite value from repository',
+            build: () => beersBloc,
+            setUp: () {
+              when(() => beersRepository.getFavouriteBeers()).thenAnswer(
+                (_) => Future.value(Right([beer])),
+              );
+            },
+            seed: () => BeersState(
+              loading: false,
+              errorType: ErrorType.none,
+              beers: beers
+                  .map(
+                    (e) => e.copyWith(favourite: const BeerFavourite(false)),
+                  )
+                  .toList(),
+              canLoadMore: true,
+            ),
+            act: (_) => beersBloc.add(
+              const BeersEvent.refreshFavourite(),
+            ),
+            expect: () => [
+              BeersState(
+                loading: false,
+                errorType: ErrorType.none,
+                beers: beers
+                    .map(
+                      (e) => e.copyWith(favourite: const BeerFavourite(true)),
+                    )
+                    .toList(),
+                canLoadMore: true,
+              ),
+            ],
+          );
+
+          blocTest<BeersBloc, BeersState>(
+            'should emit state with ErrorType.unknown '
+            'when repository returns failure',
+            build: () => beersBloc,
+            setUp: () {
+              when(() => beersRepository.getFavouriteBeers()).thenAnswer(
+                (_) => Future.value(const Left(BeersFailure.unknownError())),
+              );
+            },
+            seed: () => BeersState(
+              loading: false,
+              errorType: ErrorType.none,
+              beers: beers,
+              canLoadMore: true,
+            ),
+            act: (_) => beersBloc.add(
+              const BeersEvent.refreshFavourite(),
+            ),
+            expect: () => [
+              BeersState(
+                loading: false,
+                errorType: ErrorType.unknown,
+                beers: beers,
+                canLoadMore: true,
+              ),
+            ],
           );
         },
       );
