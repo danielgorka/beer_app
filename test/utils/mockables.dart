@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:beer_app/application/beer_details/beer_details_bloc.dart';
 import 'package:beer_app/application/beers/beers_bloc.dart';
+import 'package:beer_app/application/favourites/favourites_bloc.dart';
 import 'package:beer_app/application/search/search_bloc.dart';
 import 'package:beer_app/domain/beers/i_beers_repository.dart';
 import 'package:beer_app/infrastructure/beers/beers_data_source.dart';
@@ -31,6 +32,9 @@ class MockSearchBloc extends MockBloc<SearchEvent, SearchState>
 
 class MockBeerDetailsBloc extends MockBloc<BeerDetailsEvent, BeerDetailsState>
     implements BeerDetailsBloc {}
+
+class MockFavouritesBloc extends MockBloc<FavouritesEvent, FavouritesState>
+    implements FavouritesBloc {}
 
 class MockAppRouter extends Mock implements AppRouter {}
 
