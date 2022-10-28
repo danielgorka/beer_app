@@ -2,6 +2,7 @@ import 'package:beer_app/application/beer_details/beer_details_bloc.dart';
 import 'package:beer_app/domain/beers/beers_failure.dart';
 import 'package:beer_app/domain/beers/i_beers_repository.dart';
 import 'package:beer_app/domain/beers/models/beer.dart';
+import 'package:beer_app/domain/beers/value_objects/beer_favourite.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -28,6 +29,30 @@ void main() {
       test('initialState should be initial', () {
         expect(beerDetailsBloc.state, equals(BeerDetailsState.initial()));
       });
+
+      blocTest<BeerDetailsBloc, BeerDetailsState>(
+        'should add BeerDetailsEvent.refreshFavourite '
+        'on favourites listener called',
+        build: () => beerDetailsBloc,
+        setUp: () {
+          when(() => beersRepository.isFavouriteBeer(beerId)).thenAnswer(
+            (_) => Future.value(const Right(BeerFavourite(true))),
+          );
+        },
+        seed: () => BeerDetailsState(
+          loading: false,
+          errorType: ErrorType.none,
+          beer: beer.copyWith(favourite: const BeerFavourite(false)),
+        ),
+        act: (_) => beerDetailsBloc.favouriteBeersListener(),
+        expect: () => [
+          BeerDetailsState(
+            loading: false,
+            errorType: ErrorType.none,
+            beer: beer.copyWith(favourite: const BeerFavourite(true)),
+          ),
+        ],
+      );
 
       group(
         'on<_Init>',
@@ -125,6 +150,131 @@ void main() {
             'returns BeersFailure.unknownError',
             failure: const BeersFailure.unknownError(),
             errorType: ErrorType.unknown,
+          );
+        },
+      );
+
+      group(
+        'on<_FavoriteChanged>',
+        () {
+          blocTest<BeerDetailsBloc, BeerDetailsState>(
+            'should save beer in repository when favourite is true',
+            build: () => beerDetailsBloc,
+            setUp: () {
+              when(() => beersRepository.saveFavouriteBeer(beer))
+                  .thenAnswer((_) => Future.value());
+            },
+            seed: () => BeerDetailsState(
+              loading: false,
+              errorType: ErrorType.none,
+              beer: beer,
+            ),
+            act: (_) => beerDetailsBloc.add(
+              const BeerDetailsEvent.favouriteChanged(favourite: true),
+            ),
+            expect: () => <BeerDetailsState>[],
+          );
+
+          blocTest<BeerDetailsBloc, BeerDetailsState>(
+            'should remove beer from repository when favourite is false',
+            build: () => beerDetailsBloc,
+            setUp: () {
+              when(() => beersRepository.removeFavouriteBeer(beer.id))
+                  .thenAnswer((_) => Future.value());
+            },
+            seed: () => BeerDetailsState(
+              loading: false,
+              errorType: ErrorType.none,
+              beer: beer,
+            ),
+            act: (_) => beerDetailsBloc.add(
+              const BeerDetailsEvent.favouriteChanged(favourite: false),
+            ),
+            expect: () => <BeerDetailsState>[],
+          );
+
+          blocTest<BeerDetailsBloc, BeerDetailsState>(
+            'should emit state with ErrorType.unknown '
+            'when repository returns failure',
+            build: () => beerDetailsBloc,
+            setUp: () {
+              when(
+                () => beersRepository.removeFavouriteBeer(beer.id),
+              ).thenAnswer(
+                (_) => Future.value(const BeersFailure.unknownError()),
+              );
+            },
+            seed: () => BeerDetailsState(
+              loading: false,
+              errorType: ErrorType.none,
+              beer: beer,
+            ),
+            act: (_) => beerDetailsBloc.add(
+              const BeerDetailsEvent.favouriteChanged(favourite: false),
+            ),
+            expect: () => [
+              BeerDetailsState(
+                loading: false,
+                errorType: ErrorType.unknown,
+                beer: beer,
+              ),
+            ],
+          );
+        },
+      );
+
+      group(
+        'on<_RefreshFavourite>',
+        () {
+          blocTest<BeerDetailsBloc, BeerDetailsState>(
+            'should update beer favourite value from repository',
+            build: () => beerDetailsBloc,
+            setUp: () {
+              when(() => beersRepository.isFavouriteBeer(beerId)).thenAnswer(
+                (_) => Future.value(const Right(BeerFavourite(true))),
+              );
+            },
+            seed: () => BeerDetailsState(
+              loading: false,
+              errorType: ErrorType.none,
+              beer: beer.copyWith(favourite: const BeerFavourite(false)),
+            ),
+            act: (_) => beerDetailsBloc.add(
+              const BeerDetailsEvent.refreshFavourite(),
+            ),
+            expect: () => [
+              BeerDetailsState(
+                loading: false,
+                errorType: ErrorType.none,
+                beer: beer.copyWith(favourite: const BeerFavourite(true)),
+              ),
+            ],
+          );
+
+          blocTest<BeerDetailsBloc, BeerDetailsState>(
+            'should emit state with ErrorType.unknown '
+            'when repository returns failure',
+            build: () => beerDetailsBloc,
+            setUp: () {
+              when(() => beersRepository.isFavouriteBeer(beerId)).thenAnswer(
+                (_) => Future.value(const Left(BeersFailure.unknownError())),
+              );
+            },
+            seed: () => BeerDetailsState(
+              loading: false,
+              errorType: ErrorType.none,
+              beer: beer,
+            ),
+            act: (_) => beerDetailsBloc.add(
+              const BeerDetailsEvent.refreshFavourite(),
+            ),
+            expect: () => [
+              BeerDetailsState(
+                loading: false,
+                errorType: ErrorType.unknown,
+                beer: beer,
+              ),
+            ],
           );
         },
       );

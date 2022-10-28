@@ -17,6 +17,10 @@ class BeerDetailsBloc extends Bloc<BeerDetailsEvent, BeerDetailsState> {
     required this.beersRepository,
   }) : super(BeerDetailsState.initial()) {
     on<_Init>(_init);
+    on<_FavouriteChanged>(_favouriteChanged);
+    on<_RefreshFavourite>(_refreshFavourite);
+
+    beersRepository.addFavouriteBeersListener(favouriteBeersListener);
   }
 
   final IBeersRepository beersRepository;
@@ -48,6 +52,43 @@ class BeerDetailsBloc extends Bloc<BeerDetailsEvent, BeerDetailsState> {
     );
   }
 
+  Future<void> _favouriteChanged(
+    _FavouriteChanged event,
+    Emitter<BeerDetailsState> emit,
+  ) async {
+    final BeersFailure? failure;
+
+    if (event.favourite) {
+      failure = await beersRepository.saveFavouriteBeer(state.beer!);
+    } else {
+      failure = await beersRepository.removeFavouriteBeer(state.beer!.id);
+    }
+
+    if (failure != null) {
+      emit(_failureToState(failure));
+    }
+  }
+
+  Future<void> _refreshFavourite(
+    _RefreshFavourite event,
+    Emitter<BeerDetailsState> emit,
+  ) async {
+    final either = await beersRepository.isFavouriteBeer(state.beer!.id);
+
+    emit(
+      either.fold(
+        _failureToState,
+        (favourite) => state.copyWith(
+          beer: state.beer!.copyWith(favourite: favourite),
+        ),
+      ),
+    );
+  }
+
+  @visibleForTesting
+  void favouriteBeersListener() =>
+      add(const BeerDetailsEvent.refreshFavourite());
+
   BeerDetailsState _failureToState(BeersFailure failure) {
     return failure.map(
       notFound: (_) => state.copyWith(
@@ -63,5 +104,11 @@ class BeerDetailsBloc extends Bloc<BeerDetailsEvent, BeerDetailsState> {
         errorType: ErrorType.unknown,
       ),
     );
+  }
+
+  @override
+  Future<void> close() {
+    beersRepository.removeFavouriteBeersListener(favouriteBeersListener);
+    return super.close();
   }
 }

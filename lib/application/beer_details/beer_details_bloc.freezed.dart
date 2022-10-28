@@ -16,43 +16,49 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$BeerDetailsEvent {
-  int? get beerId => throw _privateConstructorUsedError;
-  Beer? get beer => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? beerId, Beer? beer) init,
+    required TResult Function(bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? beerId, Beer? beer)? init,
+    TResult? Function(bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? beerId, Beer? beer)? init,
+    TResult Function(bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $BeerDetailsEventCopyWith<BeerDetailsEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,10 +67,6 @@ abstract class $BeerDetailsEventCopyWith<$Res> {
   factory $BeerDetailsEventCopyWith(
           BeerDetailsEvent value, $Res Function(BeerDetailsEvent) then) =
       _$BeerDetailsEventCopyWithImpl<$Res, BeerDetailsEvent>;
-  @useResult
-  $Res call({int? beerId, Beer? beer});
-
-  $BeerCopyWith<$Res>? get beer;
 }
 
 /// @nodoc
@@ -76,48 +78,15 @@ class _$BeerDetailsEventCopyWithImpl<$Res, $Val extends BeerDetailsEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? beerId = freezed,
-    Object? beer = freezed,
-  }) {
-    return _then(_value.copyWith(
-      beerId: freezed == beerId
-          ? _value.beerId
-          : beerId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      beer: freezed == beer
-          ? _value.beer
-          : beer // ignore: cast_nullable_to_non_nullable
-              as Beer?,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $BeerCopyWith<$Res>? get beer {
-    if (_value.beer == null) {
-      return null;
-    }
-
-    return $BeerCopyWith<$Res>(_value.beer!, (value) {
-      return _then(_value.copyWith(beer: value) as $Val);
-    });
-  }
 }
 
 /// @nodoc
-abstract class _$$_InitCopyWith<$Res>
-    implements $BeerDetailsEventCopyWith<$Res> {
+abstract class _$$_InitCopyWith<$Res> {
   factory _$$_InitCopyWith(_$_Init value, $Res Function(_$_Init) then) =
       __$$_InitCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int? beerId, Beer? beer});
 
-  @override
   $BeerCopyWith<$Res>? get beer;
 }
 
@@ -144,6 +113,18 @@ class __$$_InitCopyWithImpl<$Res>
           : beer // ignore: cast_nullable_to_non_nullable
               as Beer?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $BeerCopyWith<$Res>? get beer {
+    if (_value.beer == null) {
+      return null;
+    }
+
+    return $BeerCopyWith<$Res>(_value.beer!, (value) {
+      return _then(_value.copyWith(beer: value));
+    });
   }
 }
 
@@ -184,6 +165,8 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int? beerId, Beer? beer) init,
+    required TResult Function(bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
   }) {
     return init(beerId, beer);
   }
@@ -192,6 +175,8 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int? beerId, Beer? beer)? init,
+    TResult? Function(bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
   }) {
     return init?.call(beerId, beer);
   }
@@ -200,6 +185,8 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int? beerId, Beer? beer)? init,
+    TResult Function(bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -212,6 +199,8 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Init value) init,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
   }) {
     return init(this);
   }
@@ -220,6 +209,8 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Init value)? init,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
   }) {
     return init?.call(this);
   }
@@ -228,6 +219,8 @@ class _$_Init implements _Init {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Init value)? init,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -240,13 +233,259 @@ class _$_Init implements _Init {
 abstract class _Init implements BeerDetailsEvent {
   const factory _Init({final int? beerId, final Beer? beer}) = _$_Init;
 
-  @override
   int? get beerId;
-  @override
   Beer? get beer;
-  @override
   @JsonKey(ignore: true)
   _$$_InitCopyWith<_$_Init> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_FavouriteChangedCopyWith<$Res> {
+  factory _$$_FavouriteChangedCopyWith(
+          _$_FavouriteChanged value, $Res Function(_$_FavouriteChanged) then) =
+      __$$_FavouriteChangedCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool favourite});
+}
+
+/// @nodoc
+class __$$_FavouriteChangedCopyWithImpl<$Res>
+    extends _$BeerDetailsEventCopyWithImpl<$Res, _$_FavouriteChanged>
+    implements _$$_FavouriteChangedCopyWith<$Res> {
+  __$$_FavouriteChangedCopyWithImpl(
+      _$_FavouriteChanged _value, $Res Function(_$_FavouriteChanged) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favourite = null,
+  }) {
+    return _then(_$_FavouriteChanged(
+      favourite: null == favourite
+          ? _value.favourite
+          : favourite // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FavouriteChanged implements _FavouriteChanged {
+  const _$_FavouriteChanged({required this.favourite});
+
+  @override
+  final bool favourite;
+
+  @override
+  String toString() {
+    return 'BeerDetailsEvent.favouriteChanged(favourite: $favourite)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FavouriteChanged &&
+            (identical(other.favourite, favourite) ||
+                other.favourite == favourite));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, favourite);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FavouriteChangedCopyWith<_$_FavouriteChanged> get copyWith =>
+      __$$_FavouriteChangedCopyWithImpl<_$_FavouriteChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? beerId, Beer? beer) init,
+    required TResult Function(bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
+  }) {
+    return favouriteChanged(favourite);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? beerId, Beer? beer)? init,
+    TResult? Function(bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
+  }) {
+    return favouriteChanged?.call(favourite);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? beerId, Beer? beer)? init,
+    TResult Function(bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
+    required TResult orElse(),
+  }) {
+    if (favouriteChanged != null) {
+      return favouriteChanged(favourite);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
+  }) {
+    return favouriteChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
+  }) {
+    return favouriteChanged?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
+    required TResult orElse(),
+  }) {
+    if (favouriteChanged != null) {
+      return favouriteChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FavouriteChanged implements BeerDetailsEvent {
+  const factory _FavouriteChanged({required final bool favourite}) =
+      _$_FavouriteChanged;
+
+  bool get favourite;
+  @JsonKey(ignore: true)
+  _$$_FavouriteChangedCopyWith<_$_FavouriteChanged> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RefreshFavouriteCopyWith<$Res> {
+  factory _$$_RefreshFavouriteCopyWith(
+          _$_RefreshFavourite value, $Res Function(_$_RefreshFavourite) then) =
+      __$$_RefreshFavouriteCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_RefreshFavouriteCopyWithImpl<$Res>
+    extends _$BeerDetailsEventCopyWithImpl<$Res, _$_RefreshFavourite>
+    implements _$$_RefreshFavouriteCopyWith<$Res> {
+  __$$_RefreshFavouriteCopyWithImpl(
+      _$_RefreshFavourite _value, $Res Function(_$_RefreshFavourite) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_RefreshFavourite implements _RefreshFavourite {
+  const _$_RefreshFavourite();
+
+  @override
+  String toString() {
+    return 'BeerDetailsEvent.refreshFavourite()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_RefreshFavourite);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int? beerId, Beer? beer) init,
+    required TResult Function(bool favourite) favouriteChanged,
+    required TResult Function() refreshFavourite,
+  }) {
+    return refreshFavourite();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int? beerId, Beer? beer)? init,
+    TResult? Function(bool favourite)? favouriteChanged,
+    TResult? Function()? refreshFavourite,
+  }) {
+    return refreshFavourite?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int? beerId, Beer? beer)? init,
+    TResult Function(bool favourite)? favouriteChanged,
+    TResult Function()? refreshFavourite,
+    required TResult orElse(),
+  }) {
+    if (refreshFavourite != null) {
+      return refreshFavourite();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_FavouriteChanged value) favouriteChanged,
+    required TResult Function(_RefreshFavourite value) refreshFavourite,
+  }) {
+    return refreshFavourite(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_FavouriteChanged value)? favouriteChanged,
+    TResult? Function(_RefreshFavourite value)? refreshFavourite,
+  }) {
+    return refreshFavourite?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_FavouriteChanged value)? favouriteChanged,
+    TResult Function(_RefreshFavourite value)? refreshFavourite,
+    required TResult orElse(),
+  }) {
+    if (refreshFavourite != null) {
+      return refreshFavourite(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshFavourite implements BeerDetailsEvent {
+  const factory _RefreshFavourite() = _$_RefreshFavourite;
 }
 
 /// @nodoc
