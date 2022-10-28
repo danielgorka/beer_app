@@ -4,14 +4,22 @@ import 'package:beer_app/application/beers/beers_bloc.dart';
 import 'package:beer_app/application/search/search_bloc.dart';
 import 'package:beer_app/domain/beers/i_beers_repository.dart';
 import 'package:beer_app/infrastructure/beers/beers_data_source.dart';
+import 'package:beer_app/infrastructure/beers/favourites_data_source.dart';
 import 'package:beer_app/presentation/routes/router.dart';
 import 'package:bloc_test/bloc_test.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mocktail/mocktail.dart';
 
+class MockBox<T> extends Mock implements Box<T> {}
+
+class MockHiveInterface extends Mock implements HiveInterface {}
+
 class MockBeersDataSource extends Mock implements IBeersDataSource {}
+
+class MockFavouritesDataSource extends Mock implements IFavouritesDataSource {}
 
 class MockBeersRepository extends Mock implements IBeersRepository {}
 
