@@ -5,6 +5,7 @@ import 'package:beer_app/presentation/pages/beers/widgets/favourite_beer_button.
 import 'package:beer_app/presentation/routes/router.dart';
 import 'package:beer_app/presentation/utils.dart';
 import 'package:flutter/material.dart';
+import 'package:open_container/open_container.dart';
 
 class BeerItem extends StatelessWidget {
   const BeerItem({
@@ -18,54 +19,61 @@ class BeerItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      borderRadius: borderRadius,
-      onTap: () {
-        context.router.push(
-          BeerDetailsRoute(
-            beerId: beer.id.value,
-            beer: beer,
-          ),
-        );
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: Padding(
-                padding: const EdgeInsets.all(8),
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      child: BeerImageView(
-                        imageUrl: beer.imageUrl,
+    return OpenContainer(
+        tag: beer.id.value,
+        color: Colors.transparent,
+        clipBehavior: Clip.none,
+        shape: const RoundedRectangleBorder(borderRadius: borderRadius),
+        builder: (context) {
+          return InkWell(
+            borderRadius: borderRadius,
+            onTap: () {
+              context.router.push(
+                BeerDetailsRoute(
+                  beerId: beer.id.value,
+                  beer: beer,
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8),
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Expanded(
+                            child: BeerImageView(
+                              imageUrl: beer.imageUrl,
+                            ),
+                          ),
+                          const SizedBox(height: 8),
+                          Text(
+                            '${beer.name.value}\n\n',
+                            style: Theme.of(context).textTheme.titleMedium,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.fade,
+                            maxLines: 2,
+                          ),
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 8),
-                    Text(
-                      '${beer.name.value}\n\n',
-                      style: Theme.of(context).textTheme.titleMedium,
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.fade,
-                      maxLines: 2,
+                  ),
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: FavouriteBeerButton(
+                      favourite: beer.favourite,
+                      onFavouriteChanged: onFavouriteChanged,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
-            Positioned(
-              top: 0,
-              right: 0,
-              child: FavouriteBeerButton(
-                favourite: beer.favourite,
-                onFavouriteChanged: onFavouriteChanged,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }

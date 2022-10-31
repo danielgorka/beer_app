@@ -70,7 +70,7 @@ class _$AppRouter extends RootStackRouter {
           beerId: args.beerId,
           beer: args.beer,
         ),
-        transitionsBuilder: fadeScale,
+        customRouteBuilder: openContainerBeerRouteBuilder,
         opaque: true,
         barrierDismissible: false,
       );

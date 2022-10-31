@@ -3,6 +3,7 @@ import 'package:beer_app/presentation/pages/search/search_page.dart';
 import 'package:beer_app/presentation/routes/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:open_container/open_container.dart';
 
 import '../../utils/mockables.dart';
@@ -55,6 +56,36 @@ void main() {
           expect(result, isA<OpenContainerRoute<void>>());
           final route = result as OpenContainerRoute<void>;
           expect(route.tag, SearchPage);
+          expect(route.color, Theme.of(context).canvasColor);
+          expect(route.settings, page);
+          expect(route.builder(context), child);
+        },
+      );
+    },
+  );
+
+  group(
+    'openContainerBeerRouteBuilder',
+    () {
+      test(
+        'should return OpenContainerRoute with correct arguments',
+        () {
+          // arrange
+          const beerId = 123;
+          final context = MockBuildContext();
+          const child = Text('child');
+          final page = MockCustomPage<void>();
+
+          when(() => page.arguments)
+              .thenReturn(const BeerDetailsRouteArgs(beerId: beerId));
+
+          // act
+          final result = openContainerBeerRouteBuilder(context, child, page);
+
+          // assert
+          expect(result, isA<OpenContainerRoute<void>>());
+          final route = result as OpenContainerRoute<void>;
+          expect(route.tag, beerId);
           expect(route.color, Theme.of(context).canvasColor);
           expect(route.settings, page);
           expect(route.builder(context), child);

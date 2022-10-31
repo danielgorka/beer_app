@@ -5,6 +5,7 @@ import 'package:beer_app/presentation/pages/beers/widgets/favourite_beer_button.
 import 'package:beer_app/presentation/routes/router.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:open_container/open_container.dart';
 
 import '../../../../utils/mock_values/beer.dart';
 import '../../../../utils/mockables.dart';
@@ -15,7 +16,7 @@ void main() {
     'BeerItem',
     () {
       testWidgets(
-        'should show BeerImageView',
+        'should show OpenContainer and BeerImageView',
         (tester) async {
           // act
           await tester.pumpAppWidget(
@@ -26,6 +27,7 @@ void main() {
           );
 
           // assert
+          expect(find.byType(OpenContainer), findsOneWidget);
           expect(find.byType(BeerImageView), findsOneWidget);
         },
       );

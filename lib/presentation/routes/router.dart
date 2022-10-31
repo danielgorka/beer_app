@@ -30,9 +30,10 @@ part 'router.gr.dart';
               path: '',
               page: BeersPage,
             ),
-            AutoRoute<void>(
+            CustomRoute<void>(
               path: ':id',
               page: BeerDetailsPage,
+              customRouteBuilder: openContainerBeerRouteBuilder,
             ),
             CustomRoute<void>(
               path: 'search',
@@ -51,9 +52,10 @@ part 'router.gr.dart';
               path: '',
               page: FavouritesPage,
             ),
-            AutoRoute<void>(
+            CustomRoute<void>(
               path: ':id',
               page: BeerDetailsPage,
+              customRouteBuilder: openContainerBeerRouteBuilder,
             ),
             RedirectRoute(path: '*', redirectTo: ''),
           ],
@@ -81,10 +83,24 @@ Route<T> openContainerSearchRouteBuilder<T>(
   Widget child,
   CustomPage<T> page,
 ) {
-  return OpenContainerRoute(
+  return OpenContainerRoute<T>(
     color: Theme.of(context).canvasColor,
     settings: page,
     tag: SearchPage,
+    builder: (context) => child,
+  );
+}
+
+Route<T> openContainerBeerRouteBuilder<T>(
+  BuildContext context,
+  Widget child,
+  CustomPage<T> page,
+) {
+  final args = page.arguments! as BeerDetailsRouteArgs;
+  return OpenContainerRoute<T>(
+    color: Theme.of(context).canvasColor,
+    settings: page,
+    tag: args.beerId,
     builder: (context) => child,
   );
 }
