@@ -157,7 +157,8 @@ class _SearchBar extends StatelessWidget {
             ),
             builder: (context) {
               return MaterialCard(
-                elevation: ElevationLevel.level3,
+                elevation: ElevationLevel.level2,
+                color: Theme.of(context).colorScheme.surface,
                 child: InkWell(
                   borderRadius: borderRadius,
                   onTap: onTap,

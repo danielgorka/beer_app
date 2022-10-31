@@ -1,4 +1,5 @@
 import 'package:beer_app/presentation/pages/beer_details/utils.dart';
+import 'package:beer_app/presentation/utils.dart';
 import 'package:beer_app/presentation/widgets/material_card.dart';
 import 'package:flutter/material.dart';
 
@@ -19,6 +20,7 @@ class DetailsCard extends StatelessWidget {
         padding: const EdgeInsets.symmetric(vertical: 16),
         width: maxCardWidth,
         child: MaterialCard(
+          elevation: ElevationLevel.level2,
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
