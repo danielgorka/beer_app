@@ -32,6 +32,10 @@ dependencies:
     git:
       url: https://github.com/danielgorka/material3_drawer.git
       ref: 1.0.0
+  open_container:
+    git:
+      url: https://github.com/danielgorka/open_container.git
+      ref: 1.0.1
   retrofit: ^3.3.1
   rive: ^0.9.1
   shimmer: ^2.0.0

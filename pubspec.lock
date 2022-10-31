@@ -534,6 +534,15 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.2"
+  open_container:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "1.0.1"
+      resolved-ref: cda70f3bfcd33f9b1f266f03b102ca2538639cea
+      url: "https://github.com/danielgorka/open_container.git"
+    source: git
+    version: "1.0.1"
   package_config:
     dependency: transitive
     description:
