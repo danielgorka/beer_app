@@ -28,5 +28,5 @@ abstract class IBeersDataSource {
   });
 
   @GET('/beers/{id}')
-  Future<BeerDto> getBeer(@Path('id') int id);
+  Future<List<BeerDto>> getBeer(@Path('id') int id);
 }

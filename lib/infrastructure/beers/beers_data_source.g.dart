@@ -83,13 +83,13 @@ class _IBeersDataSource implements IBeersDataSource {
   }
 
   @override
-  Future<BeerDto> getBeer(id) async {
+  Future<List<BeerDto>> getBeer(id) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     final _result =
-        await _dio.fetch<Map<String, dynamic>>(_setStreamType<BeerDto>(Options(
+        await _dio.fetch<List<dynamic>>(_setStreamType<List<BeerDto>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -101,7 +101,9 @@ class _IBeersDataSource implements IBeersDataSource {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = BeerDto.fromJson(_result.data!);
+    var value = _result.data!
+        .map((dynamic i) => BeerDto.fromJson(i as Map<String, dynamic>))
+        .toList();
     return value;
   }
 

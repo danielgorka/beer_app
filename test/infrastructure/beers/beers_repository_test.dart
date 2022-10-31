@@ -212,7 +212,7 @@ void main() {
       group(
         'getBeer',
         () {
-          Future<BeerDto> dataSourceCall() =>
+          Future<List<BeerDto>> dataSourceCall() =>
               beersDataSource.getBeer(beerId.value);
 
           Future<Either<BeersFailure, Beer>> call() =>
@@ -223,7 +223,7 @@ void main() {
             'when the call to beers data source is successful',
             () async {
               // arrange
-              when(dataSourceCall).thenAnswer((_) => Future.value(beerDto));
+              when(dataSourceCall).thenAnswer((_) => Future.value([beerDto]));
               when(() => favouritesDataSource.isFavouriteBeer(beerId.value))
                   .thenAnswer((_) => Future.value(true));
 

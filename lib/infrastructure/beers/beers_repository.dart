@@ -66,7 +66,8 @@ class BeersRepository extends IBeersRepository {
   @override
   Future<Either<BeersFailure, Beer>> getBeer(BeerId id) {
     return _run(() async {
-      final beer = await beersDataSource.getBeer(id.value);
+      final beers = await beersDataSource.getBeer(id.value);
+      final beer = beers.first;
       final favourite = await favouritesDataSource.isFavouriteBeer(id.value);
 
       return beer.toDomain(
