@@ -21,6 +21,7 @@ class BeerContent extends StatelessWidget {
   Widget build(BuildContext context) {
     return SliverToBoxAdapter(
       child: MasonryGridView.custom(
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         padding: const EdgeInsets.symmetric(horizontal: 32),
         crossAxisSpacing: 16,
