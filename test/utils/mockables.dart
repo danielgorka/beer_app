@@ -38,6 +38,10 @@ class MockFavouritesBloc extends MockBloc<FavouritesEvent, FavouritesState>
 
 class MockAppRouter extends Mock implements AppRouter {}
 
+class MockCustomPage<T> extends Mock implements CustomPage<T> {}
+
+class MockBuildContext extends Mock implements BuildContext {}
+
 class MockCacheManager extends Mock implements CacheManager {}
 
 class FakeDioError extends Fake implements DioError {

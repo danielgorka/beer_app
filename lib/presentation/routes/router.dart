@@ -8,6 +8,7 @@ import 'package:beer_app/presentation/pages/core/home_page.dart';
 import 'package:beer_app/presentation/pages/favourites/favourites_page.dart';
 import 'package:beer_app/presentation/pages/search/search_page.dart';
 import 'package:flutter/material.dart';
+import 'package:open_container/open_container.dart';
 
 part 'router.gr.dart';
 
@@ -33,9 +34,10 @@ part 'router.gr.dart';
               path: ':id',
               page: BeerDetailsPage,
             ),
-            AutoRoute<void>(
+            CustomRoute<void>(
               path: 'search',
               page: SearchPage,
+              customRouteBuilder: openContainerSearchRouteBuilder,
             ),
             RedirectRoute(path: '*', redirectTo: ''),
           ],
@@ -71,5 +73,18 @@ Widget fadeScale(
   return FadeScaleTransition(
     animation: animation,
     child: child,
+  );
+}
+
+Route<T> openContainerSearchRouteBuilder<T>(
+  BuildContext context,
+  Widget child,
+  CustomPage<T> page,
+) {
+  return OpenContainerRoute(
+    color: Theme.of(context).canvasColor,
+    settings: page,
+    tag: SearchPage,
+    builder: (context) => child,
   );
 }

@@ -1,9 +1,11 @@
 import 'package:beer_app/presentation/app_icons.dart';
+import 'package:beer_app/presentation/pages/search/search_page.dart';
 import 'package:beer_app/presentation/utils.dart';
 import 'package:beer_app/presentation/widgets/animated_fade_scale.dart';
 import 'package:beer_app/presentation/widgets/material_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:open_container/open_container.dart';
 
 const searchBarHeight = 56.0;
 
@@ -145,25 +147,36 @@ class _SearchBar extends StatelessWidget {
         alignment: Alignment.bottomCenter,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: MaterialCard(
-            elevation: ElevationLevel.level3,
-            child: InkWell(
-              borderRadius: borderRadius,
-              onTap: onTap,
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(16, 12, 12, 12),
-                child: Row(
-                  children: [
-                    const Icon(AppIcons.search),
-                    const SizedBox(width: 16),
-                    Text(
-                      title,
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                  ],
-                ),
+          child: OpenContainer(
+            tag: SearchPage,
+            color: Theme.of(context).canvasColor,
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(searchBarHeight / 2),
               ),
             ),
+            builder: (context) {
+              return MaterialCard(
+                elevation: ElevationLevel.level3,
+                child: InkWell(
+                  borderRadius: borderRadius,
+                  onTap: onTap,
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(16, 12, 12, 12),
+                    child: Row(
+                      children: [
+                        const Icon(AppIcons.search),
+                        const SizedBox(width: 16),
+                        Text(
+                          title,
+                          style: Theme.of(context).textTheme.bodyLarge,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
         ),
       ),

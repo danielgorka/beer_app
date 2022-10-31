@@ -4,6 +4,7 @@ import 'package:beer_app/presentation/widgets/material_card.dart';
 import 'package:beer_app/presentation/widgets/sliver_search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:open_container/open_container.dart';
 
 import '../../utils/widget_tester_ext.dart';
 
@@ -41,12 +42,13 @@ void main() {
       }
 
       testWidgets(
-        'should show MaterialCard, search icon and title',
+        'should show OpenContainer, MaterialCard, search icon and title',
         (tester) async {
           // act
           await pumpWidget(tester);
 
           // assert
+          expect(find.byType(OpenContainer), findsOneWidget);
           expect(find.byType(MaterialCard), findsOneWidget);
           expect(find.byIcon(AppIcons.search), findsOneWidget);
           expect(find.text(title), findsOneWidget);

@@ -79,7 +79,7 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<void>(
         routeData: routeData,
         child: const SearchPage(),
-        transitionsBuilder: fadeScale,
+        customRouteBuilder: openContainerSearchRouteBuilder,
         opaque: true,
         barrierDismissible: false,
       );
