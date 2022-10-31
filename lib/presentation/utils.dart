@@ -47,5 +47,5 @@ enum ElevationLevel {
 
 const borderRadius = BorderRadius.all(Radius.circular(32));
 
-const shortAnimDuration = Duration(milliseconds: 200);
-const animDuration = Duration(milliseconds: 300);
+const standardAnimDuration = Duration(milliseconds: 300);
+const emphasizedAnimDuration = Duration(milliseconds: 500);

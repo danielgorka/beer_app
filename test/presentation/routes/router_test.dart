@@ -10,10 +10,10 @@ import '../../utils/mockables.dart';
 
 void main() {
   group(
-    'fadeScale',
+    'fadeThrough',
     () {
       test(
-        'should return FadeScaleTransition with correct arguments',
+        'should return FadeThroughTransition with correct arguments',
         () {
           // arrange
           const child = Text('child');
@@ -21,7 +21,7 @@ void main() {
           const secondaryAnimation = AlwaysStoppedAnimation<double>(1);
 
           // act
-          final result = fadeScale(
+          final result = fadeThrough(
             MockBuildContext(),
             animation,
             secondaryAnimation,
@@ -29,9 +29,10 @@ void main() {
           );
 
           // assert
-          expect(result, isA<FadeScaleTransition>());
-          final transition = result as FadeScaleTransition;
+          expect(result, isA<FadeThroughTransition>());
+          final transition = result as FadeThroughTransition;
           expect(transition.animation, animation);
+          expect(transition.secondaryAnimation, secondaryAnimation);
           expect(transition.child, child);
         },
       );

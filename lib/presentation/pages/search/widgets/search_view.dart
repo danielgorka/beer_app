@@ -15,7 +15,7 @@ class SearchView extends StatelessWidget {
     return BlocBuilder<SearchBloc, SearchState>(
       builder: (context, state) {
         return AnimatedSwitcher(
-          duration: animDuration,
+          duration: standardAnimDuration,
           child: _getView(context, state),
         );
       },

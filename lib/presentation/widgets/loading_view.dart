@@ -18,7 +18,7 @@ class LoadingView extends StatelessWidget {
       children: [
         AnimatedOpacity(
           opacity: loading ? 0.0 : 1.0,
-          duration: animDuration,
+          duration: standardAnimDuration,
           child: child,
         ),
         if (loading)

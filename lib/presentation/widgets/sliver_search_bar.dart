@@ -119,7 +119,7 @@ class _FloatingHeaderState extends State<_FloatingHeader> {
   Widget build(BuildContext context) {
     return AnimatedFadeScale(
       visible: _visible,
-      duration: shortAnimDuration,
+      duration: standardAnimDuration,
       child: widget.child,
     );
   }

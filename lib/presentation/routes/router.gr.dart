@@ -27,7 +27,9 @@ class _$AppRouter extends RootStackRouter {
           beersRouter: args.beersRouter,
           favouritesBeersRouter: args.favouritesBeersRouter,
         ),
-        transitionsBuilder: fadeScale,
+        transitionsBuilder: fadeThrough,
+        durationInMilliseconds: 500,
+        reverseDurationInMilliseconds: 400,
         opaque: true,
         barrierDismissible: false,
       );
@@ -36,7 +38,9 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<void>(
         routeData: routeData,
         child: const EmptyRouterPage(),
-        transitionsBuilder: fadeScale,
+        transitionsBuilder: fadeThrough,
+        durationInMilliseconds: 500,
+        reverseDurationInMilliseconds: 400,
         opaque: true,
         barrierDismissible: false,
       );
@@ -45,7 +49,9 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<void>(
         routeData: routeData,
         child: const EmptyRouterPage(),
-        transitionsBuilder: fadeScale,
+        transitionsBuilder: fadeThrough,
+        durationInMilliseconds: 500,
+        reverseDurationInMilliseconds: 400,
         opaque: true,
         barrierDismissible: false,
       );
@@ -54,7 +60,9 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<void>(
         routeData: routeData,
         child: const BeersPage(),
-        transitionsBuilder: fadeScale,
+        transitionsBuilder: fadeThrough,
+        durationInMilliseconds: 500,
+        reverseDurationInMilliseconds: 400,
         opaque: true,
         barrierDismissible: false,
       );
@@ -88,7 +96,9 @@ class _$AppRouter extends RootStackRouter {
       return CustomPage<void>(
         routeData: routeData,
         child: const FavouritesPage(),
-        transitionsBuilder: fadeScale,
+        transitionsBuilder: fadeThrough,
+        durationInMilliseconds: 500,
+        reverseDurationInMilliseconds: 400,
         opaque: true,
         barrierDismissible: false,
       );

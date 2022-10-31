@@ -7,6 +7,7 @@ import 'package:beer_app/presentation/pages/beers/beers_page.dart';
 import 'package:beer_app/presentation/pages/core/home_page.dart';
 import 'package:beer_app/presentation/pages/favourites/favourites_page.dart';
 import 'package:beer_app/presentation/pages/search/search_page.dart';
+import 'package:beer_app/presentation/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:open_container/open_container.dart';
 
@@ -15,7 +16,9 @@ part 'router.gr.dart';
 @CustomAutoRouter(
   preferRelativeImports: false,
   replaceInRouteName: 'Page,Route',
-  transitionsBuilder: fadeScale,
+  transitionsBuilder: fadeThrough,
+  durationInMilliseconds: 500,
+  reverseDurationInMilliseconds: 400,
   routes: [
     AutoRoute<void>(
       path: '/',
@@ -66,14 +69,15 @@ part 'router.gr.dart';
 )
 class AppRouter extends _$AppRouter {}
 
-Widget fadeScale(
+Widget fadeThrough(
   BuildContext context,
   Animation<double> animation,
   Animation<double> secondaryAnimation,
   Widget child,
 ) {
-  return FadeScaleTransition(
+  return FadeThroughTransition(
     animation: animation,
+    secondaryAnimation: secondaryAnimation,
     child: child,
   );
 }
@@ -84,6 +88,7 @@ Route<T> openContainerSearchRouteBuilder<T>(
   CustomPage<T> page,
 ) {
   return OpenContainerRoute<T>(
+    transitionDuration: emphasizedAnimDuration,
     color: Theme.of(context).canvasColor,
     settings: page,
     tag: SearchPage,
@@ -98,6 +103,7 @@ Route<T> openContainerBeerRouteBuilder<T>(
 ) {
   final args = page.arguments! as BeerDetailsRouteArgs;
   return OpenContainerRoute<T>(
+    transitionDuration: emphasizedAnimDuration,
     color: Theme.of(context).canvasColor,
     settings: page,
     tag: args.beerId,
