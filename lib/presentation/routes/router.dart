@@ -49,6 +49,10 @@ part 'router.gr.dart';
               path: '',
               page: FavouritesPage,
             ),
+            AutoRoute<void>(
+              path: ':id',
+              page: BeerDetailsPage,
+            ),
             RedirectRoute(path: '*', redirectTo: ''),
           ],
         ),

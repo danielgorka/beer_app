@@ -141,6 +141,11 @@ class _$AppRouter extends RootStackRouter {
                   parent: FavouritesRouter.name,
                 ),
                 RouteConfig(
+                  BeerDetailsRoute.name,
+                  path: ':id',
+                  parent: FavouritesRouter.name,
+                ),
+                RouteConfig(
                   '*#redirect',
                   path: '*',
                   parent: FavouritesRouter.name,
