@@ -23,16 +23,7 @@ class BeerAppBar extends StatelessWidget {
     final collapsedHeight = isSmall ? null : expandedAppBarHeight;
     final titlePadding = isSmall ? null : EdgeInsets.zero;
 
-    //TODO: Add fading tagline for isSmall
-    final title = isSmall
-        ? Text(
-            beer.name.value,
-            overflow: TextOverflow.fade,
-            textAlign: TextAlign.center,
-            maxLines: 1,
-          )
-        : null;
-
+    final title = isSmall ? _SmallBeerAppBarTitle(beer: beer) : null;
     final background = isSmall
         ? Padding(
             padding: const EdgeInsets.all(16).copyWith(bottom: 72),
@@ -66,6 +57,35 @@ class BeerAppBar extends StatelessWidget {
         stretchModes: const [],
         title: title,
         background: Material(child: background),
+      ),
+    );
+  }
+}
+
+class _SmallBeerAppBarTitle extends StatelessWidget {
+  const _SmallBeerAppBarTitle({
+    required this.beer,
+  });
+
+  final Beer beer;
+
+  @override
+  Widget build(BuildContext context) {
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Theme.of(context).canvasColor,
+            blurRadius: 20,
+          ),
+        ],
+      ),
+      child: Text(
+        beer.name.value,
+        style: Theme.of(context).textTheme.titleLarge,
+        overflow: TextOverflow.fade,
+        textAlign: TextAlign.center,
+        maxLines: 1,
       ),
     );
   }
