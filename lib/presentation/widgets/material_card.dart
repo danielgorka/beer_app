@@ -6,11 +6,13 @@ class MaterialCard extends StatelessWidget {
     super.key,
     this.elevation = utils.ElevationLevel.level0,
     this.borderRadius,
+    this.color,
     this.child,
   });
 
   final utils.ElevationLevel elevation;
   final BorderRadiusGeometry? borderRadius;
+  final Color? color;
   final Widget? child;
 
   @override
@@ -19,7 +21,8 @@ class MaterialCard extends StatelessWidget {
       type: MaterialType.card,
       elevation: elevation.elevation,
       borderRadius: borderRadius ?? utils.borderRadius,
-      surfaceTintColor: Theme.of(context).colorScheme.primary,
+      surfaceTintColor: Theme.of(context).colorScheme.surfaceTint,
+      color: color,
       child: child,
     );
   }
