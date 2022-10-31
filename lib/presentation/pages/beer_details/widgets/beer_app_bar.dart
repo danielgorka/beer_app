@@ -25,10 +25,12 @@ class BeerAppBar extends StatelessWidget {
 
     final title = isSmall ? _SmallBeerAppBarTitle(beer: beer) : null;
     final background = isSmall
-        ? Padding(
-            padding: const EdgeInsets.all(16).copyWith(bottom: 72),
-            child: BeerImageView(
-              imageUrl: beer.imageUrl,
+        ? SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16).copyWith(bottom: 72),
+              child: BeerImageView(
+                imageUrl: beer.imageUrl,
+              ),
             ),
           )
         : _LargeBeerAppBarBackground(beer: beer);
