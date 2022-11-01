@@ -49,6 +49,18 @@ class SpecificationCard extends StatelessWidget {
             helpUrl: context.l10n.phUrl,
             value: beer.ph?.value.toString(),
           ),
+          SpecificationTile(
+            title: context.l10n.og,
+            tooltip: context.l10n.ogText,
+            helpUrl: context.l10n.ogUrl,
+            value: beer.targetOg?.value.toString(),
+          ),
+          SpecificationTile(
+            title: context.l10n.fg,
+            tooltip: context.l10n.fgText,
+            helpUrl: context.l10n.fgUrl,
+            value: beer.targetFg?.value.toString(),
+          ),
         ],
       ),
     );

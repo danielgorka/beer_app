@@ -12,7 +12,7 @@ void main() {
     'SpecificationCard',
     () {
       testWidgets(
-        'should show DetailsCard, specification title and 5 SpecificationTiles',
+        'should show DetailsCard, specification title and 7 SpecificationTiles',
         (tester) async {
           // act
           await tester.pumpAppWidget(
@@ -25,7 +25,7 @@ void main() {
           expect(find.byType(DetailsCard), findsOneWidget);
           final context = tester.element(find.byType(SpecificationCard));
           expect(find.text(context.l10n.specification), findsOneWidget);
-          expect(find.byType(SpecificationTile), findsNWidgets(5));
+          expect(find.byType(SpecificationTile), findsNWidgets(7));
         },
       );
 
@@ -110,6 +110,40 @@ void main() {
           final context = tester.element(find.byType(SpecificationCard));
           expect(find.text(context.l10n.ph), findsOneWidget);
           expect(find.text('${beer.ph!.value}'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'should show SpecificationTile for OG',
+        (tester) async {
+          // act
+          await tester.pumpAppWidget(
+            SpecificationCard(
+              beer: beer,
+            ),
+          );
+
+          // assert
+          final context = tester.element(find.byType(SpecificationCard));
+          expect(find.text(context.l10n.og), findsOneWidget);
+          expect(find.text('${beer.targetOg!.value}'), findsOneWidget);
+        },
+      );
+
+      testWidgets(
+        'should show SpecificationTile for FG',
+        (tester) async {
+          // act
+          await tester.pumpAppWidget(
+            SpecificationCard(
+              beer: beer,
+            ),
+          );
+
+          // assert
+          final context = tester.element(find.byType(SpecificationCard));
+          expect(find.text(context.l10n.fg), findsOneWidget);
+          expect(find.text('${beer.targetFg!.value}'), findsOneWidget);
         },
       );
     },
