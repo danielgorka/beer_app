@@ -9,6 +9,9 @@
   "ebcText": "European Brewery Convention",
   "ebcUrl": "https://pl.wikipedia.org/wiki/EBC_(barwa_piwa)",
   "favourites": "Favourites",
+  "fg": "FG",
+  "fgText": "Final Gravity",
+  "fgUrl": "https://wiki.piwo.org/FG",
   "firstBrewed": "First brewed: {date}",
   "@firstBrewed": {
     "placeholders": {
@@ -16,9 +19,15 @@
     }
   },
   "foodPairing": "Food pairing",
+  "hops": "Hops",
   "ibu": "IBU",
   "ibuText": "International Bittering Units",
   "ibuUrl": "https://wiki.piwo.org/IBU",
+  "ingredients": "Ingredients",
+  "malt": "Malt",
+  "og": "OG",
+  "ogText": "Original Gravity",
+  "ogUrl": "https://wiki.piwo.org/OG",
   "ph": "pH",
   "phText": "Potential of Hydrogen",
   "phUrl": "https://pl.wikipedia.org/wiki/Skala_pH",
@@ -28,5 +37,6 @@
   "srm": "SRM",
   "srmText": "Standard Reference Method",
   "srmUrl": "https://pl.wikipedia.org/wiki/Standard_Reference_Method",
-  "tryAgain": "Try again"
+  "tryAgain": "Try again",
+  "yeast": "Yeast"
 }
