@@ -93,9 +93,15 @@ class _BeersViewState extends State<BeersView> {
 
   @override
   Widget build(BuildContext context) {
+    var padding = beersViewPadding;
+    if (!widget.showSearchBar) {
+      padding += EdgeInsets.only(top: MediaQuery.of(context).padding.top);
+    }
+
     return RefreshIndicator(
       onRefresh: () async => widget.reload(),
       child: CustomScrollView(
+        physics: const AlwaysScrollableScrollPhysics(),
         controller: _controller,
         slivers: [
           if (widget.showSearchBar)
@@ -106,7 +112,7 @@ class _BeersViewState extends State<BeersView> {
               },
             ),
           SliverPadding(
-            padding: beersViewPadding,
+            padding: padding,
             sliver: SliverGrid(
               gridDelegate: beersGridViewDelegate,
               delegate: SliverChildBuilderDelegate(
