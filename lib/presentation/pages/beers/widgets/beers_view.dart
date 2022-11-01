@@ -5,6 +5,7 @@ import 'package:beer_app/presentation/pages/beers/utils.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beer_item.dart';
 import 'package:beer_app/presentation/pages/beers/widgets/beer_item_placeholder.dart';
 import 'package:beer_app/presentation/routes/router.dart';
+import 'package:beer_app/presentation/utils.dart';
 import 'package:beer_app/presentation/widgets/app_shimmer.dart';
 import 'package:beer_app/presentation/widgets/error_view.dart';
 import 'package:beer_app/presentation/widgets/sliver_search_bar.dart';
@@ -118,17 +119,9 @@ class _BeersViewState extends State<BeersView> {
               delegate: SliverChildBuilderDelegate(
                 childCount: _itemsCount,
                 (context, index) {
-                  if (index >= (widget.beers?.length ?? 0)) {
-                    return const AppShimmer(
-                      child: BeerItemPlaceholder(),
-                    );
-                  }
-
-                  final beer = widget.beers![index];
-                  return BeerItem(
-                    beer: beer,
-                    onFavouriteChanged: (fav) =>
-                        widget.onFavouriteChanged(beer, fav),
+                  return AnimatedSwitcher(
+                    duration: standardAnimDuration,
+                    child: _buildItem(index),
                   );
                 },
               ),
@@ -143,6 +136,20 @@ class _BeersViewState extends State<BeersView> {
             ),
         ],
       ),
+    );
+  }
+
+  Widget _buildItem(int index) {
+    if (index >= (widget.beers?.length ?? 0)) {
+      return const AppShimmer(
+        child: BeerItemPlaceholder(),
+      );
+    }
+
+    final beer = widget.beers![index];
+    return BeerItem(
+      beer: beer,
+      onFavouriteChanged: (fav) => widget.onFavouriteChanged(beer, fav),
     );
   }
 }
