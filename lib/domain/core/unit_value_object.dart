@@ -8,6 +8,8 @@ abstract class UnitValueObject {
   final double? value;
   final Unit unit;
 
+  String get valueString => '$value ${unit.name}';
+
   @override
   bool operator ==(Object other) {
     return other is UnitValueObject &&

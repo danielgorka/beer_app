@@ -11,6 +11,25 @@ void main() {
     'UnitValueObject',
     () {
       group(
+        'valueString',
+        () {
+          test(
+            'should return value with unit',
+            () {
+              // arrange
+              const unitValueObject = TestUnitValueObject(1.5, Unit.litres);
+
+              // act
+              final result = unitValueObject.valueString;
+
+              // assert
+              expect(result, '1.5 l');
+            },
+          );
+        },
+      );
+
+      group(
         'operator ==',
         () {
           test(
