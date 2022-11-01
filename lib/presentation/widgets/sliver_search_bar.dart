@@ -32,7 +32,7 @@ class _SliverSearchBarState extends State<SliverSearchBar> {
       removeBottom: true,
       child: SliverPersistentHeader(
         pinned: true,
-        delegate: _SliverSearchBarDelegate(
+        delegate: SliverSearchBarDelegate(
           topPadding: topPadding,
           title: widget.title,
           onTap: widget.onTap,
@@ -42,8 +42,9 @@ class _SliverSearchBarState extends State<SliverSearchBar> {
   }
 }
 
-class _SliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
-  const _SliverSearchBarDelegate({
+@visibleForTesting
+class SliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
+  const SliverSearchBarDelegate({
     required this.topPadding,
     required this.title,
     required this.onTap,
@@ -60,8 +61,10 @@ class _SliverSearchBarDelegate extends SliverPersistentHeaderDelegate {
   double get maxExtent => minExtent;
 
   @override
-  bool shouldRebuild(covariant _SliverSearchBarDelegate oldDelegate) {
-    return topPadding != oldDelegate.topPadding;
+  bool shouldRebuild(covariant SliverSearchBarDelegate oldDelegate) {
+    return topPadding != oldDelegate.topPadding ||
+        title != oldDelegate.title ||
+        onTap != oldDelegate.onTap;
   }
 
   @override

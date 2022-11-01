@@ -96,4 +96,110 @@ void main() {
       );
     },
   );
+
+  group(
+    'SliverSearchBarDelegate.shouldRebuild',
+    () {
+      test(
+        'should return false when all properties are the same',
+        () {
+          // arrange
+          const topPadding = 10.0;
+          const title = 'Title';
+          void onTap() {}
+          final delegate = SliverSearchBarDelegate(
+            topPadding: topPadding,
+            title: title,
+            onTap: onTap,
+          );
+          final delegate2 = SliverSearchBarDelegate(
+            topPadding: topPadding,
+            title: title,
+            onTap: onTap,
+          );
+
+          // act
+          final result = delegate.shouldRebuild(delegate2);
+
+          // assert
+          expect(result, false);
+        },
+      );
+
+      test(
+        'should return true when topPadding has changed',
+        () {
+          // arrange
+          const title = 'Title';
+          void onTap() {}
+          final delegate = SliverSearchBarDelegate(
+            topPadding: 0,
+            title: title,
+            onTap: onTap,
+          );
+          final delegate2 = SliverSearchBarDelegate(
+            topPadding: 1,
+            title: title,
+            onTap: onTap,
+          );
+
+          // act
+          final result = delegate.shouldRebuild(delegate2);
+
+          // assert
+          expect(result, true);
+        },
+      );
+
+      test(
+        'should return true when title has changed',
+        () {
+          // arrange
+          const topPadding = 10.0;
+          void onTap() {}
+          final delegate = SliverSearchBarDelegate(
+            topPadding: topPadding,
+            title: '1',
+            onTap: onTap,
+          );
+          final delegate2 = SliverSearchBarDelegate(
+            topPadding: topPadding,
+            title: '2',
+            onTap: onTap,
+          );
+
+          // act
+          final result = delegate.shouldRebuild(delegate2);
+
+          // assert
+          expect(result, true);
+        },
+      );
+
+      test(
+        'should return true when onTap has changed',
+        () {
+          // arrange
+          const topPadding = 10.0;
+          const title = 'Title';
+          final delegate = SliverSearchBarDelegate(
+            topPadding: topPadding,
+            title: title,
+            onTap: () {},
+          );
+          final delegate2 = SliverSearchBarDelegate(
+            topPadding: topPadding,
+            title: title,
+            onTap: () {},
+          );
+
+          // act
+          final result = delegate.shouldRebuild(delegate2);
+
+          // assert
+          expect(result, true);
+        },
+      );
+    },
+  );
 }
