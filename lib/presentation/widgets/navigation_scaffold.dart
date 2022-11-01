@@ -67,6 +67,7 @@ class NavigationScaffold extends StatelessWidget {
         }
 
         return Scaffold(
+          resizeToAvoidBottomInset: false,
           body: body,
           bottomNavigationBar: isBottomNav
               ? _BottomNav(

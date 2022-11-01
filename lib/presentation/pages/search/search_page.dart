@@ -13,6 +13,7 @@ class SearchPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<SearchBloc>()..add(const SearchEvent.init()),
       child: const Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: SearchAppBar(),
         body: SearchView(),
       ),
